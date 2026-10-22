@@ -1,0 +1,88 @@
+name: Instagram-automaat (dagelijks 08:00)
+
+on:
+  schedule:
+    # GitHub rekent in UTC. 06:00 UTC = 08:00 zomertijd, 07:00 UTC = 08:00 wintertijd.
+    # Het script doet alleen iets vanaf 08:00 Nederlandse tijd en maar één keer per dag.
+    # 08:00 UTC is een herkansing als een eerdere run die dag met een fout eindigde.
+    - cron: '0 6 * * *'
+    - cron: '0 7 * * *'
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      modus:
+        description: 'proef = alles testen zonder te publiceren, live = nu publiceren'
+        type: choice
+        options: [proef, live]
+        default: proef
+      auto:
+        description: 'Optioneel: voertuig-ID (het nummer achter in de URL, bv. 941609)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cb-instagram-automaat
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    container:
+      # zelfde omgeving als de referentieslides: pixel-identieke huisstijl
+      image: mcr.microsoft.com/playwright/python:v1.56.0-noble
+    env:
+      TZ: Europe/Amsterdam
+      PIP_BREAK_SYSTEM_PACKAGES: "1"
+      PUBLICATIE: ${{ vars.PUBLICATIE }}
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      IG_API_HOST: ${{ vars.IG_API_HOST || 'graph.instagram.com' }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-sonnet-5-5' }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      RAPPORT_EMAIL: ${{ secrets.RAPPORT_EMAIL }}
+    steps:
+      - name: git installeren
+        run: apt-get update -qq && apt-get install -y -qq git > /dev/null
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Voorbereiden
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "CB Instagram-automaat"
+          git config user.email "automaat@users.noreply.github.com"
+          pip install --no-cache-dir -q -r requirements.txt
+
+      - name: Automaat draaien
+        id: automaat
+        run: |
+          MODUS="${{ github.event_name == 'schedule' && 'dagelijks' || inputs.modus }}"
+          AUTO="${{ inputs.auto }}"
+          python -m automaat.run --modus "$MODUS" ${AUTO:+--auto "$AUTO"}
+
+      - name: Database en rapport opslaan
+        if: always()
+        run: |
+          git add -A state rapport gepubliceerd proef 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -q -m "rapport $(date +'%Y-%m-%d %H:%M')"
+            for i in 1 2 3 4 5; do git push && break; git pull --rebase -q -X ours; sleep 5; done
+          fi
+
+      - name: Slides en caption als download bewaren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: slides-${{ github.run_number }}
+          path: .werk/uitvoer/
+          retention-days: 30
+          if-no-files-found: ignore
