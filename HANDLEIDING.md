@@ -1,6 +1,8 @@
 # Instagram-automaat CB Automobielen: handleiding
 
-**Wat het doet:** elke ochtend om 08:00 (Nederlandse tijd) controleert de automaat cbautomobielen.nl. Een nieuwe auto komt in de wachtrij. Daarna maakt de automaat 5 slides in de vaste huisstijl, schrijft hij een caption en controleert hij alles. Als alle controles slagen, plaatst hij de carrousel op Instagram. Hij plaatst maximaal 1 auto per dag. Komen er meer auto's tegelijk binnen, dan worden die over de volgende dagen verdeeld.
+**Wat het doet:** elke ochtend om 08:00 (Nederlandse tijd) controleert de automaat cbautomobielen.nl. Een nieuwe auto komt in de wachtrij. Op de **publicatiedagen (standaard dinsdag en vrijdag)** maakt de automaat 5 slides in de vaste huisstijl, schrijft hij een caption en controleert hij alles. Als alle controles slagen, plaatst hij de carrousel van de eerstvolgende auto uit de wachtrij op Instagram. Per publicatiedag gaat er maximaal 1 auto online. Een auto die in de tussentijd verkocht wordt, gaat automatisch uit de wachtrij.
+
+Andere dagen kiezen kan via de GitHub-variabele `PUBLICATIE_DAGEN`, bijvoorbeeld `ma,do` of `di,do,za`.
 
 Alles draait op **GitHub Actions**: in de cloud, gratis, en ook als je computer uit staat.
 

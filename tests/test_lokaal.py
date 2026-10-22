@@ -18,6 +18,7 @@ config.DB_PATH = os.path.join(TMP, 'database.json'); config.REPORT_DIR = os.path
 config.WORK_DIR = os.path.join(TMP, 'werk'); config.PUBLISH_DIR = os.path.join(TMP, 'gepubliceerd')
 config.GITHUB_REPOSITORY = 'test/cb'
 config.ROOT = TMP  # proefbestanden niet in de echte map
+config.PUBLICATIE_DAGEN = list(range(7))
 DAG = ['2026-10-23 08:01']
 config.nu = lambda: datetime.strptime(DAG[0], '%Y-%m-%d %H:%M').replace(tzinfo=config.TZ)
 config.vandaag = lambda: DAG[0][:10]

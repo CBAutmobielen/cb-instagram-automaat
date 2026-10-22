@@ -64,7 +64,9 @@ def aanbod():
         if not m:
             continue
         slug = m.group(1)
+        titel = re.split(r'\s\d{1,3}(?:\.\d{3})*\s?km|\s€|\sop aanvraag', c['text'], maxsplit=1, flags=re.I)[0].strip()
         out[voertuig_id(slug)] = {
+            'titel': titel[:90] or slug,
             'slug': slug, 'url': f'{config.SITE_BASE}/aanbod/{slug}', 'tekst': c['text'],
             'beschikbaar': '€' in c['text'], 'prijs': _prijs(c['text']), 'km': _km(c['text']),
         }

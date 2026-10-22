@@ -38,6 +38,7 @@ jobs:
       TZ: Europe/Amsterdam
       PIP_BREAK_SYSTEM_PACKAGES: "1"
       PUBLICATIE: ${{ vars.PUBLICATIE }}
+      PUBLICATIE_DAGEN: ${{ vars.PUBLICATIE_DAGEN || 'di,vr' }}
       IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
       IG_API_HOST: ${{ vars.IG_API_HOST || 'graph.instagram.com' }}
@@ -51,7 +52,7 @@ jobs:
       - name: git installeren
         run: apt-get update -qq && apt-get install -y -qq git > /dev/null
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 1
 
@@ -72,7 +73,7 @@ jobs:
       - name: Database en rapport opslaan
         if: always()
         run: |
-          git add -A state rapport gepubliceerd proef 2>/dev/null || true
+          for d in state rapport gepubliceerd proef; do [ -e "$d" ] && git add -A "$d"; done
           if ! git diff --cached --quiet; then
             git commit -q -m "rapport $(date +'%Y-%m-%d %H:%M')"
             for i in 1 2 3 4 5; do git push && break; git pull --rebase -q -X ours; sleep 5; done

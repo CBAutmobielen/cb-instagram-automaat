@@ -56,7 +56,7 @@ def sync(db, listing, R):
     R.beschikbaar = sum(1 for x in listing.values() if x['beschikbaar'])
     for vid, it in listing.items():
         v = db['voertuigen'].get(vid)
-        titel = it['tekst'][:80]
+        titel = it.get('titel') or it['tekst'][:80]
         if v is None:
             status = 'bestaand' if eerste else ('wachtrij' if it['beschikbaar'] else 'verkocht')
             v = dbm.nieuw_voertuig(vid, it['slug'], it['url'], titel, it['prijs'], it['km'], status)
@@ -66,6 +66,8 @@ def sync(db, listing, R):
                 R.nieuw.append(titel); R.log(f'NIEUW: {titel} -> wachtrij')
             continue
         v['laatst_gezien'] = config.vandaag()
+        if it.get('titel') and v['titel'] != it['titel'] and not v.get('instagram_post_id'):
+            v['titel'] = it['titel']
         if it['slug'] != v['slug']:
             dbm.wijziging(v, 'url', v['url'], it['url']); v['slug'], v['url'] = it['slug'], it['url']
         for veld, nieuw in (('prijs', it['prijs']), ('kilometerstand', it['km'])):
@@ -95,11 +97,23 @@ def sync(db, listing, R):
               'Alleen auto\'s die hierna op de site verschijnen komen in de wachtrij.')
 
 
+def publicatiedagen(start, n):
+    """De eerstvolgende n publicatiedagen vanaf start (inclusief)."""
+    dagen, d = [], start
+    while len(dagen) < n:
+        if d.weekday() in config.PUBLICATIE_DAGEN:
+            dagen.append(d)
+        d += timedelta(days=1)
+    return dagen
+
+
 def plan(db, vandaag_klaar):
-    d = config.nu().date() + timedelta(days=1 if vandaag_klaar else 0)
+    start = config.nu().date() + timedelta(days=1 if vandaag_klaar else 0)
     per = max(config.POSTS_PER_DAG, 1)
-    for i, v in enumerate(dbm.wachtrij(db)):
-        v['gepland'] = (d + timedelta(days=i // per)).isoformat()
+    q = dbm.wachtrij(db)
+    dagen = publicatiedagen(start, len(q) // per + 1)
+    for i, v in enumerate(q):
+        v['gepland'] = dagen[i // per].isoformat()
 
 
 def herstel_bezig(db, ig, R):
@@ -122,7 +136,7 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     """Eén auto volledig afhandelen. Geeft True bij succes."""
     R.log(f"--- {v['titel']} (ID {v['id']}) ---")
     vers = site.voertuig(v['slug'])
-    v['titel'], v['bouwjaar'] = vers['title'], vers['table'].get('Bouwjaar')
+    v['titel'], v['bouwjaar'] = vers['title'] or v['titel'], vers['table'].get('Bouwjaar')
     v['prijs'] = vers['prijs'] or v['prijs']
     if len(vers['fotos']) < config.MIN_FOTOS:
         v['status'] = 'geen_fotos'; dbm.fout(v, f"slechts {len(vers['fotos'])} foto's op de site")
@@ -172,10 +186,13 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
 
     if proef:
         R.proef = f"**{car['site_title']}** ({car['price']}): 5 slides en caption gemaakt, alle controles geslaagd."
-        if ig and config.GITHUB_REPOSITORY:
+        if config.GITHUB_REPOSITORY:
             doel = os.path.join(config.ROOT, 'proef', v['id'])
             shutil.rmtree(doel, ignore_errors=True)
             pj = hosting.naar_jpeg(paden, doel)
+            open(os.path.join(doel, 'caption.txt'), 'w', encoding='utf-8').write(tekst)
+            R.proef += f" Bekijk de slides in de map `proef/{v['id']}/`."
+        if ig and config.GITHUB_REPOSITORY:
             sha = hosting.commit_push(f"proef: slides {car['site_title']}", [doel])
             urls = hosting.publiceer_beelden(pj, sha)
             cid = ig.maak_carrousel(urls, tekst)
@@ -270,7 +287,11 @@ def main():
                     R.log(f"Wachtrij leeg: proef met bestaande auto {kandidaten[0]['titel']}")
 
         al = len(dbm.vandaag_gepubliceerd(db))
-        if not proef and al >= config.POSTS_PER_DAG:
+        if not proef and not a.auto and config.nu().weekday() not in config.PUBLICATIE_DAGEN:
+            dagen = ', '.join(config.DAGNAMEN[i] for i in config.PUBLICATIE_DAGEN)
+            R.log(f'Vandaag is geen publicatiedag (publicatiedagen: {dagen}). Website gecontroleerd, wachtrij bijgewerkt.')
+            kandidaten = []
+        elif not proef and al >= config.POSTS_PER_DAG:
             R.log(f'Vandaag is al {al} auto gepubliceerd; maximum {config.POSTS_PER_DAG} per dag. Overige blijven in de wachtrij.')
             kandidaten = []
         if not kandidaten:
