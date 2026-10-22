@@ -56,12 +56,23 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Cache (Python-pakketten en herkenningsmodel)
+        uses: actions/cache@v4
+        with:
+          path: |
+            /github/home/.cache/pip
+            /github/home/.cache/huggingface
+          key: cb-cache-v1-${{ hashFiles('requirements.txt') }}
+
       - name: Voorbereiden
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config user.name "CB Instagram-automaat"
           git config user.email "automaat@users.noreply.github.com"
-          pip install --no-cache-dir -q -r requirements.txt
+          pip install -q -r requirements.txt
+          # gratis fotoherkenning (CPU-versie, ~200 MB, wordt gecachet)
+          pip install -q --index-url https://download.pytorch.org/whl/cpu torch==2.8.0 torchvision==0.23.0
+          pip install -q open_clip_torch==3.2.0
 
       - name: Automaat draaien
         id: automaat

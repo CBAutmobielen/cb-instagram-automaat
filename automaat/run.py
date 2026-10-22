@@ -7,7 +7,7 @@
 """
 import argparse, json, os, shutil, sys, traceback
 from datetime import timedelta
-from . import config, db as dbm, site, content, ai, caption, qa, hosting
+from . import config, db as dbm, site, content, ai, caption, qa, hosting, fotokeuze
 from .rapport import Rapport
 
 sys.path.insert(0, os.path.join(config.ROOT, 'cb'))
@@ -147,7 +147,8 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     site.download_fotos(vers, fotodir)
 
     car = content.concept(vers)
-    for n in ai.verrijk(car, vers, fotodir):
+    notities, labels = fotokeuze.kies(car, vers, fotodir)        # gratis beeldherkenning
+    for n in notities + (ai.verrijk(car, vers, fotodir) if config.ANTHROPIC_API_KEY else []):
         R.log('  ' + n)
     fouten = qa.fotos_herkomst(car, vers, fotodir)
     if fouten:   # eerst foto's in orde, anders niet eens renderen
@@ -171,6 +172,8 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     shutil.rmtree(proefmap, ignore_errors=True); os.makedirs(proefmap, exist_ok=True)
     jpgs = hosting.naar_jpeg(paden, proefmap) if paden else []
     open(os.path.join(proefmap, 'caption.txt'), 'w', encoding='utf-8').write(tekst)
+    if labels:
+        fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(proefmap, 'fotoherkenning.jpg'))
     json.dump({k: car[k] for k in car if k != 'optie_kandidaten'}, open(os.path.join(proefmap, 'carrousel.json'), 'w', encoding='utf-8'),
               ensure_ascii=False, indent=1)
 
@@ -191,6 +194,8 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
             shutil.rmtree(doel, ignore_errors=True)
             pj = hosting.naar_jpeg(paden, doel)
             open(os.path.join(doel, 'caption.txt'), 'w', encoding='utf-8').write(tekst)
+            if labels:
+                fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(doel, 'fotoherkenning.jpg'))
             R.proef += f" Bekijk de slides in de map `proef/{v['id']}/`."
         if ig and config.GITHUB_REPOSITORY:
             sha = hosting.commit_push(f"proef: slides {car['site_title']}", [doel])

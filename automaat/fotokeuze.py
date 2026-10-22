@@ -1,0 +1,138 @@
+"""Gratis automatische fotokeuze met een open beeldherkenningsmodel (OpenAI CLIP via open_clip, draait lokaal).
+
+Elke foto krijgt een type (voorkant schuin, achterkant schuin, dashboard, velg, koplamp, bagageruimte, ...).
+Daarna krijgt elke slide-rol de best passende foto. Lukt het model niet (niet geïnstalleerd, fout),
+dan blijft de vaste keuze uit content.kies_fotos() staan. Er worden nooit beelden gewijzigd of gemaakt.
+"""
+import os
+from . import content
+
+TYPES = {
+    'voor_schuin':  'a photo of a whole car seen from the front three-quarter angle, parked outside',
+    'voor_recht':   'a photo of a whole car seen straight from the front',
+    'zij':          'a photo of a whole car seen from the side',
+    'achter_schuin': 'a photo of a whole car seen from the rear three-quarter angle',
+    'achter_recht': 'a photo of a whole car seen straight from the back',
+    'dashboard':    'a photo of a car interior with dashboard and steering wheel',
+    'stoelen':      'a photo of car seats in the interior of a car',
+    'achterbank':   'a photo of the rear seats of a car',
+    'bagage':       'a photo of an open car trunk luggage compartment',
+    'scherm':       'a close-up photo of a car infotainment touchscreen display',
+    'tellers':      'a close-up photo of a car instrument cluster',
+    'velg':         'a close-up photo of a car wheel and alloy rim',
+    'koplamp':      'a close-up photo of a car headlight',
+    'achterlicht':  'a close-up photo of a car tail light',
+    'embleem':      'a close-up photo of a car badge emblem logo',
+    'motor':        'a photo of a car engine bay',
+    'versnelling':  'a close-up photo of a car gear shifter',
+    'persoon':      'a photo of a person',
+    'gebouw':       'a photo of a car dealership building or showroom',
+    'document':     'a photo of documents, keys or a service book',
+}
+
+ROLLEN = {
+    'hero':    ['voor_schuin', 'voor_recht'],
+    'specs':   ['achter_schuin', 'achter_recht', 'zij'],
+    'options': ['dashboard', 'scherm', 'stoelen'],
+    'd1':      ['velg', 'koplamp'],
+    'd2':      ['stoelen', 'bagage', 'achterbank', 'scherm', 'tellers', 'embleem', 'achterlicht', 'koplamp', 'velg'],
+    'd3':      ['bagage', 'achterlicht', 'embleem', 'stoelen', 'scherm', 'tellers', 'versnelling', 'velg', 'koplamp'],
+    'contact': ['voor_schuin', 'zij', 'voor_recht'],
+}
+NOOIT = {'persoon', 'gebouw', 'document', 'motor'}
+
+_model = None
+
+
+def _laad():
+    global _model
+    if _model is None:
+        import torch, open_clip
+        torch.set_num_threads(max(os.cpu_count() or 2, 2))
+        m, _, pre = open_clip.create_model_and_transforms('ViT-B-32', pretrained='openai')
+        tok = open_clip.get_tokenizer('ViT-B-32')
+        m.eval()
+        with torch.no_grad():
+            t = m.encode_text(tok(list(TYPES.values())))
+            t = t / t.norm(dim=-1, keepdim=True)
+        _model = (m, pre, t)
+    return _model
+
+
+def classificeer(fotodir, nummers):
+    """{nr: (type, zekerheid, {type: score})}"""
+    import torch
+    from PIL import Image
+    m, pre, t = _laad()
+    namen = list(TYPES)
+    uit = {}
+    with torch.no_grad():
+        for nr in nummers:
+            p = os.path.join(fotodir, nr + '.jpg')
+            if not os.path.exists(p):
+                continue
+            x = pre(Image.open(p).convert('RGB')).unsqueeze(0)
+            f = m.encode_image(x); f = f / f.norm(dim=-1, keepdim=True)
+            pr = (100.0 * f @ t.T).softmax(dim=-1)[0].tolist()
+            scores = dict(zip(namen, pr))
+            best = max(scores, key=scores.get)
+            uit[nr] = (best, scores[best], scores)
+    return uit
+
+
+def kies(car, v, fotodir):
+    """Past car['photos'] aan op basis van herkenning. Geeft (notities, labels) terug."""
+    n = len(v['fotos'])
+    toegestaan = content.toegestane_fotos(n)
+    try:
+        labels = classificeer(fotodir, toegestaan)
+    except Exception as e:
+        return [f'fotoherkenning niet beschikbaar ({type(e).__name__}: {e}); vaste fotokeuze'], {}
+    bruikbaar = {nr: l for nr, l in labels.items() if l[0] not in NOOIT}
+    gekozen, gebruikt = {}, set()
+
+    def beste(rol, voorkeur_nr=None):
+        voorkeur = ROLLEN[rol]
+        if voorkeur_nr and voorkeur_nr in bruikbaar and bruikbaar[voorkeur_nr][0] in voorkeur[:2] and voorkeur_nr not in gebruikt:
+            return voorkeur_nr          # dealervolgorde respecteren als die klopt (bv. hero = foto 04)
+        for typ in voorkeur:
+            kand = [(l[2][typ], nr) for nr, l in bruikbaar.items() if l[0] == typ and nr not in gebruikt]
+            if kand:
+                return max(kand)[1]
+        # geen foto met dit type als beste: hoogste score op de voorkeurstypes
+        kand = [(max(l[2][t] for t in voorkeur), nr) for nr, l in bruikbaar.items() if nr not in gebruikt]
+        return max(kand)[1] if kand else None
+
+    for rol, pref in (('hero', '04'), ('specs', '08'), ('options', None), ('d1', None),
+                      ('d2', None), ('d3', None), ('contact', '07')):
+        nr = beste(rol, pref)
+        if nr is None:
+            return ['te weinig bruikbare foto\'s voor herkenning; vaste fotokeuze'], labels
+        gekozen[rol] = nr; gebruikt.add(nr)
+    car['photos'] = gekozen
+    car['pos'] = {}
+    if labels.get(gekozen['contact'], ('',))[0] == 'voor_schuin':
+        car['pos']['contact'] = '50% 40%'
+    beschrijving = ', '.join(f"{r}={nr} ({labels[nr][0]})" for r, nr in gekozen.items())
+    return [f'fotokeuze via herkenning: {beschrijving}'], labels
+
+
+def contactsheet(fotodir, labels, gekozen, doel):
+    """Overzicht van alle foto's met herkend type en gekozen rol (voor controle)."""
+    from PIL import Image, ImageDraw
+    nrs = sorted(labels)
+    if not nrs:
+        return
+    rol_van = {nr: r for r, nr in gekozen.items()}
+    w, h, kol = 300, 225, 6
+    rij = (len(nrs) + kol - 1) // kol
+    sheet = Image.new('RGB', (kol * w, rij * (h + 40)), (12, 14, 18))
+    d = ImageDraw.Draw(sheet)
+    for i, nr in enumerate(nrs):
+        im = Image.open(os.path.join(fotodir, nr + '.jpg')).convert('RGB'); im.thumbnail((w, h))
+        x, y = (i % kol) * w, (i // kol) * (h + 40)
+        sheet.paste(im, (x, y))
+        t, z, _ = labels[nr]
+        kleur = (235, 91, 40) if nr in rol_van else (179, 182, 187)
+        d.text((x + 4, y + h + 4), f"{nr} {t} {z:.2f}" + (f"  -> {rol_van[nr]}" if nr in rol_van else ''), fill=kleur)
+    sheet.save(doel, quality=80)

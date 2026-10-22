@@ -10,7 +10,7 @@ import os, sys, json, shutil, tempfile, glob
 from datetime import datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
-from automaat import config, db as dbm, site, ai, hosting, run as runner
+from automaat import config, db as dbm, site, ai, hosting, fotokeuze, run as runner
 
 KIT = {c['id'] if 'id' in c else c['slug'].rsplit('-', 1)[1]: c for c in json.load(open(os.path.join(ROOT, 'cb', 'cars.json'), encoding='utf-8'))}
 TMP = tempfile.mkdtemp(prefix='cbtest_')
@@ -70,10 +70,10 @@ AI_AAN = [True]
 def fake_ai(car, v, fotodir):
     """Bootst de AI-fotokeuze na met de door een mens gemaakte keuze uit de kit."""
     if not AI_AAN[0]:
-        return ['AI niet actief: vaste fotokeuze']
+        return ['herkenning niet actief: vaste fotokeuze'], {}
     k = KIT[car['id']]; car['photos'] = dict(k['photos']); car['pos'] = dict(k.get('pos', {}))
-    return ['fotokeuze: (nagebootste) AI']
-ai.verrijk = fake_ai
+    return ['fotokeuze: (nagebootste) herkenning'], {}
+fotokeuze.kies = fake_ai
 
 hosting.commit_push = lambda msg, paden: 'sha123'
 hosting.publiceer_beelden = lambda jpgs, sha: [f'https://example/{os.path.basename(j)}' for j in jpgs]
