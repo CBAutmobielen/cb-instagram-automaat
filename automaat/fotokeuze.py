@@ -24,6 +24,7 @@ TYPES = {
     'achterlicht':  'a close-up photo of a car tail light',
     'embleem':      'a close-up photo of a car badge emblem logo',
     'motor':        'a photo of a car engine bay',
+    'lak_detail':   'a close-up photo of car paint, a door or body panel, not the whole car',
     'versnelling':  'a close-up photo of a car gear shifter',
     'persoon':      'a photo of a person',
     'gebouw':       'a photo of a car dealership building or showroom',
@@ -40,6 +41,7 @@ ROLLEN = {
     'contact': ['voor_schuin', 'zij', 'voor_recht'],
 }
 NOOIT = {'persoon', 'gebouw', 'document', 'motor'}
+HELE_AUTO = {'voor_schuin', 'voor_recht', 'zij', 'achter_schuin', 'achter_recht'}
 
 _model = None
 
@@ -93,14 +95,16 @@ def kies(car, v, fotodir):
 
     def beste(rol, voorkeur_nr=None):
         voorkeur = ROLLEN[rol]
-        if voorkeur_nr and voorkeur_nr in bruikbaar and bruikbaar[voorkeur_nr][0] in voorkeur[:2] and voorkeur_nr not in gebruikt:
+        if voorkeur_nr and voorkeur_nr in bruikbaar and bruikbaar[voorkeur_nr][0] in voorkeur and voorkeur_nr not in gebruikt:
             return voorkeur_nr          # dealervolgorde respecteren als die klopt (bv. hero = foto 04)
         for typ in voorkeur:
             kand = [(l[2][typ], nr) for nr, l in bruikbaar.items() if l[0] == typ and nr not in gebruikt]
             if kand:
                 return max(kand)[1]
         # geen foto met dit type als beste: hoogste score op de voorkeurstypes
-        kand = [(max(l[2][t] for t in voorkeur), nr) for nr, l in bruikbaar.items() if nr not in gebruikt]
+        hele = rol in ('hero', 'specs', 'contact')
+        kand = [(max(l[2][t] for t in voorkeur), nr) for nr, l in bruikbaar.items()
+                if nr not in gebruikt and (not hele or l[0] in HELE_AUTO)]
         return max(kand)[1] if kand else None
 
     for rol, pref in (('hero', '04'), ('specs', '08'), ('options', None), ('d1', None),
