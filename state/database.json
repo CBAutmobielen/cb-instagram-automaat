@@ -7,7 +7,7 @@
    "slug": "audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-952652",
    "url": "https://www.cbautomobielen.nl/aanbod/audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-952652",
    "titel": "Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus",
-   "status": "bezig",
+   "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
    "laatst_gezien": "2026-10-22",
@@ -17,9 +17,9 @@
    "afbeeldingen_status": "OK",
    "caption_status": "OK",
    "gepland": null,
-   "gepubliceerd_op": "2026-10-22 17:15",
-   "instagram_post_id": null,
-   "instagram_permalink": null,
+   "gepubliceerd_op": "2026-10-22 17:16",
+   "instagram_post_id": "18132260668750274",
+   "instagram_permalink": "https://www.instagram.com/p/DezSIhdkYf_/",
    "pogingen": 0,
    "fouten": [],
    "wijzigingen": []
@@ -342,6 +342,14 @@
    "modus": "proef",
    "nieuw": 0,
    "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-10-22",
+   "tijd": "17:16",
+   "modus": "live",
+   "nieuw": 0,
+   "gepubliceerd": "[Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus](https://www.instagram.com/p/DezSIhdkYf_/)",
    "fouten": []
   }
  ]
