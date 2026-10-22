@@ -87,6 +87,30 @@ def _vermogen(s):
     return f'{m.group(1)} kW' if m else s   # niet omrekenen: alleen getallen die op de site staan
 
 
+HERSCHRIJF = [
+    (r'^audio[- ]?navigati\w*.*$', 'Navigatie'),
+    (r'^lichtmetalen velgen\s*(\d{2})\s*(inch|"|”|\'\')?$', r'\1 inch lichtmetalen velgen'),
+    (r'^(\d{2})\s*(inch|"|”)\s*lichtmetalen velgen$', r'\1 inch lichtmetalen velgen'),
+    (r'^comfortairconditioning$', 'Comfort airconditioning'),
+    (r'^bluetooth telefoonvoorbereiding$', 'Bluetooth telefoon'),
+    (r'^lederen stuurwiel$', 'Lederen stuur'),
+]
+RUIS = r'\b(full map|hard ?disk|hdd|sd[- ]?kaart|cd[- ]?speler|mp3|dvd|met afstandsbediening)\b'
+
+
+def netjes(o):
+    """Technische optienamen van de site omzetten naar korte, nette Nederlandse tekst. Betekenis blijft gelijk."""
+    t = re.sub(r'\s*\([^)]*\)', '', o)                    # (866) e.d. weg
+    t = re.sub(r',\s*metaallak', ' metaallak', t, flags=re.I)
+    t = re.sub(r'(\d{2})\s*(?:"|”|\'\')', r'\1 inch', t)       # 18" -> 18 inch
+    t = re.sub(RUIS, '', t, flags=re.I)
+    t = re.sub(r'\s*[+/&,-]\s*$', '', re.sub(r'\s+', ' ', t)).strip(' +,-/')
+    for pat, nieuw in HERSCHRIJF:
+        if re.match(pat, t, re.I):
+            t = re.sub(pat, nieuw, t, flags=re.I); break
+    return _kap(t.strip()) if len(t.strip()) >= 3 else _kap(o.strip())
+
+
 def scoor_opties(v):
     """Kandidaat-opties op volgorde van aantrekkelijkheid, zonder dubbele groepen."""
     bijzonder = [o for o in v.get('bijzondere_opties', []) if o]
@@ -107,7 +131,10 @@ def scoor_opties(v):
     for _, _, o, g in scored:
         if g in groepen:
             continue
-        groepen.add(g); gekozen.append(_kap(o.strip()))
+        groepen.add(g)
+        n = netjes(o)
+        if n not in gekozen:
+            gekozen.append(n)
     return gekozen
 
 
@@ -166,10 +193,10 @@ def koppen(car, v):
         items = [items[0]] + [_klein(x) for x in items[1:]]
         return (', '.join(items[:-1]) + ' en ' + items[-1] + '.') if len(items) > 1 else items[0] + '.'
     opt_head = None
-    kort = [o for o in opts if len(o) <= 24] or opts   # korte, krachtige opties voor de kop
+    kort = [o for o in opts if len(o) <= 20] or opts   # korte, krachtige opties voor de kop
     for k in (3, 2, 1):
         kand = lijst(kort[:k])
-        if len(kand) <= 46:
+        if len(kand) <= 38:                               # past op één regel
             opt_head = kand; break
     opt_head = opt_head or (opts[0][:44] + '.')
     kleur = v.get('table', {}).get('Kleur', '')
@@ -215,7 +242,9 @@ def concept(v):
 
 def intro(car, v):
     """Korte, feitelijke introductie (max. 2 zinnen). Variatie op basis van het voertuig."""
-    s = car['specs']; o = [_klein(x) for x in car['options'][:2]]
+    s = car['specs']
+    kort = [x for x in car['options'] if len(x) <= 26] + [x for x in car['options'] if len(x) > 26]
+    o = [_klein(x) for x in kort[:2]]
     naam = f"{car['title']} {car['sub']}".strip()
     carr = (s.get('Carrosserie') or '').split('(')[0].strip().lower()
     h = int(hashlib.md5(car['id'].encode()).hexdigest(), 16)
