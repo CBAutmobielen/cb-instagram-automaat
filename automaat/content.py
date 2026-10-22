@@ -166,8 +166,9 @@ def koppen(car, v):
         items = [items[0]] + [_klein(x) for x in items[1:]]
         return (', '.join(items[:-1]) + ' en ' + items[-1] + '.') if len(items) > 1 else items[0] + '.'
     opt_head = None
+    kort = [o for o in opts if len(o) <= 24] or opts   # korte, krachtige opties voor de kop
     for k in (3, 2, 1):
-        kand = lijst(opts[:k])
+        kand = lijst(kort[:k])
         if len(kand) <= 46:
             opt_head = kand; break
     opt_head = opt_head or (opts[0][:44] + '.')

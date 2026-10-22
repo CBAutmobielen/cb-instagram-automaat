@@ -35,7 +35,7 @@ def _prijs(text):
 
 
 def _km(text):
-    m = re.search(r'(\d{1,3}(?:\.\d{3})+|\d{1,6})\s?km\b', text, re.I)
+    m = re.search(r'(\d{1,3}(?:\.\d{3})+|\d{1,6})\s?km(?![a-z])', text, re.I)
     return (m.group(1) + ' km') if m else None
 
 
@@ -64,7 +64,8 @@ def aanbod():
         if not m:
             continue
         slug = m.group(1)
-        titel = re.split(r'\s\d{1,3}(?:\.\d{3})*\s?km|\s€|\sop aanvraag', c['text'], maxsplit=1, flags=re.I)[0].strip()
+        titel = re.split(r'\s\d{1,3}(?:\.\d{3})*\s?km|€|op aanvraag', c['text'], maxsplit=1, flags=re.I)[0].strip()
+        titel = re.sub(r'\s(?:19|20)\d{2}$', '', titel)
         out[voertuig_id(slug)] = {
             'titel': titel[:90] or slug,
             'slug': slug, 'url': f'{config.SITE_BASE}/aanbod/{slug}', 'tekst': c['text'],
