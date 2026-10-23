@@ -89,7 +89,11 @@ class FakeIG:
     def maak_carrousel(self, urls, cap):
         assert len(urls) == 5, urls
         return 'container1'
+    stories = []
+    def maak_story(self, url): return 'story1'
     def publiceer(self, cid):
+        if cid == 'story1':
+            FakeIG.stories.append(cid); return f's{len(FakeIG.stories)}', None
         mid = f'1789{len(self.posts)}'
         FakeIG.posts.append({'id': mid, 'caption': FakeIG.laatste_caption, 'permalink': f'https://instagram.com/p/{mid}'})
         return mid, f'https://instagram.com/p/{mid}'
@@ -135,6 +139,7 @@ check('oudste in wachtrij (GTI) gepubliceerd met post-ID', len(gepub) == 1 and g
 check('Fiat staat in wachtrij, gepland morgen', db['voertuigen'][FIAT]['status'] == 'wachtrij' and db['voertuigen'][FIAT]['gepland'] == '2026-10-25',
       db['voertuigen'][FIAT].get('gepland'))
 check('caption bevat directe link', GTI in FakeIG.posts[0]['caption'])
+check('story geplaatst na de post', len(FakeIG.stories) == 1 and db['voertuigen'][GTI].get('instagram_story_id'))
 
 print('\n=== Dag 2, nogmaals gestart (handmatig live) ===')
 code, db = draai('live')

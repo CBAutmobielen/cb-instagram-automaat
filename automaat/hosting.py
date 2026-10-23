@@ -9,11 +9,11 @@ from PIL import Image
 from . import config
 
 
-def naar_jpeg(pngs, doelmap):
+def naar_jpeg(pngs, doelmap, naam='slide'):
     os.makedirs(doelmap, exist_ok=True)
     uit = []
     for i, p in enumerate(pngs, 1):
-        d = os.path.join(doelmap, f'slide-{i}.jpg')
+        d = os.path.join(doelmap, f'{naam}-{i}.jpg' if naam == 'slide' else f'{naam}.jpg')
         Image.open(p).convert('RGB').save(d, 'JPEG', quality=95, subsampling=0, optimize=True)
         uit.append(d)
     return uit

@@ -24,6 +24,8 @@ DAGNAMEN = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo']
 # De website wordt wél elke dag gecontroleerd.
 PUBLICATIE_DAGEN = [DAGNAMEN.index(d.strip()[:2].lower()) for d in
                     (os.environ.get('PUBLICATIE_DAGEN') or 'di,vr').split(',') if d.strip()[:2].lower() in DAGNAMEN]
+# Na elke carrousel ook een story plaatsen (GitHub-variabele STORY=uit om dit uit te zetten)
+STORY = (os.environ.get('STORY') or 'aan').strip().lower() != 'uit'
 MAX_POGINGEN = 3          # na 3 mislukte pogingen: status 'fout', niet meer automatisch proberen
 MIN_FOTOS = 8             # minder echte foto's = waarschijnlijk 'verwacht'-plaatje: overslaan
 

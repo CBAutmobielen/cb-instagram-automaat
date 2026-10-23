@@ -39,6 +39,7 @@ jobs:
       PIP_BREAK_SYSTEM_PACKAGES: "1"
       PUBLICATIE: ${{ vars.PUBLICATIE }}
       PUBLICATIE_DAGEN: ${{ vars.PUBLICATIE_DAGEN || 'di,vr' }}
+      STORY: ${{ vars.STORY || 'aan' }}
       IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
       IG_API_HOST: ${{ vars.IG_API_HOST || 'graph.instagram.com' }}

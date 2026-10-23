@@ -130,6 +130,12 @@ class Instagram:
         self._wacht(cid)
         return cid
 
+    def maak_story(self, image_url):
+        """Story-container (1080x1920 JPEG). Nog niet zichtbaar tot publiceer()."""
+        cid = self._req('POST', f'{config.IG_USER_ID}/media', media_type='STORIES', image_url=image_url)['id']
+        self._wacht(cid)
+        return cid
+
     def publiceer(self, container_id):
         """Stap 4: maakt de post openbaar. Geeft (media_id, permalink)."""
         mid = self._req('POST', f'{config.IG_USER_ID}/media_publish', creation_id=container_id)['id']

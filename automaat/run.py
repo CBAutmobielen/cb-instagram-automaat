@@ -7,7 +7,7 @@
 """
 import argparse, json, os, shutil, sys, traceback
 from datetime import timedelta
-from . import config, db as dbm, site, content, ai, caption, qa, hosting, fotokeuze
+from . import config, db as dbm, site, content, ai, caption, qa, hosting, fotokeuze, story
 from .rapport import Rapport
 
 sys.path.insert(0, os.path.join(config.ROOT, 'cb'))
@@ -157,6 +157,18 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
         paden, issues = render_met_herstel(car, R)
         fouten += qa.slides(paden, issues)
     fouten += qa.site_actueel(car, vers, listing.get(v['id']))
+    story_png = None
+    if config.STORY and paden:
+        try:
+            story_png, s_issues = story.maak(car, os.path.join(config.WORK_DIR, 'story', v['id'], 'story.png'))
+            s_fouten = story.controleer(story_png, s_issues)
+            if s_fouten:
+                for f in s_fouten:
+                    R.waarschuwing(f"{car['site_title']}: {f} (story wordt overgeslagen, post gaat wel door)")
+                story_png = None
+        except Exception as e:
+            R.waarschuwing(f"{car['site_title']}: story maken mislukt ({e}); post gaat wel door")
+            story_png = None
     tekst = caption.maak(car)
     fouten += caption.controleer(tekst, car, vers)
     recent = None
@@ -172,6 +184,8 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     shutil.rmtree(proefmap, ignore_errors=True); os.makedirs(proefmap, exist_ok=True)
     jpgs = hosting.naar_jpeg(paden, proefmap) if paden else []
     open(os.path.join(proefmap, 'caption.txt'), 'w', encoding='utf-8').write(tekst)
+    if story_png:
+        hosting.naar_jpeg([story_png], proefmap, 'story')
     if labels:
         fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(proefmap, 'fotoherkenning.jpg'))
     json.dump({k: car[k] for k in car if k != 'optie_kandidaten'}, open(os.path.join(proefmap, 'carrousel.json'), 'w', encoding='utf-8'),
@@ -193,14 +207,18 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
             doel = os.path.join(config.ROOT, 'proef', v['id'])
             shutil.rmtree(doel, ignore_errors=True)
             pj = hosting.naar_jpeg(paden, doel)
+            sj = hosting.naar_jpeg([story_png], doel, 'story') if story_png else []
             open(os.path.join(doel, 'caption.txt'), 'w', encoding='utf-8').write(tekst)
             if labels:
                 fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(doel, 'fotoherkenning.jpg'))
             R.proef += f" Bekijk de slides in de map `proef/{v['id']}/`."
         if ig and config.GITHUB_REPOSITORY:
             sha = hosting.commit_push(f"proef: slides {car['site_title']}", [doel])
-            urls = hosting.publiceer_beelden(pj, sha)
-            cid = ig.maak_carrousel(urls, tekst)
+            urls = hosting.publiceer_beelden(pj + sj, sha)
+            cid = ig.maak_carrousel(urls[:len(pj)], tekst)
+            if sj:
+                scid = ig.maak_story(urls[-1])
+                R.proef += f" Story-container `{scid}` ook goedgekeurd (niet geplaatst)."
             R.proef += (f" Instagram-koppeling getest: carrousel-container `{cid}` aangemaakt en goedgekeurd door Instagram"
                         f" (status FINISHED). **Niet gepubliceerd**; de container vervalt automatisch na 24 uur.")
             R.log(f'  proef: Instagram-container {cid} OK, niet gepubliceerd')
@@ -215,12 +233,13 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     doel = os.path.join(config.PUBLISH_DIR, v['id'])
     shutil.rmtree(doel, ignore_errors=True)
     pj = hosting.naar_jpeg(paden, doel)
+    sj = hosting.naar_jpeg([story_png], doel, 'story') if story_png else []
     open(os.path.join(doel, 'caption.txt'), 'w', encoding='utf-8').write(tekst)
     v['status'] = 'bezig'; v['gepubliceerd_op'] = config.nu().strftime('%Y-%m-%d %H:%M')
     dbm.bewaar(db)
     sha = hosting.commit_push(f"publicatie gestart: {car['site_title']}", [doel, config.DB_PATH])
-    urls = hosting.publiceer_beelden(pj, sha)
-    cid = ig.maak_carrousel(urls, tekst)
+    urls = hosting.publiceer_beelden(pj + sj, sha)
+    cid = ig.maak_carrousel(urls[:len(pj)], tekst)
     # allerlaatste controle vlak voor publiceren: is de auto nog niet op Instagram gezet?
     dub = qa.dubbel(car, {'voertuigen': {}}, ig.recente_posts(25))
     if dub:
@@ -230,6 +249,15 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
              gepubliceerd_op=config.nu().strftime('%Y-%m-%d %H:%M'), gepland=None)
     R.gepubliceerd = f"[{car['site_title']}]({link or v['url']})"
     R.log(f'  GEPUBLICEERD op Instagram: {link or mid}')
+    if sj:
+        try:   # story is een extraatje: mislukt hij, dan blijft de post gewoon staan
+            dbm.bewaar(db)
+            sid, _ = ig.publiceer(ig.maak_story(urls[-1]))
+            v['instagram_story_id'] = sid
+            R.gepubliceerd += ' + story'
+            R.log(f'  story geplaatst ({sid})')
+        except Exception as e:
+            R.waarschuwing(f"{car['site_title']}: story plaatsen mislukt ({e}); de post staat wel online")
     return True
 
 
