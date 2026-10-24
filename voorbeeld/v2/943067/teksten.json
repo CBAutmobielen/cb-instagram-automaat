@@ -1,0 +1,47 @@
+{
+ "label": "Nieuw in voorraad",
+ "kop": "VOLKSWAGEN GOLF VARIANT",
+ "ondertitel": "1.0 TSI Trendline 116PK",
+ "kern": [
+  "2019",
+  "95.583 km",
+  "116 pk"
+ ],
+ "specs": [
+  [
+   "Transmissie",
+   "Handgeschakeld"
+  ],
+  [
+   "Brandstof",
+   "Benzine"
+  ],
+  [
+   "Carrosserie",
+   "Stationwagon"
+  ],
+  [
+   "Kleur",
+   "Wit"
+  ],
+  [
+   "Energielabel",
+   "B"
+  ],
+  [
+   "Gem. verbruik",
+   "5 l/100 km"
+  ]
+ ],
+ "opties": [
+  "CarPlay / Android Auto",
+  "Navigatie",
+  "Automatische airco",
+  "Parkeersensoren",
+  "Cruise control",
+  "Dakrails"
+ ],
+ "optiekop": "Navigatie & parkeersensoren",
+ "cta_kop": "Interesse in deze Golf?",
+ "rijklaar": true
+}
