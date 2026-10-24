@@ -1,0 +1,23 @@
+name: Audit - voorbeelddata ophalen (geen publicatie)
+on:
+  push:
+    branches: [voorstel-v2]
+    paths: ['tools/**']
+permissions:
+  contents: write
+jobs:
+  data:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright/python:v1.56.0-noble
+    env:
+      PIP_BREAK_SYSTEM_PACKAGES: "1"
+    steps:
+      - run: apt-get update -qq && apt-get install -y -qq git > /dev/null
+      - uses: actions/checkout@v5
+      - run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "CB Instagram-automaat"; git config user.email "automaat@users.noreply.github.com"
+          pip install -q -r requirements.txt
+          python tools/voorbeeld_data.py
+          git add -A voorbeeld && git commit -q -m "audit: voorbeelddata" && git push
