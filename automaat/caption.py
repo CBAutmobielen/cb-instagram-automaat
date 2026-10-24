@@ -51,7 +51,9 @@ def controleer(tekst, car, v):
                          ('kilometerstand', v['table'].get('Kilometerstand', '').replace(' Km', ' km'))):
         if not waarde or waarde not in tekst:
             f.append(f'{veld} "{waarde}" ontbreekt of wijkt af in caption')
-    zonder_url = tekst.replace(car['url'].replace('https://', ''), '')
+    zonder_url = tekst.replace(car['url'].replace('https://', ''), '').replace(f"Ref. {v['id']}", '')
+    for vast in ('0515 745 030', 'Edisonstraat 1c'):
+        zonder_url = zonder_url.replace(vast, '')
     if not content.getallen_ok(zonder_url, v):
         extra = content._norm_num(zonder_url) - content.toegestane_getallen(v)
         f.append(f'caption bevat getallen die niet in de voertuigdata staan: {sorted(extra)}')
@@ -59,6 +61,8 @@ def controleer(tekst, car, v):
         f.append('caption noemt garantie')
     if '—' in tekst:
         f.append('em dash in caption')
-    if v['slug'] not in tekst:
-        f.append('directe voertuiglink ontbreekt')
+    if v['slug'] not in tekst and f"Ref. {v['id']}" not in tekst:
+        f.append('referentienummer van de auto ontbreekt in de caption')
+    if 'rijklaar' in tekst.lower() and not any('rijklaar' in o.lower() for o in v.get('opties', [])):
+        f.append('caption noemt rijklaar, maar de website meldt dat niet')
     return f

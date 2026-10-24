@@ -24,6 +24,7 @@ TYPES = {
     'achterlicht':  'a close-up photo of a car tail light',
     'embleem':      'a close-up photo of a car badge emblem logo',
     'motor':        'a photo of a car engine bay',
+    'stuur':        'a close-up photo of a car steering wheel',
     'lak_detail':   'a close-up photo of car paint, a door or body panel, not the whole car',
     'versnelling':  'a close-up photo of a car gear shifter',
     'persoon':      'a photo of a person',
@@ -34,10 +35,10 @@ TYPES = {
 ROLLEN = {
     'hero':    ['voor_schuin', 'voor_recht'],
     'specs':   ['achter_schuin', 'achter_recht', 'zij'],
-    'options': ['dashboard', 'scherm', 'stoelen'],
+    'options': ['dashboard', 'stoelen'],
     'd1':      ['velg', 'koplamp'],
     'd2':      ['stoelen', 'bagage', 'achterbank', 'scherm', 'tellers', 'embleem', 'achterlicht', 'koplamp', 'velg'],
-    'd3':      ['bagage', 'achterlicht', 'embleem', 'stoelen', 'scherm', 'tellers', 'versnelling', 'velg', 'koplamp'],
+    'd3':      ['embleem', 'bagage', 'achterlicht', 'stoelen', 'scherm', 'tellers', 'versnelling', 'velg', 'koplamp'],
     'contact': ['voor_schuin', 'zij', 'voor_recht'],
 }
 NOOIT = {'persoon', 'gebouw', 'document', 'motor'}
@@ -87,10 +88,10 @@ def kies(car, v, fotodir):
     n = len(v['fotos'])
     toegestaan = content.toegestane_fotos(n)
     try:
-        labels = classificeer(fotodir, toegestaan)
+        labels = classificeer(fotodir, toegestaan + ['01'])
     except Exception as e:
         return [f'fotoherkenning niet beschikbaar ({type(e).__name__}: {e}); vaste fotokeuze'], {}
-    bruikbaar = {nr: l for nr, l in labels.items() if l[0] not in NOOIT}
+    bruikbaar = {nr: l for nr, l in labels.items() if l[0] not in NOOIT and nr != '01'}
     gekozen, gebruikt = {}, set()
 
     def beste(rol, voorkeur_nr=None):
@@ -107,15 +108,19 @@ def kies(car, v, fotodir):
                 if nr not in gebruikt and (not hele or l[0] in HELE_AUTO)]
         return max(kand)[1] if kand else None
 
-    for rol, pref in (('hero', '04'), ('specs', '08'), ('options', None), ('d1', None),
+    for rol, pref in (('hero', '04'), ('specs', '03'), ('options', None), ('d1', None),
                       ('d2', None), ('d3', None), ('contact', '07')):
+        if rol == 'contact' and labels.get('01', ('',))[0] in ('voor_schuin', 'voor_recht', 'zij'):
+            gekozen[rol] = '01'; continue   # andere hoek dan de cover; watermerk valt weg door bovenuitsnede
         nr = beste(rol, pref)
         if nr is None:
             return ['te weinig bruikbare foto\'s voor herkenning; vaste fotokeuze'], labels
         gekozen[rol] = nr; gebruikt.add(nr)
     car['photos'] = gekozen
     car['pos'] = {}
-    if labels.get(gekozen['contact'], ('',))[0] == 'voor_schuin':
+    if gekozen['contact'] == '01':
+        car['pos']['contact'] = '50% 0%'
+    elif labels.get(gekozen['contact'], ('',))[0] == 'voor_schuin':
         car['pos']['contact'] = '50% 40%'
     beschrijving = ', '.join(f"{r}={nr} ({labels[nr][0]})" for r, nr in gekozen.items())
     return [f'fotokeuze via herkenning: {beschrijving}'], labels

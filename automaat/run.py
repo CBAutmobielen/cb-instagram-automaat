@@ -7,44 +7,43 @@
 """
 import argparse, json, os, shutil, sys, traceback
 from datetime import timedelta
-from . import config, db as dbm, site, content, ai, caption, qa, hosting, fotokeuze, story
+from . import config, db as dbm, site, content, content_v2, ai, caption, qa, hosting, fotokeuze, story
 from .rapport import Rapport
 
 sys.path.insert(0, os.path.join(config.ROOT, 'cb'))
 
 
 def render(car):
-    os.environ.setdefault('CB_PHOTOS', os.path.join(config.WORK_DIR, 'fotos'))
-    import render as R   # cb/render.py: vaste huisstijl, ongewijzigd ontwerp
-    R.IMG = os.path.join(config.WORK_DIR, 'fotos')
-    out = os.path.join(config.WORK_DIR, 'slides')
-    files, issues = R.render([dict(car, slug=car['id'])], scales=[1], outroot=out)
-    return files.get((car['id'], 1), []), issues
+    """Template v2 (cb/render_v2.py): zelfde huisstijl, beter leesbaar op mobiel."""
+    import render as R1
+    import render_v2 as V
+    R1.IMG = os.path.join(config.WORK_DIR, 'fotos')
+    c = dict(slug=car['id'], price=car['price'], photos=car['photos'], pos=car.get('pos', {}), v2=car['v2'])
+    out = os.path.join(config.WORK_DIR, 'slides', car['id'])
+    shutil.rmtree(out, ignore_errors=True)
+    return V.render(c, out)
 
 
 def render_met_herstel(car, R):
-    """Rendert; bij afgekapte/te lange teksten automatisch kortere (echte) alternatieven proberen."""
-    for ronde in range(5):
+    """Rendert; bij afgekapte of te kleine tekst automatisch kortere (echte) alternatieven proberen."""
+    for ronde in range(4):
         paden, issues = render(car)
         if not issues:
             return paden, []
         R.log(f'  render ronde {ronde + 1}: {len(issues)} tekstprobleem/-problemen, automatisch inkorten')
-        aangepast = False
-        for i in issues:
-            if 'Opties' in i and ('3 regels' in i or 'marge' in i):
-                lang = max(car['options'], key=len)
-                rest = [o for o in car.get('optie_kandidaten', []) if o not in car['options'] and len(o) < len(lang)]
-                if rest:
-                    car['options'][car['options'].index(lang)] = min(rest, key=len) if len(rest[0]) > 30 else rest[0]
-                    aangepast = True
-                if 'opt_head' in i or 'h:' in i:
-                    car['opt_head'] = car['options'][0] + '.'; aangepast = True
-            if 'Details' in i and ('overflow' in i or 'marge' in i):
-                car['det_cap'] = [x for x in car['det_cap'] if len(x) <= 22][:3] or car['det_cap'][:2]
-                car['det_head'] = car['det_head'][:30].rstrip(' ,') + ('.' if not car['det_head'][:30].endswith('.') else '')
-                aangepast = True
-            if 'Opties' in i and 'footer' not in i and not aangepast:
-                car['opt_head'] = car['options'][0] + '.'; aangepast = True
+        v2 = car['v2']; aangepast = False
+        if any('Uitrusting' in i for i in issues):
+            kort = [o for o in v2['opties'] if len(o) <= 22 - ronde * 2]
+            if kort and kort != v2['opties']:
+                v2['opties'] = kort; aangepast = True
+            if len(v2['optiekop']) > 24:
+                v2['optiekop'] = v2['opties'][0] if v2['opties'] else 'Uitrusting'; aangepast = True
+        if any('Cover' in i or 'Details' in i for i in issues):
+            w = v2['ondertitel'].split()
+            if len(w) > 2:
+                v2['ondertitel'] = ' '.join(w[:-1]); aangepast = True
+        if any('Specificaties' in i for i in issues) and len(v2['specs']) > 4:
+            v2['specs'] = [x for x in v2['specs'] if len(str(x[1])) <= 18][:6]; aangepast = True
         if not aangepast:
             return paden, issues
     return paden, issues
@@ -123,7 +122,7 @@ def herstel_bezig(db, ig, R):
         return
     recent = ig.recente_posts() if ig else None
     for v in bezig:
-        hit = next((m for m in (recent or []) if v['slug'] in (m.get('caption') or '')), None)
+        hit = next((m for m in (recent or []) if v['slug'] in (m.get('caption') or '') or f"Ref. {v['id']}" in (m.get('caption') or '')), None)
         if hit:
             v.update(status='gepubliceerd', instagram_post_id=hit['id'], instagram_permalink=hit.get('permalink'),
                      gepubliceerd_op=v.get('gepubliceerd_op') or hit.get('timestamp', config.vandaag()))
@@ -147,6 +146,9 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     site.download_fotos(vers, fotodir)
 
     car = content.concept(vers)
+    nieuw = (config.nu().date() - __import__('datetime').date.fromisoformat(v['ontdekt'])).days <= config.NIEUW_DAGEN
+    car['v2'] = content_v2.maak_v2(vers, nieuw=nieuw)
+    car['options'] = car['v2']['opties']
     notities, labels = fotokeuze.kies(car, vers, fotodir)        # gratis beeldherkenning
     for n in notities + (ai.verrijk(car, vers, fotodir) if config.ANTHROPIC_API_KEY else []):
         R.log('  ' + n)
@@ -156,6 +158,7 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     else:
         paden, issues = render_met_herstel(car, R)
         fouten += qa.slides(paden, issues)
+        fouten += qa.fotokwaliteit(car, fotodir)
     fouten += qa.site_actueel(car, vers, listing.get(v['id']))
     story_png = None
     if config.STORY and paden:
@@ -169,8 +172,12 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
         except Exception as e:
             R.waarschuwing(f"{car['site_title']}: story maken mislukt ({e}); post gaat wel door")
             story_png = None
-    tekst = caption.maak(car)
+    gebruikt = [x.get('opener') for x in sorted(db['voertuigen'].values(), key=lambda x: x.get('gepubliceerd_op') or '')
+                if x.get('opener')][-6:]
+    tekst, opener = content_v2.caption(vers, car['v2'], gebruikt)
     fouten += caption.controleer(tekst, car, vers)
+    if paden:
+        fouten += qa.instagram_eisen(paden, tekst)
     recent = None
     if ig:
         recent = ig.recente_posts()
@@ -245,8 +252,16 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     if dub:
         raise RuntimeError('; '.join(dub))
     mid, link = ig.publiceer(cid)
-    v.update(status='gepubliceerd', instagram_post_id=mid, instagram_permalink=link,
+    v.update(status='gepubliceerd', instagram_post_id=mid, instagram_permalink=link, opener=opener,
              gepubliceerd_op=config.nu().strftime('%Y-%m-%d %H:%M'), gepland=None)
+    try:
+        nc = ig.controleer_post(mid, len(paden), car['id'])
+        if nc:
+            R.waarschuwing(f"{car['site_title']}: nacontrole na publicatie: {nc}")
+        else:
+            R.log('  nacontrole: post staat online met alle slides en de juiste caption')
+    except Exception as e:
+        R.waarschuwing(f"{car['site_title']}: nacontrole niet gelukt ({e})")
     R.gepubliceerd = f"[{car['site_title']}]({link or v['url']})"
     R.log(f'  GEPUBLICEERD op Instagram: {link or mid}')
     if sj:
@@ -313,6 +328,11 @@ def main():
                 raise RuntimeError(f"auto {a.auto} is al gepubliceerd ({v['instagram_permalink']})")
             kandidaten = [v]
         else:
+            for q in dbm.wachtrij(db):
+                oud = (config.nu().date() - __import__('datetime').date.fromisoformat(q['ontdekt'])).days
+                if oud > config.MAX_WACHTDAGEN:
+                    q['status'] = 'verlopen'
+                    R.waarschuwing(f"{q['titel']}: stond {oud} dagen in de wachtrij en wordt niet meer als nieuwe auto gepost")
             kandidaten = dbm.wachtrij(db)
             if proef and not kandidaten:
                 kandidaten = [v for v in db['voertuigen'].values() if v['beschikbaar']][:1]

@@ -1,13 +1,11 @@
-name: Instagram-automaat (dagelijks 08:00)
+name: Instagram-automaat (dagelijks)
 
 on:
   schedule:
-    # GitHub rekent in UTC. 06:00 UTC = 08:00 zomertijd, 07:00 UTC = 08:00 wintertijd.
-    # Het script doet alleen iets vanaf 08:00 Nederlandse tijd en maar één keer per dag.
-    # 08:00 UTC is een herkansing als een eerdere run die dag met een fout eindigde.
-    - cron: '0 6 * * *'
-    - cron: '0 7 * * *'
-    - cron: '0 8 * * *'
+    # Elk uur tussen 05:00 en 19:00 UTC kijkt een snelle 'poort' of het tijd is.
+    # De echte run gebeurt één keer per dag, vanaf het uur in de variabele PUBLICATIE_UUR
+    # (Nederlandse tijd, standaard 8). Bij een fout volgt het uur erna één herkansing.
+    - cron: '0 5-19 * * *'
   workflow_dispatch:
     inputs:
       modus:
@@ -39,7 +37,8 @@ jobs:
       PIP_BREAK_SYSTEM_PACKAGES: "1"
       PUBLICATIE: ${{ vars.PUBLICATIE }}
       PUBLICATIE_DAGEN: ${{ vars.PUBLICATIE_DAGEN || 'di,vr' }}
-      STORY: ${{ vars.STORY || 'aan' }}
+      STORY: ${{ vars.STORY || 'uit' }}
+      PUBLICATIE_UUR: ${{ vars.PUBLICATIE_UUR || '8' }}
       IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
       IG_API_HOST: ${{ vars.IG_API_HOST || 'graph.instagram.com' }}
@@ -57,7 +56,27 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Poort (is het nu tijd?)
+        id: poort
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os, datetime
+          from zoneinfo import ZoneInfo
+          if os.environ.get('GITHUB_EVENT_NAME') != 'schedule':
+              print('door=ja'); raise SystemExit
+          nu = datetime.datetime.now(ZoneInfo('Europe/Amsterdam'))
+          uur = int(os.environ.get('PUBLICATIE_UUR') or 8)
+          try:
+              runs = json.load(open('state/database.json')).get('runs', [])
+          except Exception:
+              runs = []
+          vandaag = [r for r in runs if r.get('modus') == 'dagelijks' and r.get('datum') == nu.strftime('%Y-%m-%d')]
+          klaar = any(not r.get('fouten') for r in vandaag) or len(vandaag) >= 2
+          print('door=' + ('ja' if nu.hour >= uur and not klaar else 'nee'))
+          PY
+
       - name: Cache (Python-pakketten en herkenningsmodel)
+        if: steps.poort.outputs.door == 'ja'
         uses: actions/cache@v4
         with:
           path: |
@@ -66,6 +85,7 @@ jobs:
           key: cb-cache-v1-${{ hashFiles('requirements.txt') }}
 
       - name: Voorbereiden
+        if: steps.poort.outputs.door == 'ja'
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config user.name "CB Instagram-automaat"
@@ -76,6 +96,7 @@ jobs:
           pip install -q open_clip_torch==3.2.0
 
       - name: Automaat draaien
+        if: steps.poort.outputs.door == 'ja'
         id: automaat
         run: |
           MODUS="${{ github.event_name == 'schedule' && 'dagelijks' || inputs.modus }}"
@@ -83,7 +104,7 @@ jobs:
           python -m automaat.run --modus "$MODUS" ${AUTO:+--auto "$AUTO"}
 
       - name: Database en rapport opslaan
-        if: always()
+        if: always() && steps.poort.outputs.door == 'ja'
         run: |
           for d in state rapport gepubliceerd proef; do [ -e "$d" ] && git add -A "$d"; done
           if ! git diff --cached --quiet; then
@@ -92,7 +113,7 @@ jobs:
           fi
 
       - name: Slides en caption als download bewaren
-        if: always()
+        if: always() && steps.poort.outputs.door == 'ja'
         uses: actions/upload-artifact@v4
         with:
           name: slides-${{ github.run_number }}

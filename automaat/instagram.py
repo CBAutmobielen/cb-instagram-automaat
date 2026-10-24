@@ -130,6 +130,19 @@ class Instagram:
         self._wacht(cid)
         return cid
 
+    def controleer_post(self, media_id, aantal, ref):
+        """Nacontrole na publicatie. Geeft lege string als alles klopt, anders de afwijking."""
+        j = self._req('GET', media_id, fields='media_type,caption,children{id}')
+        fout = []
+        if j.get('media_type') != 'CAROUSEL_ALBUM':
+            fout.append(f"type is {j.get('media_type')}")
+        n = len((j.get('children') or {}).get('data', []))
+        if n != aantal:
+            fout.append(f'{n} van {aantal} slides zichtbaar')
+        if f'Ref. {ref}' not in (j.get('caption') or ''):
+            fout.append('caption wijkt af')
+        return '; '.join(fout)
+
     def maak_story(self, image_url):
         """Story-container (1080x1920 JPEG). Nog niet zichtbaar tot publiceer()."""
         cid = self._req('POST', f'{config.IG_USER_ID}/media', media_type='STORIES', image_url=image_url)['id']

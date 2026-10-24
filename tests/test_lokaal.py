@@ -90,6 +90,7 @@ class FakeIG:
         assert len(urls) == 5, urls
         return 'container1'
     stories = []
+    def controleer_post(self, mid, n, ref): return ''
     def maak_story(self, url): return 'story1'
     def publiceer(self, cid):
         if cid == 'story1':
@@ -101,10 +102,10 @@ class FakeIG:
 import automaat.instagram as igmod
 igmod.Instagram = FakeIG
 config.IG_TOKEN_SECRET = 'x'; config.IG_USER_ID = '1'
-_orig_maak = runner.caption.maak
-def _maak(car):
-    t = _orig_maak(car); FakeIG.laatste_caption = t; return t
-runner.caption.maak = _maak
+_orig_cap = runner.content_v2.caption
+def _cap(*a, **k):
+    t, o = _orig_cap(*a, **k); FakeIG.laatste_caption = t; return t, o
+runner.content_v2.caption = _cap
 
 
 def draai(modus, auto=''):
@@ -139,7 +140,7 @@ check('oudste in wachtrij (GTI) gepubliceerd met post-ID', len(gepub) == 1 and g
 check('Fiat staat in wachtrij, gepland morgen', db['voertuigen'][FIAT]['status'] == 'wachtrij' and db['voertuigen'][FIAT]['gepland'] == '2026-10-25',
       db['voertuigen'][FIAT].get('gepland'))
 check('caption bevat directe link', GTI in FakeIG.posts[0]['caption'])
-check('story geplaatst na de post', len(FakeIG.stories) == 1 and db['voertuigen'][GTI].get('instagram_story_id'))
+check('geen story (staat standaard uit)', len(FakeIG.stories) == 0)
 
 print('\n=== Dag 2, nogmaals gestart (handmatig live) ===')
 code, db = draai('live')
@@ -181,6 +182,21 @@ print('\n=== Proefrun met bestaande auto (niets publiceren) ===')
 n0 = len(FakeIG.posts)
 code, db = draai('proef', '949714')
 check('proef geslaagd zonder publicatie', code == 0 and len(FakeIG.posts) == n0)
+
+print('\n=== Wachtrij-maximum en tekstregels ===')
+db = dbm.laad()
+db['voertuigen']['949714'].update(status='wachtrij', pogingen=0, ontdekt='2026-09-01')
+dbm.bewaar(db)
+DAG[0] = '2026-10-30 08:01'
+code, db = draai('dagelijks')
+check('auto die > 21 dagen in de wachtrij stond: verlopen, niet gepost', db['voertuigen']['949714']['status'] == 'verlopen')
+from automaat import content_v2, caption as capmod
+vv = vdata(FIAT); vv['opties'] = [o for o in vv['opties'] if 'ijklaar' not in o]
+c2 = content_v2.maak_v2(vv, nieuw=False)
+check('label "Nu beschikbaar" voor oudere auto', c2['label'] == 'Nu beschikbaar')
+check('geen "rijklaar" als de website het niet meldt', not c2['rijklaar'] and 'rijklaar' not in content_v2.caption(vv, c2)[0].lower())
+car_t = dict(url=vv['url'], id=FIAT)
+check('caption-controle weigert onterecht "rijklaar"', any('rijklaar' in f for f in capmod.controleer(content_v2.caption(vv, c2)[0] + ' rijklaar', car_t, vv)))
 
 uit = glob.glob(os.path.join(config.WORK_DIR, 'uitvoer', '*'))
 print('\nUitvoer:', TMP)

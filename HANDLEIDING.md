@@ -2,7 +2,11 @@
 
 **Wat het doet:** elke ochtend om 08:00 (Nederlandse tijd) controleert de automaat cbautomobielen.nl. Een nieuwe auto komt in de wachtrij. Op de **publicatiedagen (standaard dinsdag en vrijdag)** maakt de automaat 5 slides in de vaste huisstijl, schrijft hij een caption en controleert hij alles. Als alle controles slagen, plaatst hij de carrousel van de eerstvolgende auto uit de wachtrij op Instagram. Per publicatiedag gaat er maximaal 1 auto online. Een auto die in de tussentijd verkocht wordt, gaat automatisch uit de wachtrij.
 
-Direct na elke carrousel plaatst de automaat ook een **story** (1080x1920, zelfde huisstijl: foto, model, prijs en "Bekijk de nieuwe post op ons profiel"). De officiële API kan geen aanklikbare post- of linksticker toevoegen. Uitzetten: GitHub-variabele `STORY` = `uit`.
+**Publicatietijd:** GitHub-variabele `PUBLICATIE_UUR` (Nederlandse tijd, hele uren; standaard `8`). Bijvoorbeeld `12` of `19`. De automaat kijkt elk uur of het tijd is en draait één keer per dag (bij een fout één herkansing het uur erna).
+
+**Template v2:** cover met grote foto en MERK MODEL, specificaties zonder herhaling, uitrusting met de zes sterkste opties, details en contact. 'Nieuw in voorraad' alleen tot 14 dagen na ontdekking; 'Rijklaar' alleen als de website dat meldt; auto's die langer dan 21 dagen in de wachtrij staan, worden niet meer als nieuw gepost. Na publicatie controleert de automaat of alle slides en de caption online staan.
+
+**Story:** staat uit. Aanzetten kan met de variabele `STORY` = `aan`, maar de API kan geen aanklikbare post-sticker toevoegen.
 
 Andere dagen kiezen kan via de GitHub-variabele `PUBLICATIE_DAGEN`, bijvoorbeeld `ma,do` of `di,do,za`.
 

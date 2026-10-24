@@ -3,8 +3,8 @@ import os, json, hashlib
 from PIL import Image, ImageChops, ImageStat
 from . import config
 
-LOGO_BOX = (70, 1270, 360, 1312)
-LOGO_REF = os.path.join(config.ROOT, 'assets', 'qa_logo_ref.png')
+LOGO_BOX = (64, 1248, 380, 1300)          # template v2: logo linksonder in de voet
+LOGO_REF = os.path.join(config.ROOT, 'assets', 'qa_logo_ref_v2.png')
 
 
 def site_actueel(car, vers, listing_item):
@@ -88,7 +88,45 @@ def dubbel(car, db, ig_recent):
         f.append(f"auto is al gepubliceerd (post {v['instagram_post_id']})")
     for m in ig_recent or []:
         cap = m.get('caption') or ''
-        if car['slug'] in cap or f"/{car['id']}" in cap or car['url'].replace('https://', '') in cap:
+        if car['slug'] in cap or f"Ref. {car['id']}" in cap or car['url'].replace('https://', '') in cap:
             f.append(f"auto staat al op Instagram: {m.get('permalink') or m.get('id')}")
             break
+    return f
+
+
+def fotokwaliteit(car, fotodir):
+    """Gekozen foto's mogen niet onscherp of te klein zijn."""
+    from PIL import ImageFilter
+    f = []
+    for rol, nr in car['photos'].items():
+        p = os.path.join(fotodir, nr + '.jpg')
+        try:
+            im = Image.open(p).convert('L')
+        except Exception:
+            continue
+        if min(im.size) < 700:
+            f.append(f'foto {nr} ({rol}) heeft een te lage resolutie {im.size}')
+        klein = im.resize((800, int(800 * im.height / im.width)))
+        scherpte = ImageStat.Stat(klein.filter(ImageFilter.FIND_EDGES)).var[0]
+        if scherpte < 200:   # echte verkoopfoto's: 860-5700; sterk vervaagd: ~65
+            f.append(f'foto {nr} ({rol}) lijkt onscherp (scherptewaarde {scherpte:.0f})')
+    return f
+
+
+def instagram_eisen(paden, tekst):
+    """Technische eisen van Instagram voor een carrousel."""
+    import re as _re
+    f = []
+    if not 2 <= len(paden) <= 10:
+        f.append(f'carrousel heeft {len(paden)} slides (Instagram: 2 tot 10)')
+    for p in paden:
+        im = Image.open(p)
+        if abs(im.width / im.height - 0.8) > 0.01:
+            f.append(f'{os.path.basename(p)} is niet 4:5')
+        if os.path.getsize(p) > 8 * 1024 * 1024:
+            f.append(f'{os.path.basename(p)} is groter dan 8 MB')
+    if len(tekst) > 2200:
+        f.append(f'caption is {len(tekst)} tekens (max. 2.200)')
+    if len(_re.findall(r'#\w', tekst)) > 30:
+        f.append('meer dan 30 hashtags')
     return f
