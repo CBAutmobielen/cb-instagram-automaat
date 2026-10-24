@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Saturday 24-10-2026 08:26 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
+**Laatste controle:** Saturday 24-10-2026 15:33 (Europe/Amsterdam) · modus: **proef** · ✅ geen fouten
 
 | | |
 |---|---|
@@ -10,9 +10,9 @@
 | In de wachtrij | 0 |
 | Verkocht / uit wachtrij | geen |
 
-## Prijs- en kilometerwijzigingen
+## Proefrun (niets gepubliceerd)
 
-- Volkswagen Polo 1.0 TSI Life Business DSG: prijs € 19.945 -> € 19.900
+**Mercedes-Benz A-Klasse AMG 45 4MATIC** (€ 25.900): 5 slides en caption gemaakt, alle controles geslaagd. Bekijk de slides in de map `proef/939529/`. Instagram-koppeling getest: carrousel-container `18131447602821410` aangemaakt en goedgekeurd door Instagram (status FINISHED). **Niet gepubliceerd**; de container vervalt automatisch na 24 uur.
 
 ## Wachtrij
 
@@ -30,6 +30,8 @@ Leeg. Nieuwe auto's op de website komen hier automatisch in.
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
 Instagram publicatielimiet: 0 van 100 gebruikt (24 uur)
 Website: 14 auto's gevonden, 11 beschikbaar
-Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
-Geen nieuwe auto's om te publiceren.
+--- Mercedes-Benz A-Klasse AMG 45 4MATIC (ID 939529) ---
+  fotokeuze via herkenning: hero=04 (voor_schuin), specs=03 (achter_schuin), options=02 (dashboard), d1=13 (velg), d2=09 (stoelen), d3=24 (bagage), contact=01 (voor_recht)
+  alle controles geslaagd (5 slides, caption 566 tekens)
+  proef: Instagram-container 18131447602821410 OK, niet gepubliceerd
 ```

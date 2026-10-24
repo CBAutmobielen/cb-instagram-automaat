@@ -123,9 +123,9 @@
    "laatst_gezien": "2026-10-24",
    "prijs": "€ 25.900",
    "kilometerstand": "99.975 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
+   "bouwjaar": "2016",
+   "afbeeldingen_status": "OK",
+   "caption_status": "OK",
    "gepland": null,
    "gepubliceerd_op": null,
    "instagram_post_id": null,
@@ -379,6 +379,14 @@
    "datum": "2026-10-24",
    "tijd": "08:26",
    "modus": "dagelijks",
+   "nieuw": 0,
+   "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-10-24",
+   "tijd": "15:34",
+   "modus": "proef",
    "nieuw": 0,
    "gepubliceerd": null,
    "fouten": []
