@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Friday 23-10-2026 08:31 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
+**Laatste controle:** Saturday 24-10-2026 08:26 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
 
 | | |
 |---|---|
@@ -9,6 +9,10 @@
 | Vandaag gepubliceerd | niets |
 | In de wachtrij | 0 |
 | Verkocht / uit wachtrij | geen |
+
+## Prijs- en kilometerwijzigingen
+
+- Volkswagen Polo 1.0 TSI Life Business DSG: prijs € 19.945 -> € 19.900
 
 ## Wachtrij
 
@@ -24,7 +28,8 @@ Leeg. Nieuwe auto's op de website komen hier automatisch in.
 
 ```
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
-Instagram publicatielimiet: 1 van 100 gebruikt (24 uur)
+Instagram publicatielimiet: 0 van 100 gebruikt (24 uur)
 Website: 14 auto's gevonden, 11 beschikbaar
+Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
 Geen nieuwe auto's om te publiceren.
 ```
