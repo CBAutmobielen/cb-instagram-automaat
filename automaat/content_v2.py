@@ -183,7 +183,7 @@ OPENERS = {
     'plugin': [
         "Elektrisch waar het kan, {pk} wanneer je het nodig hebt.",
         "Plug-in hybride met {pk} en energielabel {label}.",
-        "Plug-in hybride met {pk}, een {transmissie_lc} en energielabel {label}.",
+        "Sportief én zuinig: {pk}, plug-in hybride en energielabel {label}.",
     ],
     'sportief': [
         "{pk} en {transmissie_lc}: gemaakt voor wie van rijden houdt.",
