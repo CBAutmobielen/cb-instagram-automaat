@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Sunday 25-10-2026 08:29 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
+**Laatste controle:** Monday 26-10-2026 08:42 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
 
 | | |
 |---|---|
