@@ -27,7 +27,7 @@ N = 32
 
 def vdata(vid, prijs=None):
     c = KIT[vid]; s = c['specs']
-    extra = ['Elektrische ramen voor', 'Centrale vergrendeling met afstandsbediening', 'Stuurbekrachtiging',
+    extra = ['Cruise control', 'Climate control', 'Parkeersensoren voor en achter', 'Elektrische ramen voor', 'Centrale vergrendeling met afstandsbediening', 'Stuurbekrachtiging',
              'Bluetooth telefoonvoorbereiding', 'Boordcomputer', 'Isofix bevestigingspunten']
     return {'slug': c['slug'], 'id': vid, 'url': c['url'], 'title': c['site_title'],
             'table': {'Bouwjaar': s['Bouwjaar'], 'Kilometerstand': s['Kilometerstand'].replace(' km', ' Km'),

@@ -39,6 +39,12 @@ PRIO = [
 ]
 
 HERSCHRIJF = [
+    (r'^dynaudio.*$', 'Dynaudio geluidssysteem'),
+    (r'^elektrisch panorama.*dak$', 'Elektrisch panoramadak'),
+    (r'^parkeersensoren voor en achter$', 'PDC voor en achter'),
+    (r'^(\d{2})\s?(inch|"|”)\s+lichtmetalen velgen$', r'\1 inch lichtmetaal'),
+    (r'^lichtmetalen velgen\s*(\d{2})\s*(inch|"|”)?$', r'\1 inch lichtmetaal'),
+    (r'^lederen multifunctioneel stuur(wiel)?$', 'Lederen multifunctiestuur'),
     (r'^harman kardon.*$', 'Harman Kardon audio'),
     (r'^.*led-?koplampen.*$', 'LED koplampen'),
     (r'^smartphone-integratie.*carplay.*$', 'Apple CarPlay'),
@@ -73,7 +79,7 @@ def netjes(o):
 VERTAAL = [
     (r'r(ü|ue)ckfahrkamera|rear view camera|reversing camera', 'Achteruitrijcamera', 7, 'cam'),
     (r'keyless access|schl(ü|ue)ssellos|keyless entry', 'Keyless entry & start', 7, 'key'),
-    (r'einparkhilfe.*front.*heck|park.*front.*rear|parking sensors front and rear', 'Parkeersensoren voor en achter', 6, 'pdc'),
+    (r'einparkhilfe.*front.*heck|park.*front.*rear|parking sensors front and rear', 'PDC voor en achter', 6, 'pdc'),
     (r'einparkhilfe|parking sensor', 'Parkeersensoren', 5, 'pdc'),
     (r'wireless charging|induktive', 'Draadloos laden', 6, 'laden'),
     (r'apple carplay.*android auto|android auto.*apple carplay', 'CarPlay / Android Auto', 8, 'phone'),
@@ -93,13 +99,13 @@ VERTAAL = [
     (r'light sensitive rear view mirror|automatisch abblendend', 'Automatisch dimmende binnenspiegel', 2, 'spiegel2'),
     (r'digital cockpit|active info display', 'Digital Cockpit', 8, 'cockpit'),
 ]
-NIET_NL = re.compile(r'[äöüß]|\b(und|mit|f(ü|ue)r|with|and|the|seat|seats|wheels?|system|front|rear|driver|speakers?|'
-                     r'configured|includes|type|mounted|controls?|located)\b', re.I)
+NIET_NL = re.compile(r'[äöüß]|\b(und|mit|f(ü|ue)r|with|and|the|seat|seats|wheels?|front|rear|driver|speakers?|'
+                     r'configured|includes|type|mounted|located)\b', re.I)
 
 
 def _velg_tekst(o):
     m = re.search(r'(\d{2})\s?(\'\'|"|inch|zoll)', o, re.I)
-    return f'{m.group(1)} inch lichtmetalen velgen' if m else None
+    return f'{m.group(1)} inch lichtmetaal' if m else None
 
 
 def opties(v, n=6):
@@ -125,7 +131,7 @@ def opties(v, n=6):
         if g in groepen:
             continue
         t = vertaald.get(o) or netjes(o)
-        if len(t) > 26 or t in uit or (o not in vertaald and NIET_NL.search(o)):
+        if len(t) > 26 or t in uit or (o not in vertaald and NIET_NL.search(t)):
             continue
         groepen.add(g); uit.append(t)
         if len(uit) == n:
@@ -135,7 +141,7 @@ def opties(v, n=6):
         for o in alle:
             t = netjes(o)
             if (len(uit) >= n or t in uit or len(t) > 26 or len(t) < 4 or re.search(BASIS, o, re.I)
-                    or o in vertaald or NIET_NL.search(o) or re.search(r'diebstahl|airbag|^\[', o, re.I)):
+                    or o in vertaald or NIET_NL.search(t) or re.search(r'diebstahl|airbag|^\[', o, re.I)):
                 continue
             uit.append(t)
     return uit[:n]
