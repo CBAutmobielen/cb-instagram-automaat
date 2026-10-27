@@ -66,7 +66,13 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 34.900",
+    "fotos": 37,
+    "marktplaats": false
+   }
   },
   "941609": {
    "id": "941609",
@@ -88,7 +94,13 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 8.900",
+    "fotos": 33,
+    "marktplaats": false
+   }
   },
   "949714": {
    "id": "949714",
@@ -110,7 +122,13 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 7.400",
+    "fotos": 31,
+    "marktplaats": false
+   }
   },
   "939529": {
    "id": "939529",
@@ -132,7 +150,13 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 25.900",
+    "fotos": 46,
+    "marktplaats": false
+   }
   },
   "945297": {
    "id": "945297",
@@ -154,14 +178,20 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 7.900",
+    "fotos": 31,
+    "marktplaats": false
+   }
   },
   "937307": {
    "id": "937307",
    "slug": "volkswagen-golf-2-0-gti-tcr-937307",
    "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-937307",
    "titel": "Volkswagen Golf 2.0 GTI TCR",
-   "status": "bestaand",
+   "status": "niet_klaar",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
    "laatst_gezien": "2026-10-27",
@@ -176,7 +206,14 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": null,
+    "fotos": null,
+    "marktplaats": null
+   }
   },
   "943067": {
    "id": "943067",
@@ -198,7 +235,13 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 13.900",
+    "fotos": 35,
+    "marktplaats": false
+   }
   },
   "930282": {
    "id": "930282",
@@ -220,7 +263,13 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 10.900",
+    "fotos": 38,
+    "marktplaats": false
+   }
   },
   "942143": {
    "id": "942143",
@@ -249,7 +298,13 @@
      "oud": "€ 19.945",
      "nieuw": "€ 19.900"
     }
-   ]
+   ],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 19.900",
+    "fotos": 45,
+    "marktplaats": false
+   }
   },
   "951379": {
    "id": "951379",
@@ -271,7 +326,13 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 18.900",
+    "fotos": 33,
+    "marktplaats": false
+   }
   },
   "951380": {
    "id": "951380",
@@ -336,14 +397,20 @@
      "oud": "€ 5.450",
      "nieuw": "€ 5.400"
     }
-   ]
+   ],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 5.400",
+    "fotos": 34,
+    "marktplaats": false
+   }
   },
   "957438": {
    "id": "957438",
    "slug": "fiat-500-1-2-lounge-957438",
    "url": "https://www.cbautomobielen.nl/aanbod/fiat-500-1-2-lounge-957438",
    "titel": "Fiat 500 1.2 Lounge",
-   "status": "zonder_prijs",
+   "status": "niet_klaar",
    "beschikbaar": false,
    "ontdekt": "2026-10-27",
    "laatst_gezien": "2026-10-27",
@@ -358,14 +425,21 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": null,
+    "fotos": null,
+    "marktplaats": null
+   }
   },
   "957441": {
    "id": "957441",
    "slug": "hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
    "url": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
    "titel": "Hyundai Tucson 1.6 T-GDi Comfort 4WD",
-   "status": "zonder_prijs",
+   "status": "niet_klaar",
    "beschikbaar": false,
    "ontdekt": "2026-10-27",
    "laatst_gezien": "2026-10-27",
@@ -380,7 +454,14 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [],
+   "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": null,
+    "fotos": null,
+    "marktplaats": null
+   }
   }
  },
  "runs": [
@@ -518,6 +599,14 @@
    "modus": "live",
    "nieuw": 0,
    "gepubliceerd": "[Volkswagen Polo 1.0 TSI 81kW UNITED](https://www.instagram.com/p/De_lOXOloTr/)",
+   "fouten": []
+  },
+  {
+   "datum": "2026-10-27",
+   "tijd": "11:49",
+   "modus": "proef",
+   "nieuw": 0,
+   "gepubliceerd": null,
    "fouten": []
   }
  ]
