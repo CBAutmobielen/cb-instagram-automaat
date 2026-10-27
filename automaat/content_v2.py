@@ -86,7 +86,20 @@ def opties(v, n=6):
         groepen.add(g); uit.append(t)
         if len(uit) == n:
             break
-    return uit
+    # reserve: overige echte opties (geen standaard veiligheid of administratie) in volgorde van de site
+    if len(uit) < n:
+        for o in alle:
+            t = netjes(o)
+            if (len(uit) >= n or t in uit or len(t) > 26 or len(t) < 4 or re.search(BASIS, o, re.I)):
+                continue
+            uit.append(t)
+    return uit[:n]
+
+
+BASIS = (r'airbag|abs\b|anti blokkeer|anti doorslip|stabiliteit|esp\b|brake assist|remkracht|sper diff|startblokkering|alarm|'
+         r'immobiliser|isofix|stuurbekrachtiging|centrale (deur)?vergrendeling|elektrische ramen|boordcomputer|instructieboekje|'
+         r'onderhoudsboekje|onderhoudshistorie|rijklaar|nap|bandenspanning|hill hold|start/stop|hoofdsteun|verstelbaar|'
+         r'neerklapbaar|radio\b|cd|mp3|voorbereiding|derde remlicht|gordel|kinderslot|pakket$|^.{0,3}$')
 
 
 def kop_en_ondertitel(v):

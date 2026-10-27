@@ -130,3 +130,15 @@ def instagram_eisen(paden, tekst):
     if len(_re.findall(r'#\w', tekst)) > 30:
         f.append('meer dan 30 hashtags')
     return f
+
+
+def inhoud(car, tekst):
+    """Inhoudelijke volledigheid: genoeg opties en geen lege of halve zinnen."""
+    import re as _re
+    f = []
+    n = len(car.get('v2', {}).get('opties', []))
+    if n < 4:
+        f.append(f'slechts {n} opties gevonden (minimaal 4 nodig voor een volwaardige post)')
+    if _re.search(r'\bmet\s*[.,]|\ben\s*[.,]|\s[.,]\s*$|:\s*\n\s*\n\s*Vraagprijs', tekst, _re.M):
+        f.append('caption bevat een onvolledige zin')
+    return f

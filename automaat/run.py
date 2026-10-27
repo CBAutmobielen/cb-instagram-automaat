@@ -180,6 +180,7 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
                 if x.get('opener')][-6:]
     tekst, opener = content_v2.caption(vers, car['v2'], gebruikt)
     fouten += caption.controleer(tekst, car, vers)
+    fouten += qa.inhoud(car, tekst)
     if paden:
         fouten += qa.instagram_eisen(paden, tekst)
     recent = None
@@ -220,6 +221,8 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
             pj = hosting.naar_jpeg(paden, doel)
             sj = hosting.naar_jpeg([story_png], doel, 'story') if story_png else []
             open(os.path.join(doel, 'caption.txt'), 'w', encoding='utf-8').write(tekst)
+            json.dump({k: vers[k] for k in ('title', 'prijs', 'table', 'bijzondere_opties', 'opties')},
+                      open(os.path.join(doel, 'websitedata.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
             if labels:
                 fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(doel, 'fotoherkenning.jpg'))
             R.proef += f" Bekijk de slides in de map `proef/{v['id']}/`."
