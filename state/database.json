@@ -278,22 +278,29 @@
    "slug": "volkswagen-polo-1-0-tsi-81kw-united-951380",
    "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-81kw-united-951380",
    "titel": "Volkswagen Polo 1.0 TSI 81kW UNITED",
-   "status": "bestaand",
+   "status": "wachtrij",
    "beschikbaar": true,
-   "ontdekt": "2026-10-22",
+   "ontdekt": "2026-10-27",
    "laatst_gezien": "2026-10-27",
    "prijs": "€ 18.400",
    "kilometerstand": "32.422 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
    "caption_status": "nog niet gemaakt",
-   "gepland": null,
+   "gepland": "2026-10-30",
    "gepubliceerd_op": null,
    "instagram_post_id": null,
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": []
+   "wijzigingen": [
+    {
+     "datum": "2026-10-27",
+     "veld": "status",
+     "oud": "bestaand",
+     "nieuw": "wachtrij (stond bij start zonder prijs; nu € 18.400)"
+    }
+   ]
   },
   "938710": {
    "id": "938710",
@@ -335,7 +342,7 @@
    "slug": "fiat-500-1-2-lounge-957438",
    "url": "https://www.cbautomobielen.nl/aanbod/fiat-500-1-2-lounge-957438",
    "titel": "Fiat 500 1.2 Lounge",
-   "status": "verkocht",
+   "status": "zonder_prijs",
    "beschikbaar": false,
    "ontdekt": "2026-10-27",
    "laatst_gezien": "2026-10-27",
@@ -357,7 +364,7 @@
    "slug": "hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
    "url": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
    "titel": "Hyundai Tucson 1.6 T-GDi Comfort 4WD",
-   "status": "verkocht",
+   "status": "zonder_prijs",
    "beschikbaar": false,
    "ontdekt": "2026-10-27",
    "laatst_gezien": "2026-10-27",

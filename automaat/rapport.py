@@ -58,6 +58,11 @@ class Rapport:
             L += [f"| {v['gepubliceerd_op'][:16]} | {v['titel']} | {('[bekijk](' + v['instagram_permalink'] + ')') if v.get('instagram_permalink') else v['instagram_post_id']} |" for v in pub]
         else:
             L += ['Nog niets.']
+        zp = [v for v in db['voertuigen'].values() if v['status'] == 'zonder_prijs' and v['laatst_gezien'] == config.vandaag()]
+        if zp:
+            L += ['', '## Op de site, nog zonder prijs', '',
+                  'Deze auto\'s komen automatisch in de wachtrij zodra er een vraagprijs op de website staat.', '']
+            L += [f"- [{v['titel']}]({v['url']})" for v in zp]
         probleem = [v for v in db['voertuigen'].values() if v['status'] in ('fout', 'geen_fotos')]
         if probleem:
             L += ['', '## Vraagt aandacht', '']

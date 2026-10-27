@@ -57,7 +57,8 @@ def sync(db, listing, R):
         v = db['voertuigen'].get(vid)
         titel = it.get('titel') or it['tekst'][:80]
         if v is None:
-            status = 'bestaand' if eerste else ('wachtrij' if it['beschikbaar'] else 'verkocht')
+            # zonder prijs ('Op aanvraag') = nog niet te koop: pas zodra er een prijs staat telt hij als nieuw
+            status = ('bestaand' if eerste else 'wachtrij') if it['beschikbaar'] else 'zonder_prijs'
             v = dbm.nieuw_voertuig(vid, it['slug'], it['url'], titel, it['prijs'], it['km'], status)
             v['beschikbaar'] = it['beschikbaar']
             db['voertuigen'][vid] = v
@@ -81,8 +82,11 @@ def sync(db, listing, R):
                 v['status'] = 'verkocht'; R.verkocht.append(v['titel']); R.log(f"VERKOCHT (uit wachtrij): {v['titel']}")
         elif not v['beschikbaar'] and it['beschikbaar']:
             v['beschikbaar'] = True
-            if v['status'] == 'verkocht' and not v.get('instagram_post_id'):
-                v['status'] = 'wachtrij'; R.log(f"weer beschikbaar, terug in wachtrij: {v['titel']}")
+            if v['status'] in ('verkocht', 'zonder_prijs') and not v.get('instagram_post_id'):
+                if v['status'] == 'zonder_prijs':
+                    v['ontdekt'] = config.vandaag()      # nieuw vanaf het moment dat hij te koop staat
+                    R.nieuw.append(v['titel'])
+                v['status'] = 'wachtrij'; R.log(f"nu met prijs/weer beschikbaar, in de wachtrij: {v['titel']}")
         if v['status'] == 'geen_fotos' and it['beschikbaar']:
             v['status'] = 'wachtrij'   # opnieuw proberen; misschien zijn er nu foto's
     for vid, v in db['voertuigen'].items():
