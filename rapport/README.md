@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Tuesday 27-10-2026 09:59 (Europe/Amsterdam) · modus: **proef** · ✅ geen fouten
+**Laatste controle:** Tuesday 27-10-2026 10:04 (Europe/Amsterdam) · modus: **proef** · ✅ geen fouten
 
 | | |
 |---|---|
@@ -12,7 +12,7 @@
 
 ## Proefrun (niets gepubliceerd)
 
-**Volkswagen Polo 1.0 TSI 81kW UNITED** (€ 18.400): 5 slides en caption gemaakt, alle controles geslaagd. Bekijk de slides in de map `proef/951380/`. Instagram-koppeling getest: carrousel-container `18131985844821410` aangemaakt en goedgekeurd door Instagram (status FINISHED). **Niet gepubliceerd**; de container vervalt automatisch na 24 uur.
+**Volkswagen Polo 1.0 TSI 81kW UNITED** (€ 18.400): 5 slides en caption gemaakt, alle controles geslaagd. Bekijk de slides in de map `proef/951380/`. Instagram-koppeling getest: carrousel-container `18131986285821410` aangemaakt en goedgekeurd door Instagram (status FINISHED). **Niet gepubliceerd**; de container vervalt automatisch na 24 uur.
 
 ## Wachtrij
 
@@ -41,6 +41,6 @@ Instagram publicatielimiet: 0 van 100 gebruikt (24 uur)
 Website: 15 auto's gevonden, 12 beschikbaar
 --- Volkswagen Polo 1.0 TSI 81kW UNITED (ID 951380) ---
   fotokeuze via herkenning: hero=04 (voor_recht), specs=03 (achter_recht), options=02 (dashboard), d1=14 (velg), d2=10 (stoelen), d3=12 (bagage), contact=01 (voor_recht)
-  alle controles geslaagd (5 slides, caption 454 tekens)
-  proef: Instagram-container 18131985844821410 OK, niet gepubliceerd
+  alle controles geslaagd (5 slides, caption 584 tekens)
+  proef: Instagram-container 18131986285821410 OK, niet gepubliceerd
 ```
