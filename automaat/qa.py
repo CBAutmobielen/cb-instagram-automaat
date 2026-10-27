@@ -139,6 +139,10 @@ def inhoud(car, tekst):
     n = len(car.get('v2', {}).get('opties', []))
     if n < 4:
         f.append(f'slechts {n} opties gevonden (minimaal 4 nodig voor een volwaardige post)')
+    from .content_v2 import NIET_NL
+    vreemd = [o for o in car.get('v2', {}).get('opties', []) if NIET_NL.search(o)]
+    if vreemd:
+        f.append(f'opties niet in het Nederlands: {vreemd}')
     if _re.search(r'\bmet\s*[.,]|\ben\s*[.,]|\s[.,]\s*$|:\s*\n\s*\n\s*Vraagprijs', tekst, _re.M):
         f.append('caption bevat een onvolledige zin')
     return f

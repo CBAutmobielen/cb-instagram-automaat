@@ -69,10 +69,54 @@ def netjes(o):
     return t
 
 
+# Duitse/Engelse optieteksten (importfeeds) -> Nederlandse kortere naam, prioriteit, groep.
+VERTAAL = [
+    (r'r(ü|ue)ckfahrkamera|rear view camera|reversing camera', 'Achteruitrijcamera', 7, 'cam'),
+    (r'keyless access|schl(ü|ue)ssellos|keyless entry', 'Keyless entry & start', 7, 'key'),
+    (r'einparkhilfe.*front.*heck|park.*front.*rear|parking sensors front and rear', 'Parkeersensoren voor en achter', 6, 'pdc'),
+    (r'einparkhilfe|parking sensor', 'Parkeersensoren', 5, 'pdc'),
+    (r'wireless charging|induktive', 'Draadloos laden', 6, 'laden'),
+    (r'apple carplay.*android auto|android auto.*apple carplay', 'CarPlay / Android Auto', 8, 'phone'),
+    (r'(two|2).{0,10}climate control zones|2-zonen', '2-zone climate control', 6, 'airco'),
+    (r'automatic air conditioning|klimaautomatik', 'Automatische airco', 5, 'airco'),
+    (r'seat.{0,40}heated|sitzheizung', 'Stoelverwarming', 9, 'stoelverw'),
+    (r'navigation system "?discover pro', 'Navigatie Discover Pro', 8, 'nav'),
+    (r'navigation system "?discover media', 'Navigatie Discover Media', 8, 'nav'),
+    (r'navigation system|navigationssystem', 'Navigatie', 7, 'nav'),
+    (r'(\d{2}).{0,4}(\'\'|"|inch|zoll).{0,30}alloy|alloy.{0,60}?(\d{2})\s?(\'\'|"|inch)', None, 6, 'velg'),
+    (r'privacy glass|privacyverglasung', 'Privacy glass', 3, 'tint'),
+    (r'rain sensing|regensensor', 'Regensensor', 2, 'regen'),
+    (r'nebelscheinwerfer.*abbiegelicht', 'Mistlampen met bochtverlichting', 3, 'mist'),
+    (r'sprachbedienung|voice activat', 'Spraakbediening', 4, 'voice'),
+    (r'adaptive cruise|abstandsregel|acc ', 'Adaptieve cruise control', 9, 'cruise'),
+    (r'speed limiter|geschwindigkeitsbegrenzer', 'Snelheidsbegrenzer', 2, 'limiter'),
+    (r'light sensitive rear view mirror|automatisch abblendend', 'Automatisch dimmende binnenspiegel', 2, 'spiegel2'),
+    (r'digital cockpit|active info display', 'Digital Cockpit', 8, 'cockpit'),
+]
+NIET_NL = re.compile(r'[äöüß]|\b(und|mit|f(ü|ue)r|with|and|the|seat|seats|wheels?|system|front|rear|driver|speakers?|'
+                     r'configured|includes|type|mounted|controls?|located)\b', re.I)
+
+
+def _velg_tekst(o):
+    m = re.search(r'(\d{2})\s?(\'\'|"|inch|zoll)', o, re.I)
+    return f'{m.group(1)} inch lichtmetalen velgen' if m else None
+
+
 def opties(v, n=6):
     alle = list(dict.fromkeys([o for o in v.get('bijzondere_opties', []) + v.get('opties', []) if o]))
     scored, groepen, uit = [], set(), []
+    vertaald = {}
     for i, o in enumerate(alle):
+        for pat, label, s, g in VERTAAL:
+            if re.search(pat, o, re.I):
+                label = label or _velg_tekst(o)
+                if label:
+                    vertaald[o] = label
+                    scored.append((-s, i, o, g))
+                break
+    for i, o in enumerate(alle):
+        if o in vertaald:
+            continue
         lo = o.lower()
         for pat, s, g in PRIO:
             if re.search(pat, lo):
@@ -80,8 +124,8 @@ def opties(v, n=6):
     for _, _, o, g in sorted(scored):
         if g in groepen:
             continue
-        t = netjes(o)
-        if len(t) > 26 or t in uit:
+        t = vertaald.get(o) or netjes(o)
+        if len(t) > 26 or t in uit or (o not in vertaald and NIET_NL.search(o)):
             continue
         groepen.add(g); uit.append(t)
         if len(uit) == n:
@@ -90,7 +134,8 @@ def opties(v, n=6):
     if len(uit) < n:
         for o in alle:
             t = netjes(o)
-            if (len(uit) >= n or t in uit or len(t) > 26 or len(t) < 4 or re.search(BASIS, o, re.I)):
+            if (len(uit) >= n or t in uit or len(t) > 26 or len(t) < 4 or re.search(BASIS, o, re.I)
+                    or o in vertaald or NIET_NL.search(o) or re.search(r'diebstahl|airbag|^\[', o, re.I)):
                 continue
             uit.append(t)
     return uit[:n]
