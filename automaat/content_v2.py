@@ -48,7 +48,7 @@ HERSCHRIJF = [
     (r'^harman kardon.*$', 'Harman Kardon audio'),
     (r'^.*led-?koplampen.*$', 'LED koplampen'),
     (r'^smartphone-integratie.*carplay.*$', 'Apple CarPlay'),
-    (r'^apple carplay ?/ ?android auto$', 'CarPlay / Android Auto'),
+    (r'^apple carplay ?/ ?android auto$', 'Apple CarPlay / Android Auto'),
     (r'^velgen .*?(\d{2}) inch lichtmetaal$', r'\1 inch lichtmetalen velgen'),
     (r'^navigatiesysteem( full map)?$', 'Navigatie'),
     (r'^airco \(automatisch\)$|^automatische airconditioning.*$|^airco automatisch$', 'Automatische airco'),
@@ -82,7 +82,7 @@ VERTAAL = [
     (r'einparkhilfe.*front.*heck|park.*front.*rear|parking sensors front and rear', 'PDC voor en achter', 6, 'pdc'),
     (r'einparkhilfe|parking sensor', 'Parkeersensoren', 5, 'pdc'),
     (r'wireless charging|induktive', 'Draadloos laden', 6, 'laden'),
-    (r'apple carplay.*android auto|android auto.*apple carplay', 'CarPlay / Android Auto', 8, 'phone'),
+    (r'apple carplay.*android auto|android auto.*apple carplay', 'Apple CarPlay / Android Auto', 8, 'phone'),
     (r'(two|2).{0,10}climate control zones|2-zonen', '2-zone climate control', 6, 'airco'),
     (r'automatic air conditioning|klimaautomatik', 'Automatische airco', 5, 'airco'),
     (r'seat.{0,40}heated|sitzheizung', 'Stoelverwarming', 9, 'stoelverw'),
@@ -131,7 +131,7 @@ def opties(v, n=6):
         if g in groepen:
             continue
         t = vertaald.get(o) or netjes(o)
-        if len(t) > 26 or t in uit or (o not in vertaald and NIET_NL.search(t)):
+        if len(t) > 28 or t in uit or (o not in vertaald and NIET_NL.search(t)):
             continue
         groepen.add(g); uit.append(t)
         if len(uit) == n:
@@ -140,7 +140,7 @@ def opties(v, n=6):
     if len(uit) < n:
         for o in alle:
             t = netjes(o)
-            if (len(uit) >= n or t in uit or len(t) > 26 or len(t) < 4 or re.search(BASIS, o, re.I)
+            if (len(uit) >= n or t in uit or len(t) > 28 or len(t) < 4 or re.search(BASIS, o, re.I)
                     or o in vertaald or NIET_NL.search(t) or re.search(r'diebstahl|airbag|^\[', o, re.I)):
                 continue
             uit.append(t)
