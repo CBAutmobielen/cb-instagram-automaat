@@ -1,13 +1,15 @@
 """Eenvoudige, betrouwbare JSON-database (in git, dus met volledige geschiedenis).
 
 Statussen per voertuig:
-  bestaand      - stond al op de site bij de eerste ingebruikname; wordt niet automatisch gepost
-  wachtrij      - nieuw ontdekt, wacht op publicatie
+  bestaand      - stond al VERKOOPKLAAR op de site bij de eerste ingebruikname (22-10-2026); wordt niet automatisch gepost
+  niet_klaar    - op de site maar nog niet verkoopklaar (geen vraagprijs en/of nog geen echte foto's). Wordt bij
+                  IEDERE controle opnieuw bekeken en gaat naar de wachtrij zodra hij verkoopklaar is (klaar.py)
+  wachtrij      - verkoopklaar en nog nooit op Instagram, wacht op de volgende publicatiedag
   bezig         - publicatie gestart (Instagram-aanroep loopt); bij herstart eerst controleren op Instagram
   gepubliceerd  - staat op Instagram (instagram_post_id ingevuld). Nooit nogmaals als nieuwe-voorraadpost
-  verkocht      - verdwenen of 'Op aanvraag' voordat hij gepost is (uit de wachtrij gehaald)
-  fout          - na meerdere pogingen niet gelukt; handmatige controle nodig
-  geen_fotos    - te weinig echte foto's op de site; wordt opnieuw bekeken zodra er foto's zijn
+  verkocht      - verdwenen of 'Op aanvraag' voordat hij gepost is; komt hij terug met prijs en foto's, dan weer wachtrij
+  fout          - na 3 pogingen niet gelukt; opnieuw in de wachtrij zodra prijs of foto's op de site veranderen
+  (oud: zonder_prijs / geen_fotos / verlopen worden net als niet_klaar opnieuw bekeken)
 """
 import json, os, tempfile
 from . import config

@@ -79,7 +79,8 @@ def aanbod():
 
 def voertuig(slug):
     """Voertuigpagina uitlezen: specificaties, opties, prijs en foto-URL's."""
-    s = BeautifulSoup(get(f'{config.SITE_BASE}/aanbod/{slug}'), 'html.parser')
+    html = get(f'{config.SITE_BASE}/aanbod/{slug}')
+    s = BeautifulSoup(html, 'html.parser')
     tx = lambda el: el.get_text(' ', strip=True) if el else ''
     d = {'slug': slug, 'id': voertuig_id(slug), 'url': f'{config.SITE_BASE}/aanbod/{slug}'}
     d['title'] = tx(s.find('h1'))
@@ -97,6 +98,9 @@ def voertuig(slug):
         if m and m.group(0) not in imgs:
             imgs.append(m.group(0))
     d['fotos'] = imgs
+    # extra signaal: link naar een Marktplaats-advertentie van deze auto (niet verplicht)
+    mp = [a['href'] for a in s.select('a[href*="marktplaats.nl"]') if re.search(r'marktplaats\.nl/(?:v|a)/', a['href'])]
+    d['marktplaats'] = mp[0] if mp else None
     if not d['title'] or not d['table']:
         raise SiteFout(f'voertuigpagina {slug} kon niet worden gelezen (structuur gewijzigd?)')
     return d

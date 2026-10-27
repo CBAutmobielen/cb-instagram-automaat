@@ -20,7 +20,7 @@ PUBLISH_DIR = os.path.join(ROOT, 'gepubliceerd')  # slides die Instagram ophaalt
 POSTS_PER_DAG = int(os.environ.get('CB_POSTS_PER_DAG', '1'))
 PUBLICATIE_UUR = int(os.environ.get('PUBLICATIE_UUR') or os.environ.get('CB_PUBLICATIE_UUR') or '8')   # NL-tijd, GitHub-variabele
 NIEUW_DAGEN = 14        # label 'Nieuw in voorraad' alleen zo lang na ontdekking
-MAX_WACHTDAGEN = 21     # langer in de wachtrij = niet meer als nieuwe auto posten
+WACHTRIJ_WAARSCHUWING = 4   # meer auto's in de wachtrij = melding in het rapport (er wordt niets overgeslagen)
 DAGNAMEN = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo']
 # Op welke dagen een nieuwe-voorraadpost geplaatst mag worden (GitHub-variabele PUBLICATIE_DAGEN, bv. 'di,vr').
 # De website wordt wél elke dag gecontroleerd.
@@ -29,7 +29,7 @@ PUBLICATIE_DAGEN = [DAGNAMEN.index(d.strip()[:2].lower()) for d in
 # Story na een post: alleen met GitHub-variabele STORY=aan (niet aanklikbaar via de API)
 STORY = (os.environ.get('STORY') or 'uit').strip().lower() == 'aan'   # standaard UIT
 MAX_POGINGEN = 3          # na 3 mislukte pogingen: status 'fout', niet meer automatisch proberen
-MIN_FOTOS = 8             # minder echte foto's = waarschijnlijk 'verwacht'-plaatje: overslaan
+MIN_FOTOS = 8             # minder foto's = nog geen echte foto's ('verwacht'-plaatje): nog niet verkoopklaar
 
 # Instagram
 IG_HOST = os.environ.get('IG_API_HOST', 'graph.instagram.com')   # of graph.facebook.com (Facebook-login)

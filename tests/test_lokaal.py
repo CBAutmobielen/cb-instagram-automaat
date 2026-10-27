@@ -34,12 +34,16 @@ def vdata(vid, prijs=None):
                       'Vermogen': s['Vermogen'], 'Transmissie': s['Transmissie'], 'Brandstof': s['Brandstof'],
                       'Carrosserievorm': s['Carrosserie']},
             'bijzondere_opties': c['options'][:2], 'opties': c['options'][2:] + extra,
-            'prijs': prijs or c['price'], 'op_aanvraag': False,
-            'fotos': [f'https://cdn1.grbx.app/images/{vid}-{i:02d}/full.jpg' for i in range(1, N + 1)]}
+            'prijs': '' if vid in ZONDER_PRIJS else (prijs or c['price']), 'op_aanvraag': vid in ZONDER_PRIJS,
+            'marktplaats': MP.get(vid),
+            'fotos': [f'https://cdn1.grbx.app/images/{vid}-{i:02d}/full.jpg' for i in range(1, FOTOS.get(vid, N) + 1)]}
 
 
 LISTING = {}
 PRIJS = {}
+FOTOS = {}          # aantal foto's per auto (standaard N)
+ZONDER_PRIJS = set()  # auto's die 'Op aanvraag' staan
+MP = {}             # Marktplaats-link per auto
 
 
 def zet_listing(ids, verkocht=()):
@@ -47,7 +51,9 @@ def zet_listing(ids, verkocht=()):
     for vid in ids:
         c = KIT[vid]
         LISTING[vid] = {'slug': c['slug'], 'url': c['url'], 'tekst': c['site_title'],
-                        'beschikbaar': vid not in verkocht, 'prijs': PRIJS.get(vid, c['price']), 'km': c['specs']['Kilometerstand']}
+                        'beschikbaar': vid not in verkocht and vid not in ZONDER_PRIJS,
+                        'prijs': None if (vid in verkocht or vid in ZONDER_PRIJS) else PRIJS.get(vid, c['price']),
+                        'km': c['specs']['Kilometerstand']}
 
 
 site.aanbod = lambda: json.loads(json.dumps(LISTING))
@@ -92,7 +98,10 @@ class FakeIG:
     stories = []
     def controleer_post(self, mid, n, ref): return ''
     def maak_story(self, url): return 'story1'
+    faal = [0]
     def publiceer(self, cid):
+        if FakeIG.faal[0]:
+            FakeIG.faal[0] -= 1; raise RuntimeError('Instagram API: tijdelijke storing (nagebootst)')
         if cid == 'story1':
             FakeIG.stories.append(cid); return f's{len(FakeIG.stories)}', None
         mid = f'1789{len(self.posts)}'
@@ -123,9 +132,13 @@ def check(naam, cond, info=''):
 FIAT, GTI, POLO, UP = '941609', '937307', '942143', '948219'
 
 print('\n=== Dag 1: eerste ingebruikname (3 auto\'s staan al op de site) ===')
-zet_listing([POLO, UP, '930282'])
+AMG = '939529'
+FOTOS[AMG] = 2      # stond al op de site, maar nog met een 'verwacht'-plaatje
+zet_listing([POLO, UP, '930282', AMG])
 code, db = draai('dagelijks')
-check('alle bestaande auto\'s als "bestaand"', all(v['status'] == 'bestaand' for v in db['voertuigen'].values()))
+check('verkoopklare bestaande auto\'s als "bestaand"', all(db['voertuigen'][x]['status'] == 'bestaand' for x in (POLO, UP, '930282')))
+check('bestaande auto zonder echte foto\'s: "niet_klaar" (wordt later alsnog gepost)', db['voertuigen'][AMG]['status'] == 'niet_klaar',
+      db['voertuigen'][AMG]['status'])
 check('niets gepubliceerd', not FakeIG.posts)
 
 print('\n=== Dag 2: twee nieuwe auto\'s verschijnen ===')
@@ -189,7 +202,8 @@ db['voertuigen']['949714'].update(status='wachtrij', pogingen=0, ontdekt='2026-0
 dbm.bewaar(db)
 DAG[0] = '2026-10-30 08:01'
 code, db = draai('dagelijks')
-check('auto die > 21 dagen in de wachtrij stond: verlopen, niet gepost', db['voertuigen']['949714']['status'] == 'verlopen')
+check('auto die lang in de wachtrij stond wordt niet overgeslagen maar gepost', db['voertuigen']['949714']['status'] == 'gepubliceerd',
+      db['voertuigen']['949714']['status'])
 from automaat import content_v2, caption as capmod
 vv = vdata(FIAT); vv['opties'] = [o for o in vv['opties'] if 'ijklaar' not in o]
 c2 = content_v2.maak_v2(vv, nieuw=False)
@@ -197,6 +211,65 @@ check('label "Nu beschikbaar" voor oudere auto', c2['label'] == 'Nu beschikbaar'
 check('geen "rijklaar" als de website het niet meldt', not c2['rijklaar'] and 'rijklaar' not in content_v2.caption(vv, c2)[0].lower())
 car_t = dict(url=vv['url'], id=FIAT)
 check('caption-controle weigert onterecht "rijklaar"', any('rijklaar' in f for f in capmod.controleer(content_v2.caption(vv, c2)[0] + ' rijklaar', car_t, vv)))
+
+
+# ---------------------------------------------------------------------------------------------
+config.PUBLICATIE_DAGEN = [1, 4]   # vanaf hier zoals in het echt: alleen dinsdag en vrijdag
+IB = '945297'
+def dag(d, ids):
+    DAG[0] = d + ' 08:01'; zet_listing(ids); return draai('dagelijks')
+BASIS = [POLO, UP, '930282', FIAT, GTI, '949714']
+
+print('\n=== Voorbeeld uit de opdracht: ma zonder prijs/foto\'s, di gezien, do prijs+foto\'s+Marktplaats, vr gepost ===')
+n0 = len(FakeIG.posts)
+ZONDER_PRIJS.add(IB); FOTOS[IB] = 1
+code, db = dag('2026-11-02', BASIS + [IB])          # maandag
+check('ma: Ibiza zonder prijs/foto\'s staat op "niet_klaar"', db['voertuigen'][IB]['status'] == 'niet_klaar')
+code, db = dag('2026-11-03', BASIS + [IB])          # dinsdag (publicatiedag)
+check('di: gezien maar niet gepost (niet verkoopklaar)', db['voertuigen'][IB]['status'] == 'niet_klaar' and len(FakeIG.posts) == n0)
+code, db = dag('2026-11-04', BASIS + [IB])          # woensdag
+ZONDER_PRIJS.discard(IB); FOTOS[IB] = 32; MP[IB] = 'https://www.marktplaats.nl/v/auto-s/seat/m123-seat-ibiza'
+code, db = dag('2026-11-05', BASIS + [IB])          # donderdag: geen publicatiedag
+v = db['voertuigen'][IB]
+check('do: verkoopklaar herkend -> wachtrij, nog niet gepost (geen publicatiedag)', v['status'] == 'wachtrij' and len(FakeIG.posts) == n0, v['status'])
+check('Marktplaats vastgelegd als extra signaal', v['klaar']['marktplaats'])
+code, db = dag('2026-11-06', BASIS + [IB])          # vrijdag
+v = db['voertuigen'][IB]
+check('vr: Ibiza gepost', v['status'] == 'gepubliceerd' and v['instagram_post_id'] and len(FakeIG.posts) == n0 + 1, v['status'])
+check('"op de site sinds" bewaard (ma), "nieuw" telt vanaf verkoopklaar (do)', v['eerst_op_site'] == '2026-11-02' and v['ontdekt'] == '2026-11-05')
+
+print('\n=== Gepost: prijs en foto\'s veranderen -> NIET opnieuw posten ===')
+PRIJS[IB] = '€ 6.950'; FOTOS[IB] = 20
+n0 = len(FakeIG.posts)
+code, db = dag('2026-11-10', BASIS + [IB])
+check('geen tweede post na prijs-/fotowijziging', len(FakeIG.posts) == n0 and db['voertuigen'][IB]['status'] == 'gepubliceerd')
+
+print('\n=== Auto die weken zonder prijs op de site stond, daarna verkoopklaar zonder Marktplaats ===')
+Q3 = '917880'
+ZONDER_PRIJS.add(Q3)
+code, db = dag('2026-11-11', BASIS + [IB, Q3])
+code, db = dag('2026-12-01', BASIS + [IB, Q3])      # 3 weken later nog steeds zonder prijs
+check('na weken zonder prijs nog steeds "niet_klaar", niet vergeten', db['voertuigen'][Q3]['status'] == 'niet_klaar')
+ZONDER_PRIJS.discard(Q3)
+FakeIG.faal[0] = 1                                   # eerste publicatiepoging mislukt bij Instagram
+n0 = len(FakeIG.posts)
+code, db = dag('2026-12-04', BASIS + [IB, Q3])      # vrijdag
+v = db['voertuigen'][Q3]
+check('mislukte post NIET als geplaatst geregistreerd', not v.get('instagram_post_id') and v['status'] != 'gepubliceerd' and len(FakeIG.posts) == n0,
+      v['status'])
+code, db = dag('2026-12-08', BASIS + [IB, Q3])      # dinsdag: opnieuw
+v = db['voertuigen'][Q3]
+check('volgende publicatiedag alsnog gepost, precies 1 keer', v['status'] == 'gepubliceerd' and len(FakeIG.posts) == n0 + 1, v['status'])
+
+print('\n=== Bestaande auto die bij de start nog een verwacht-plaatje had, krijgt echte foto\'s ===')
+FOTOS[AMG] = 40
+code, db = dag('2026-12-10', BASIS + [IB, Q3, AMG])
+check('AMG nu in de wachtrij', db['voertuigen'][AMG]['status'] == 'wachtrij', db['voertuigen'][AMG]['status'])
+code, db = dag('2026-12-11', BASIS + [IB, Q3, AMG])
+check('AMG gepost op vrijdag', db['voertuigen'][AMG]['status'] == 'gepubliceerd')
+check('oude, al verkoopklare voorraad niet als nieuw gepost', all(db['voertuigen'][x]['status'] == 'bestaand' for x in (POLO, UP, '930282')))
+alle_refs = [p['caption'].split('Ref. ')[-1].split()[0] for p in FakeIG.posts if 'Ref. ' in (p['caption'] or '')]
+check('geen enkele auto twee keer op Instagram', len(alle_refs) == len(set(alle_refs)), alle_refs)
 
 uit = glob.glob(os.path.join(config.WORK_DIR, 'uitvoer', '*'))
 print('\nUitvoer:', TMP)

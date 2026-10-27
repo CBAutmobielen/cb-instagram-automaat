@@ -7,7 +7,7 @@
 """
 import argparse, json, os, shutil, sys, traceback
 from datetime import timedelta
-from . import config, db as dbm, site, content, content_v2, ai, caption, qa, hosting, fotokeuze, story
+from . import config, db as dbm, klaar, site, content, content_v2, ai, caption, qa, hosting, fotokeuze, story
 from .rapport import Rapport
 
 sys.path.insert(0, os.path.join(config.ROOT, 'cb'))
@@ -57,13 +57,15 @@ def sync(db, listing, R):
         v = db['voertuigen'].get(vid)
         titel = it.get('titel') or it['tekst'][:80]
         if v is None:
-            # zonder prijs ('Op aanvraag') = nog niet te koop: pas zodra er een prijs staat telt hij als nieuw
-            status = ('bestaand' if eerste else 'wachtrij') if it['beschikbaar'] else 'zonder_prijs'
-            v = dbm.nieuw_voertuig(vid, it['slug'], it['url'], titel, it['prijs'], it['km'], status)
+            # Nieuw op de site. Of hij 'nieuw voor Instagram' is, beslist de verkoopklaar-controle
+            # (klaar.py): pas met vraagprijs EN echte foto's gaat hij de wachtrij in.
+            v = dbm.nieuw_voertuig(vid, it['slug'], it['url'], titel, it['prijs'], it['km'],
+                                   'bestaand' if eerste else 'niet_klaar')
             v['beschikbaar'] = it['beschikbaar']
+            if not eerste:
+                v['niet_klaar_reden'] = 'nog niet beoordeeld'
+                R.log(f'op de site verschenen: {titel}')
             db['voertuigen'][vid] = v
-            if status == 'wachtrij':
-                R.nieuw.append(titel); R.log(f'NIEUW: {titel} -> wachtrij')
             continue
         v['laatst_gezien'] = config.vandaag()
         if it.get('titel') and v['titel'] != it['titel'] and not v.get('instagram_post_id'):
@@ -81,14 +83,7 @@ def sync(db, listing, R):
             if v['status'] == 'wachtrij':
                 v['status'] = 'verkocht'; R.verkocht.append(v['titel']); R.log(f"VERKOCHT (uit wachtrij): {v['titel']}")
         elif not v['beschikbaar'] and it['beschikbaar']:
-            v['beschikbaar'] = True
-            if v['status'] in ('verkocht', 'zonder_prijs') and not v.get('instagram_post_id'):
-                if v['status'] == 'zonder_prijs':
-                    v['ontdekt'] = config.vandaag()      # nieuw vanaf het moment dat hij te koop staat
-                    R.nieuw.append(v['titel'])
-                v['status'] = 'wachtrij'; R.log(f"nu met prijs/weer beschikbaar, in de wachtrij: {v['titel']}")
-        if v['status'] == 'geen_fotos' and it['beschikbaar']:
-            v['status'] = 'wachtrij'   # opnieuw proberen; misschien zijn er nu foto's
+            v['beschikbaar'] = True        # weer met prijs: de verkoopklaar-controle beslist over de wachtrij
     for vid, v in db['voertuigen'].items():
         if vid not in listing and v['beschikbaar']:
             v['beschikbaar'] = False
@@ -96,8 +91,8 @@ def sync(db, listing, R):
                 v['status'] = 'verkocht'; R.verkocht.append(v['titel']); R.log(f"VERWIJDERD van site (uit wachtrij): {v['titel']}")
     if eerste:
         db['baseline_gedaan'] = True
-        R.log(f'Eerste run: {len(listing)} bestaande auto\'s vastgelegd als "bestaand" (worden niet automatisch gepost). '
-              'Alleen auto\'s die hierna op de site verschijnen komen in de wachtrij.')
+        R.log(f'Eerste run: {len(listing)} bestaande auto\'s vastgelegd als "bestaand". Auto\'s die nu al verkoopklaar '
+              'zijn worden niet automatisch gepost; de rest volgt zodra hij verkoopklaar is.')
 
 
 def publicatiedagen(start, n):
@@ -142,8 +137,9 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     v['titel'], v['bouwjaar'] = vers['title'] or v['titel'], vers['table'].get('Bouwjaar')
     v['prijs'] = vers['prijs'] or v['prijs']
     if len(vers['fotos']) < config.MIN_FOTOS:
-        v['status'] = 'geen_fotos'; dbm.fout(v, f"slechts {len(vers['fotos'])} foto's op de site")
-        R.waarschuwing(f"{v['titel']}: te weinig echte foto's ({len(vers['fotos'])}), overgeslagen tot er foto's zijn")
+        v['status'] = 'niet_klaar'; v['niet_klaar_reden'] = f"nog geen echte foto's ({len(vers['fotos'])} foto's)"
+        R.waarschuwing(f"{v['titel']}: te weinig echte foto's ({len(vers['fotos'])}); terug naar 'nog niet verkoopklaar', "
+                       'wordt bij de volgende controle opnieuw bekeken')
         return False
     fotodir = os.path.join(config.WORK_DIR, 'fotos', v['id'])
     shutil.rmtree(fotodir, ignore_errors=True)
@@ -326,6 +322,7 @@ def main():
         listing = site.aanbod()
         R.log(f'Website: {len(listing)} auto\'s gevonden, {sum(x["beschikbaar"] for x in listing.values())} beschikbaar')
         sync(db, listing, R)
+        klaar.controleer_alle(db, listing, site, R)
 
         if a.auto:
             v = db['voertuigen'].get(a.auto)
@@ -335,11 +332,12 @@ def main():
                 raise RuntimeError(f"auto {a.auto} is al gepubliceerd ({v['instagram_permalink']})")
             kandidaten = [v]
         else:
-            for q in dbm.wachtrij(db):
-                oud = (config.nu().date() - __import__('datetime').date.fromisoformat(q['ontdekt'])).days
-                if oud > config.MAX_WACHTDAGEN:
-                    q['status'] = 'verlopen'
-                    R.waarschuwing(f"{q['titel']}: stond {oud} dagen in de wachtrij en wordt niet meer als nieuwe auto gepost")
+            # Geen automatische 'verlopen' meer: een verkoopklare auto blijft in de wachtrij tot hij gepost
+            # of verkocht is. Wel een waarschuwing als de wachtrij te lang wordt.
+            q = dbm.wachtrij(db)
+            if len(q) > config.WACHTRIJ_WAARSCHUWING:
+                R.waarschuwing(f"{len(q)} auto's in de wachtrij; met de huidige publicatiedagen duurt het even voor "
+                               'de laatste aan de beurt is (verkochte auto\'s gaan er vanzelf uit)')
             kandidaten = dbm.wachtrij(db)
             if proef and not kandidaten:
                 kandidaten = [v for v in db['voertuigen'].values() if v['beschikbaar']][:1]

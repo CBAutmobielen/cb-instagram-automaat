@@ -13,6 +13,7 @@ class Rapport:
         self.gepubliceerd = None
         self.proef = None
         self.op_site = self.beschikbaar = None
+        self.klaar_telling = None
 
     def log(self, t):
         print(t, flush=True); self.regels.append(t)
@@ -32,7 +33,10 @@ class Rapport:
              '| | |', '|---|---|',
              f'| Auto\'s op de website | {self.op_site if self.op_site is not None else "onbekend"} '
              f'({self.beschikbaar if self.beschikbaar is not None else "?"} beschikbaar) |',
-             f'| Nieuwe auto\'s gevonden | {len(self.nieuw)}{": " + ", ".join(self.nieuw) if self.nieuw else ""} |',
+             f'| Verkoopklaar-controle | ' + (f"{sum(self.klaar_telling.values())} auto's bekeken: {self.klaar_telling['gepost']} al op Instagram, "
+                f"{self.klaar_telling['wachtrij']} in wachtrij, {self.klaar_telling['niet_klaar']} nog niet verkoopklaar, "
+                f"{self.klaar_telling['oude_voorraad']} oude voorraad" if self.klaar_telling else 'niet uitgevoerd') + ' |',
+             f'| Nieuw verkoopklaar | {len(self.nieuw)}{": " + ", ".join(self.nieuw) if self.nieuw else ""} |',
              f'| Vandaag gepubliceerd | {self.gepubliceerd or "niets"} |',
              f'| In de wachtrij | {len(q)} |',
              f'| Verkocht / uit wachtrij | {", ".join(self.verkocht) if self.verkocht else "geen"} |', '']
@@ -58,12 +62,16 @@ class Rapport:
             L += [f"| {v['gepubliceerd_op'][:16]} | {v['titel']} | {('[bekijk](' + v['instagram_permalink'] + ')') if v.get('instagram_permalink') else v['instagram_post_id']} |" for v in pub]
         else:
             L += ['Nog niets.']
-        zp = [v for v in db['voertuigen'].values() if v['status'] == 'zonder_prijs' and v['laatst_gezien'] == config.vandaag()]
-        if zp:
-            L += ['', '## Op de site, nog zonder prijs', '',
-                  'Deze auto\'s komen automatisch in de wachtrij zodra er een vraagprijs op de website staat.', '']
-            L += [f"- [{v['titel']}]({v['url']})" for v in zp]
-        probleem = [v for v in db['voertuigen'].values() if v['status'] in ('fout', 'geen_fotos')]
+        nk = [v for v in db['voertuigen'].values() if v['status'] in ('niet_klaar', 'zonder_prijs', 'geen_fotos')
+              and v['laatst_gezien'] == config.vandaag()]
+        if nk:
+            L += ['', '## Op de site, nog niet verkoopklaar', '',
+                  'Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto\'s staan, gaan ze automatisch '
+                  'in de wachtrij, ook als ze al weken op de site staan.', '',
+                  '| Auto | Op de site sinds | Wat ontbreekt | Marktplaats |', '|---|---|---|---|']
+            L += [f"| [{v['titel']}]({v['url']}) | {v.get('eerst_op_site') or v['ontdekt']} | {v.get('niet_klaar_reden') or 'nog geen vraagprijs'} | "
+                  f"{'ja' if (v.get('klaar') or {}).get('marktplaats') else 'niet gevonden'} |" for v in nk]
+        probleem = [v for v in db['voertuigen'].values() if v['status'] == 'fout']
         if probleem:
             L += ['', '## Vraagt aandacht', '']
             L += [f"- {v['titel']} ({v['status']}): {v['fouten'][-1]['melding'] if v['fouten'] else ''}" for v in probleem]

@@ -1,10 +1,10 @@
 # Instagram-automaat CB Automobielen: handleiding
 
-**Wat het doet:** elke ochtend om 08:00 (Nederlandse tijd) controleert de automaat cbautomobielen.nl. Een nieuwe auto komt in de wachtrij. Op de **publicatiedagen (standaard dinsdag en vrijdag)** maakt de automaat 5 slides in de vaste huisstijl, schrijft hij een caption en controleert hij alles. Als alle controles slagen, plaatst hij de carrousel van de eerstvolgende auto uit de wachtrij op Instagram. Per publicatiedag gaat er maximaal 1 auto online. Een auto die in de tussentijd verkocht wordt, gaat automatisch uit de wachtrij.
+**Wat het doet:** elke ochtend om 08:00 (Nederlandse tijd) controleert de automaat cbautomobielen.nl. Een auto komt in de wachtrij zodra hij **verkoopklaar** is: een vraagprijs én echte foto's (zie 'Wanneer is een auto nieuw?'). Op de **publicatiedagen (standaard dinsdag en vrijdag)** maakt de automaat 5 slides in de vaste huisstijl, schrijft hij een caption en controleert hij alles. Als alle controles slagen, plaatst hij de carrousel van de eerstvolgende auto uit de wachtrij op Instagram. Per publicatiedag gaat er maximaal 1 auto online. Een auto die in de tussentijd verkocht wordt, gaat automatisch uit de wachtrij.
 
 **Publicatietijd:** GitHub-variabele `PUBLICATIE_UUR` (Nederlandse tijd, hele uren; standaard `8`). Bijvoorbeeld `12` of `19`. De automaat kijkt elk uur of het tijd is en draait één keer per dag (bij een fout één herkansing het uur erna).
 
-**Template v2:** cover met grote foto en MERK MODEL, specificaties zonder herhaling, uitrusting met de zes sterkste opties, details en contact. 'Nieuw in voorraad' alleen tot 14 dagen na ontdekking; 'Rijklaar' alleen als de website dat meldt; auto's die langer dan 21 dagen in de wachtrij staan, worden niet meer als nieuw gepost. Na publicatie controleert de automaat of alle slides en de caption online staan.
+**Template v2:** cover met grote foto en MERK MODEL, specificaties zonder herhaling, uitrusting met de zes sterkste opties, details en contact. 'Nieuw in voorraad' alleen tot 14 dagen na ontdekking; 'Rijklaar' alleen als de website dat meldt; Na publicatie controleert de automaat of alle slides en de caption online staan.
 
 **Story:** staat uit. Aanzetten kan met de variabele `STORY` = `aan`, maar de API kan geen aanklikbare post-sticker toevoegen.
 
@@ -85,7 +85,11 @@ Ga naar Settings › Secrets and variables › Actions › tabblad **Variables**
 
 Zolang deze variabele niet `aan` is, draait de automaat elke ochtend wel, maar publiceert hij niets.
 
-**Eerste run:** alle auto's die op dat moment op de site staan worden vastgelegd als "bestaand" en worden niet alsnog gepost. Alleen auto's die daarna verschijnen komen in de wachtrij.
+**Wanneer is een auto nieuw?** Bij iedere controle bekijkt de automaat **alle** auto's op de site die nog nooit op Instagram zijn gezet. Een auto is verkoopklaar als hij een geldige vraagprijs heeft (geen 'Op aanvraag') en minimaal 8 echte foto's. Een Marktplaats-link op de voertuigpagina wordt vastgelegd als extra bevestiging, maar is niet verplicht. Hoe lang een auto al op de site staat maakt niet uit: een auto die weken zonder prijs of foto's online stond, gaat de wachtrij in op de dag dat hij verkoopklaar is. Zolang hij dat niet is, staat hij in het rapport onder "Op de site, nog niet verkoopklaar", met wat er nog ontbreekt.
+
+**Nooit dubbel:** een auto wordt herkend aan het vaste nummer achter in zijn URL. Is hij eenmaal op Instagram gezet, dan wordt hij nooit opnieuw gepost, ook niet als de prijs of de foto's veranderen. Pas na een geslaagde publicatie wordt een auto als geplaatst geregistreerd; mislukt het, dan blijft hij in de wachtrij.
+
+**Eerste run (22-10-2026):** auto's die toen al verkoopklaar op de site stonden zijn vastgelegd als "bestaand" (oude voorraad) en worden niet alsnog gepost. Auto's die toen nog geen prijs of echte foto's hadden, worden gepost zodra ze verkoopklaar zijn.
 
 Wil je toch een bestaande auto plaatsen? Gebruik dan Run workflow › modus `live` › voertuig-ID.
 
@@ -105,7 +109,7 @@ Wil je toch een bestaande auto plaatsen? Gebruik dan Run workflow › modus `liv
   - de laatste 50 Instagram-posts: staat de link naar deze auto er al in, dan wordt er niet gepubliceerd.
 - Wordt een publicatie halverwege onderbroken? Dan kijkt de volgende run eerst op Instagram of de post toch bestaat.
 - Geeft de website 0 auto's of een storing? Dan wordt niets als verkocht gemarkeerd en niets gepubliceerd.
-- Mislukt een auto 3 keer? Dan gaat hij uit de automatische wachtrij en komt hij onder "Vraagt aandacht" in het rapport.
+- Mislukt een auto 3 keer? Dan gaat hij uit de automatische wachtrij en komt hij onder "Vraagt aandacht" in het rapport. Verandert daarna de prijs of de foto's op de site, dan probeert de automaat het vanzelf opnieuw.
 - Een auto met te weinig echte foto's (bijvoorbeeld alleen een "verwacht"-afbeelding) wordt overgeslagen tot er foto's zijn.
 
 ## Herstelprocedure
