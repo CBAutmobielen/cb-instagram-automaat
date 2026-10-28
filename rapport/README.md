@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Tuesday 27-10-2026 11:47 (Europe/Amsterdam) · modus: **proef** · ✅ geen fouten
+**Laatste controle:** Wednesday 28-10-2026 08:46 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
 
 | | |
 |---|---|
@@ -10,10 +10,6 @@
 | Vandaag gepubliceerd | niets |
 | In de wachtrij | 0 |
 | Verkocht / uit wachtrij | geen |
-
-## Proefrun (niets gepubliceerd)
-
-**Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus** (€ 13.445): 5 slides en caption gemaakt, alle controles geslaagd. Bekijk de slides in de map `proef/952652/`. Instagram-koppeling getest: carrousel-container `18131999455821410` aangemaakt en goedgekeurd door Instagram (status FINISHED). **Niet gepubliceerd**; de container vervalt automatisch na 24 uur.
 
 ## Wachtrij
 
@@ -42,13 +38,7 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
 Instagram publicatielimiet: 1 van 100 gebruikt (24 uur)
 Website: 15 auto's gevonden, 12 beschikbaar
-nog niet verkoopklaar: Fiat 500 1.2 Lounge (nog geen vraagprijs (Op aanvraag))
-nog niet verkoopklaar: Hyundai Tucson 1.6 T-GDi Comfort 4WD (nog geen vraagprijs (Op aanvraag))
-nog niet verkoopklaar: Volkswagen Golf 2.0 GTI TCR (nog geen vraagprijs (Op aanvraag))
 Verkoopklaar-controle: 15 auto's bekeken | al op Instagram 2 | in wachtrij 0 (waarvan 0 nieuw) | nog niet verkoopklaar 3 | oude voorraad 10
-Wachtrij leeg: proef met bestaande auto Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus
---- Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus (ID 952652) ---
-  fotokeuze via herkenning: hero=04 (voor_recht), specs=03 (achter_recht), options=02 (dashboard), d1=17 (koplamp), d2=12 (stoelen), d3=11 (bagage), contact=01 (voor_recht)
-  alle controles geslaagd (5 slides, caption 576 tekens)
-  proef: Instagram-container 18131999455821410 OK, niet gepubliceerd
+Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
+Geen nieuwe auto's om te publiceren.
 ```
