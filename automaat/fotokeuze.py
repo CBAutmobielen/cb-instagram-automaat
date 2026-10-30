@@ -47,7 +47,10 @@ HELE_AUTO = {'voor_schuin', 'voor_recht', 'zij', 'achter_schuin', 'achter_recht'
 # Aparte voor/achter-controle: het algemene model haalt 'schuin voor' en 'schuin achter' soms door elkaar.
 VOOR_ACHTER = ['a photo of the front of a car, showing the headlights, the front grille and the front bumper',
                'a photo of the back of a car, showing the tail lights, the tailgate and the rear bumper']
-MIN_VOORKANT = 0.70     # zekerheid dat de coverfoto de voorkant van de auto laat zien
+HEEL = ['a photo of an entire car parked outside, the whole car is visible',
+        'a close-up photo of a detail or part of a car, or of the car interior']
+MIN_VOORKANT = 0.70
+MIN_HEEL = 0.60     # zekerheid dat de coverfoto de voorkant van de auto laat zien
 
 _model = None
 _va = None
@@ -89,16 +92,17 @@ def classificeer(fotodir, nummers):
     return uit
 
 
-def voorkant_kans(fotodir, nummers):
-    """{nr: kans (0-1) dat de foto de VOORKANT van de auto toont (t.o.v. de achterkant)}"""
+def voor_en_heel(fotodir, nummers):
+    """{nr: (kans voorkant i.p.v. achterkant, kans hele auto i.p.v. detail/interieur)}"""
     global _va
     import torch, open_clip
     from PIL import Image
     m, pre, _ = _laad()
     if _va is None:
         with torch.no_grad():
-            t = m.encode_text(open_clip.get_tokenizer('ViT-B-32')(VOOR_ACHTER))
-            _va = t / t.norm(dim=-1, keepdim=True)
+            tok = open_clip.get_tokenizer('ViT-B-32')
+            a = m.encode_text(tok(VOOR_ACHTER)); b = m.encode_text(tok(HEEL))
+            _va = (a / a.norm(dim=-1, keepdim=True), b / b.norm(dim=-1, keepdim=True))
     uit = {}
     with torch.no_grad():
         for nr in nummers:
@@ -106,25 +110,19 @@ def voorkant_kans(fotodir, nummers):
             if not os.path.exists(p):
                 continue
             f = m.encode_image(pre(Image.open(p).convert('RGB')).unsqueeze(0)); f = f / f.norm(dim=-1, keepdim=True)
-            uit[nr] = (100.0 * f @ _va.T).softmax(dim=-1)[0].tolist()[0]
+            uit[nr] = ((100.0 * f @ _va[0].T).softmax(dim=-1)[0].tolist()[0],
+                       (100.0 * f @ _va[1].T).softmax(dim=-1)[0].tolist()[0])
     return uit
 
 
-def kies_cover(labels, vk, bruikbaar):
-    """Coverfoto: altijd een hele auto van VOREN (schuin of recht). Geeft (nr, zekerheid)."""
-    kand = []
-    for nr, l in bruikbaar.items():
-        if l[0] not in HELE_AUTO or l[0] in ('achter_schuin', 'achter_recht') or nr not in vk:
-            continue
-        vooraanzicht = l[2]['voor_schuin'] + l[2]['voor_recht']
-        bonus = 0.05 if nr == '04' else 0       # dealervolgorde licht laten meetellen
-        kand.append((vk[nr] >= MIN_VOORKANT, vk[nr] * (0.5 + vooraanzicht) + bonus, nr))
-    if not kand:   # niets als vooraanzicht herkend: de foto die het zekerst de voorkant toont
-        kand = [(vk[nr] >= MIN_VOORKANT, vk[nr], nr) for nr, l in bruikbaar.items() if l[0] in HELE_AUTO and nr in vk]
+def kies_voorfoto(vh, uitsluiten=(), voorkeur=None):
+    """Hele auto van VOREN (schuin of recht), ook als het pand groot in beeld staat. Geeft (nr, voorkant-zekerheid)."""
+    kand = [(vk >= MIN_VOORKANT and heel >= MIN_HEEL, vk * heel + (0.05 if nr == voorkeur else 0), nr)
+            for nr, (vk, heel) in vh.items() if nr not in uitsluiten]
     if not kand:
         return None, 0.0
-    _, _, nr = max(kand)
-    return nr, vk[nr]
+    goed, _, nr = max(kand)
+    return nr, (vh[nr][0] if goed else min(vh[nr][0], vh[nr][1]))
 
 
 def kies(car, v, fotodir):
@@ -138,10 +136,10 @@ def kies(car, v, fotodir):
     bruikbaar = {nr: l for nr, l in labels.items() if l[0] not in NOOIT and nr != '01'}
     gekozen, gebruikt = {}, set()
     try:
-        vk = voorkant_kans(fotodir, [nr for nr, l in labels.items() if l[0] in HELE_AUTO])
+        vh = voor_en_heel(fotodir, list(labels))
     except Exception as e:
         return [f'voor/achter-controle niet beschikbaar ({e}); vaste fotokeuze'], {}
-    hero, zeker = kies_cover(labels, vk, bruikbaar)
+    hero, zeker = kies_voorfoto(vh, uitsluiten=('01',), voorkeur='04')   # 01 heeft het logo-watermerk
     car['cover_voorkant'] = round(zeker, 2)
     if hero:
         gekozen['hero'] = hero; gebruikt.add(hero)
@@ -164,8 +162,11 @@ def kies(car, v, fotodir):
                       ('d2', None), ('d3', None), ('contact', '07')):
         if rol == 'hero' and 'hero' in gekozen:
             continue
-        if rol == 'contact' and labels.get('01', ('',))[0] in ('voor_schuin', 'voor_recht', 'zij'):
-            gekozen[rol] = '01'; continue   # andere hoek dan de cover; watermerk valt weg door bovenuitsnede
+        if rol == 'contact':
+            # contact: ook een hele auto van voren; liefst 01 (watermerk valt weg door de bovenuitsnede)
+            c, cz = kies_voorfoto(vh, uitsluiten=gebruikt, voorkeur='01')
+            if c and cz >= MIN_VOORKANT:
+                gekozen[rol] = c; gebruikt.add(c); continue
         nr = beste(rol, pref)
         if nr is None:
             return ['te weinig bruikbare foto\'s voor herkenning; vaste fotokeuze'], labels
@@ -174,11 +175,11 @@ def kies(car, v, fotodir):
     car['pos'] = {}
     if gekozen['contact'] == '01':
         car['pos']['contact'] = '50% 0%'
-    elif labels.get(gekozen['contact'], ('',))[0] == 'voor_schuin':
+    else:
         car['pos']['contact'] = '50% 40%'
     beschrijving = ', '.join(f"{r}={nr} ({labels[nr][0]})" for r, nr in gekozen.items())
-    car['_voorkant'] = {nr: round(x, 2) for nr, x in vk.items()}
-    vk_tekst = ' '.join(f'{nr}:{labels[nr][0]}/{x:.2f}' for nr, x in sorted(vk.items()))
+    car['_voorkant'] = {nr: round(x[0], 2) for nr, x in vh.items() if x[1] >= MIN_HEEL}
+    vk_tekst = ' '.join(f'{nr}:v{x[0]:.2f}/h{x[1]:.2f}' for nr, x in sorted(vh.items()) if x[1] >= 0.3)
     return [f'fotokeuze via herkenning: {beschrijving}', f"cover {gekozen['hero']}: voorkant-zekerheid {zeker:.2f}",
             f'voorkant-zekerheid hele-autofoto\'s: {vk_tekst}'], labels
 
