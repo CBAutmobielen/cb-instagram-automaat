@@ -479,14 +479,19 @@
    "prijs": "€ 17.900",
    "kilometerstand": "86.216 km",
    "bouwjaar": "2017",
-   "afbeeldingen_status": "OK",
+   "afbeeldingen_status": "fout",
    "caption_status": "OK",
    "gepland": null,
    "gepubliceerd_op": "2026-10-30 08:48",
    "instagram_post_id": "18654836380062268",
    "instagram_permalink": "https://www.instagram.com/p/DfHFRrxloD3/",
    "pogingen": 0,
-   "fouten": [],
+   "fouten": [
+    {
+     "datum": "2026-10-30 09:52",
+     "melding": "coverfoto 08 is waarschijnlijk geen voorkant (zekerheid 0.09); niet gepost, controleer de foto's op de site"
+    }
+   ],
    "wijzigingen": [
     {
      "datum": "2026-10-30",
@@ -703,6 +708,16 @@
    "nieuw": 0,
    "gepubliceerd": "[Hyundai Tucson 1.6 T-GDi Comfort 4WD](https://www.instagram.com/p/DfHFRrxloD3/)",
    "fouten": []
+  },
+  {
+   "datum": "2026-10-30",
+   "tijd": "09:52",
+   "modus": "proef",
+   "nieuw": 0,
+   "gepubliceerd": null,
+   "fouten": [
+    "Hyundai Tucson 1.6 T-GDi Comfort 4WD: coverfoto 08 is waarschijnlijk geen voorkant (zekerheid 0.09); niet gepost, controleer de foto's op de site"
+   ]
   }
  ]
 }

@@ -1,23 +1,19 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Friday 30-10-2026 08:47 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
+**Laatste controle:** Friday 30-10-2026 09:52 (Europe/Amsterdam) · modus: **proef** · ⚠️ 1 fout(en)
 
 | | |
 |---|---|
 | Auto's op de website | 15 (13 beschikbaar) |
-| Verkoopklaar-controle | 15 auto's bekeken: 2 al op Instagram, 1 in wachtrij, 3 nog niet verkoopklaar, 9 oude voorraad |
+| Verkoopklaar-controle | 15 auto's bekeken: 3 al op Instagram, 0 in wachtrij, 3 nog niet verkoopklaar, 9 oude voorraad |
 | Nieuw verkoopklaar | 0 |
-| Vandaag gepubliceerd | [Hyundai Tucson 1.6 T-GDi Comfort 4WD](https://www.instagram.com/p/DfHFRrxloD3/) |
+| Vandaag gepubliceerd | niets |
 | In de wachtrij | 0 |
 | Verkocht / uit wachtrij | geen |
 
-## Prijs- en kilometerwijzigingen
+## Fouten
 
-- Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus: prijs € 13.445 -> € 12.900
-- Hyundai Tucson 1.6 T-GDi Comfort 4WD: prijs € 18.900 -> € 17.900
-- Kia Picanto 1.0 CVVT EconomyPlusLine: prijs € 7.400 -> € 6.900
-- Volkswagen Polo 1.0 TSI Life Business DSG: prijs € 19.900 -> € 18.900
-- Volkswagen up! 1.0 Cup BlueMotion: prijs € 5.400 -> € 4.900
+- Hyundai Tucson 1.6 T-GDi Comfort 4WD: coverfoto 08 is waarschijnlijk geen voorkant (zekerheid 0.09); niet gepost, controleer de foto's op de site
 
 ## Wachtrij
 
@@ -44,13 +40,11 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 ## Verloop van deze run
 
 ```
-Instagram verbonden: @cbautomobielen | token: vernieuwd, geldig tot ca. 2026-12-29
-Instagram publicatielimiet: 0 van 100 gebruikt (24 uur)
+Instagram verbonden: @cbautomobielen | token: recent vernieuwd
+Instagram publicatielimiet: 1 van 100 gebruikt (24 uur)
 Website: 15 auto's gevonden, 13 beschikbaar
-Verkoopklaar-controle: 15 auto's bekeken | al op Instagram 2 | in wachtrij 1 (waarvan 0 nieuw) | nog niet verkoopklaar 3 | oude voorraad 9
+Verkoopklaar-controle: 15 auto's bekeken | al op Instagram 3 | in wachtrij 0 (waarvan 0 nieuw) | nog niet verkoopklaar 3 | oude voorraad 9
 --- Hyundai Tucson 1.6 T-GDi Comfort 4WD (ID 957441) ---
   fotokeuze via herkenning: hero=08 (voor_schuin), specs=03 (achter_schuin), options=02 (dashboard), d1=27 (koplamp), d2=11 (bagage), d3=29 (achterlicht), contact=30 (voor_schuin)
-  alle controles geslaagd (5 slides, caption 563 tekens)
-  nacontrole: post staat online met alle slides en de juiste caption
-  GEPUBLICEERD op Instagram: https://www.instagram.com/p/DfHFRrxloD3/
+  cover 08: voorkant-zekerheid 0.09
 ```
