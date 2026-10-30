@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Friday 30-10-2026 09:52 (Europe/Amsterdam) · modus: **proef** · ⚠️ 1 fout(en)
+**Laatste controle:** Friday 30-10-2026 09:54 (Europe/Amsterdam) · modus: **proef** · ⚠️ 1 fout(en)
 
 | | |
 |---|---|
@@ -47,4 +47,5 @@ Verkoopklaar-controle: 15 auto's bekeken | al op Instagram 3 | in wachtrij 0 (wa
 --- Hyundai Tucson 1.6 T-GDi Comfort 4WD (ID 957441) ---
   fotokeuze via herkenning: hero=08 (voor_schuin), specs=03 (achter_schuin), options=02 (dashboard), d1=27 (koplamp), d2=11 (bagage), d3=29 (achterlicht), contact=30 (voor_schuin)
   cover 08: voorkant-zekerheid 0.09
+  voorkant-zekerheid hele-autofoto's: 03:achter_schuin/0.02 05:achter_recht/0.01 08:voor_schuin/0.09 30:voor_schuin/0.08
 ```
