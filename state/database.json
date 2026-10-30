@@ -472,7 +472,7 @@
    "slug": "hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
    "url": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
    "titel": "Hyundai Tucson 1.6 T-GDi Comfort 4WD",
-   "status": "bezig",
+   "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-29",
    "laatst_gezien": "2026-10-30",
@@ -481,10 +481,10 @@
    "bouwjaar": "2017",
    "afbeeldingen_status": "OK",
    "caption_status": "OK",
-   "gepland": "2026-10-30",
+   "gepland": null,
    "gepubliceerd_op": "2026-10-30 08:48",
-   "instagram_post_id": null,
-   "instagram_permalink": null,
+   "instagram_post_id": "18654836380062268",
+   "instagram_permalink": "https://www.instagram.com/p/DfHFRrxloD3/",
    "pogingen": 0,
    "fouten": [],
    "wijzigingen": [
@@ -502,7 +502,8 @@
     "marktplaats": false
    },
    "eerst_op_site": "2026-10-27",
-   "verkoopklaar_sinds": "2026-10-29"
+   "verkoopklaar_sinds": "2026-10-29",
+   "opener": "Praktisch, ruim en uitgerust met {opt1} en {opt2}."
   },
   "958039": {
    "id": "958039",
@@ -693,6 +694,14 @@
    "modus": "dagelijks",
    "nieuw": 1,
    "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-10-30",
+   "tijd": "08:48",
+   "modus": "dagelijks",
+   "nieuw": 0,
+   "gepubliceerd": "[Hyundai Tucson 1.6 T-GDi Comfort 4WD](https://www.instagram.com/p/DfHFRrxloD3/)",
    "fouten": []
   }
  ]

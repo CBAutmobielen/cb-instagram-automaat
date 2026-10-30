@@ -1,30 +1,33 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Thursday 29-10-2026 08:49 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
+**Laatste controle:** Friday 30-10-2026 08:47 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
 
 | | |
 |---|---|
 | Auto's op de website | 15 (13 beschikbaar) |
-| Verkoopklaar-controle | 15 auto's bekeken: 2 al op Instagram, 0 in wachtrij, 3 nog niet verkoopklaar, 9 oude voorraad |
-| Nieuw verkoopklaar | 1: Hyundai Tucson 1.6 T-GDi Comfort 4WD |
-| Vandaag gepubliceerd | niets |
-| In de wachtrij | 1 |
+| Verkoopklaar-controle | 15 auto's bekeken: 2 al op Instagram, 1 in wachtrij, 3 nog niet verkoopklaar, 9 oude voorraad |
+| Nieuw verkoopklaar | 0 |
+| Vandaag gepubliceerd | [Hyundai Tucson 1.6 T-GDi Comfort 4WD](https://www.instagram.com/p/DfHFRrxloD3/) |
+| In de wachtrij | 0 |
 | Verkocht / uit wachtrij | geen |
 
 ## Prijs- en kilometerwijzigingen
 
-- Volkswagen Polo 1.0 TSI Comfortline Business: prijs € 10.900 -> € 10.800
+- Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus: prijs € 13.445 -> € 12.900
+- Hyundai Tucson 1.6 T-GDi Comfort 4WD: prijs € 18.900 -> € 17.900
+- Kia Picanto 1.0 CVVT EconomyPlusLine: prijs € 7.400 -> € 6.900
+- Volkswagen Polo 1.0 TSI Life Business DSG: prijs € 19.900 -> € 18.900
+- Volkswagen up! 1.0 Cup BlueMotion: prijs € 5.400 -> € 4.900
 
 ## Wachtrij
 
-| Gepland | Auto | Prijs | Ontdekt |
-|---|---|---|---|
-| 2026-10-30 | [Hyundai Tucson 1.6 T-GDi Comfort 4WD](https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-957441) | € 18.900 | 2026-10-29 |
+Leeg. Nieuwe auto's op de website komen hier automatisch in.
 
 ## Laatst gepubliceerd
 
 | Datum | Auto | Instagram |
 |---|---|---|
+| 2026-10-30 08:48 | Hyundai Tucson 1.6 T-GDi Comfort 4WD | [bekijk](https://www.instagram.com/p/DfHFRrxloD3/) |
 | 2026-10-27 10:54 | Volkswagen Polo 1.0 TSI 81kW UNITED | [bekijk](https://www.instagram.com/p/De_lOXOloTr/) |
 | 2026-10-22 17:16 | Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus | [bekijk](https://www.instagram.com/p/DezSIhdkYf_/) |
 
@@ -41,13 +44,13 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 ## Verloop van deze run
 
 ```
-Instagram verbonden: @cbautomobielen | token: recent vernieuwd
+Instagram verbonden: @cbautomobielen | token: vernieuwd, geldig tot ca. 2026-12-29
 Instagram publicatielimiet: 0 van 100 gebruikt (24 uur)
 Website: 15 auto's gevonden, 13 beschikbaar
-op de site verschenen: Volkswagen up! 1.0
-VERKOOPKLAAR: Hyundai Tucson 1.6 T-GDi Comfort 4WD (vraagprijs en echte foto's aanwezig; op de site sinds 2026-10-27) -> wachtrij
-nog niet verkoopklaar: Volkswagen up! 1.0 (nog geen echte foto's (4 foto's, minimaal 8))
-Verkoopklaar-controle: 15 auto's bekeken | al op Instagram 2 | in wachtrij 0 (waarvan 1 nieuw) | nog niet verkoopklaar 3 | oude voorraad 9
-Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
-Geen nieuwe auto's om te publiceren.
+Verkoopklaar-controle: 15 auto's bekeken | al op Instagram 2 | in wachtrij 1 (waarvan 0 nieuw) | nog niet verkoopklaar 3 | oude voorraad 9
+--- Hyundai Tucson 1.6 T-GDi Comfort 4WD (ID 957441) ---
+  fotokeuze via herkenning: hero=08 (voor_schuin), specs=03 (achter_schuin), options=02 (dashboard), d1=27 (koplamp), d2=11 (bagage), d3=29 (achterlicht), contact=30 (voor_schuin)
+  alle controles geslaagd (5 slides, caption 563 tekens)
+  nacontrole: post staat online met alle slides en de juiste caption
+  GEPUBLICEERD op Instagram: https://www.instagram.com/p/DfHFRrxloD3/
 ```
