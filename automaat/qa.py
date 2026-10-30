@@ -146,3 +146,13 @@ def inhoud(car, tekst):
     if _re.search(r'\bmet\s*[.,]|\ben\s*[.,]|\s[.,]\s*$|:\s*\n\s*\n\s*Vraagprijs', tekst, _re.M):
         f.append('caption bevat een onvolledige zin')
     return f
+
+
+def cover_voorkant(car):
+    """De eerste slide moet altijd een foto van de voorkant zijn."""
+    from .fotokeuze import MIN_VOORKANT
+    z = car.get('cover_voorkant')
+    if z is not None and z < MIN_VOORKANT:
+        return [f"coverfoto {car['photos'].get('hero')} is waarschijnlijk geen voorkant (zekerheid {z:.2f}); "
+                'niet gepost, controleer de foto\'s op de site']
+    return []

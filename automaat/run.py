@@ -159,6 +159,7 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
         paden, issues = render_met_herstel(car, R)
         fouten += qa.slides(paden, issues)
         fouten += qa.fotokwaliteit(car, fotodir)
+        fouten += qa.cover_voorkant(car)
     fouten += qa.site_actueel(car, vers, listing.get(v['id']))
     story_png = None
     if config.STORY and paden:
@@ -195,8 +196,8 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     if story_png:
         hosting.naar_jpeg([story_png], proefmap, 'story')
     if labels:
-        fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(proefmap, 'fotoherkenning.jpg'))
-    json.dump({k: car[k] for k in car if k != 'optie_kandidaten'}, open(os.path.join(proefmap, 'carrousel.json'), 'w', encoding='utf-8'),
+        fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(proefmap, 'fotoherkenning.jpg'), car.get('_voorkant'))
+    json.dump({k: car[k] for k in car if k not in ('optie_kandidaten',)}, open(os.path.join(proefmap, 'carrousel.json'), 'w', encoding='utf-8'),
               ensure_ascii=False, indent=1)
 
     if fouten:
@@ -220,7 +221,7 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
             json.dump({k: vers[k] for k in ('title', 'prijs', 'table', 'bijzondere_opties', 'opties')},
                       open(os.path.join(doel, 'websitedata.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
             if labels:
-                fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(doel, 'fotoherkenning.jpg'))
+                fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(doel, 'fotoherkenning.jpg'), car.get('_voorkant'))
             R.proef += f" Bekijk de slides in de map `proef/{v['id']}/`."
         if ig and config.GITHUB_REPOSITORY:
             sha = hosting.commit_push(f"proef: slides {car['site_title']}", [doel])
