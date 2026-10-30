@@ -178,7 +178,9 @@ def kies(car, v, fotodir):
         car['pos']['contact'] = '50% 40%'
     beschrijving = ', '.join(f"{r}={nr} ({labels[nr][0]})" for r, nr in gekozen.items())
     car['_voorkant'] = {nr: round(x, 2) for nr, x in vk.items()}
-    return [f'fotokeuze via herkenning: {beschrijving}', f"cover {gekozen['hero']}: voorkant-zekerheid {zeker:.2f}"], labels
+    vk_tekst = ' '.join(f'{nr}:{labels[nr][0]}/{x:.2f}' for nr, x in sorted(vk.items()))
+    return [f'fotokeuze via herkenning: {beschrijving}', f"cover {gekozen['hero']}: voorkant-zekerheid {zeker:.2f}",
+            f'voorkant-zekerheid hele-autofoto\'s: {vk_tekst}'], labels
 
 
 def contactsheet(fotodir, labels, gekozen, doel, _vk=None):

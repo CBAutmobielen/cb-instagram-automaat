@@ -197,6 +197,9 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
         hosting.naar_jpeg([story_png], proefmap, 'story')
     if labels:
         fotokeuze.contactsheet(fotodir, labels, car['photos'], os.path.join(proefmap, 'fotoherkenning.jpg'), car.get('_voorkant'))
+        if proef and config.GITHUB_REPOSITORY:   # ook bij fouten: fotoherkenning zichtbaar in de repository
+            os.makedirs(os.path.join(config.ROOT, 'proef', v['id']), exist_ok=True)
+            shutil.copy(os.path.join(proefmap, 'fotoherkenning.jpg'), os.path.join(config.ROOT, 'proef', v['id'], 'fotoherkenning.jpg'))
     json.dump({k: car[k] for k in car if k not in ('optie_kandidaten',)}, open(os.path.join(proefmap, 'carrousel.json'), 'w', encoding='utf-8'),
               ensure_ascii=False, indent=1)
 
