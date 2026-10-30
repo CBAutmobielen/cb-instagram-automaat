@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Friday 30-10-2026 09:54 (Europe/Amsterdam) · modus: **proef** · ⚠️ 1 fout(en)
+**Laatste controle:** Friday 30-10-2026 09:58 (Europe/Amsterdam) · modus: **proef** · ✅ geen fouten
 
 | | |
 |---|---|
@@ -11,9 +11,9 @@
 | In de wachtrij | 0 |
 | Verkocht / uit wachtrij | geen |
 
-## Fouten
+## Proefrun (niets gepubliceerd)
 
-- Hyundai Tucson 1.6 T-GDi Comfort 4WD: coverfoto 08 is waarschijnlijk geen voorkant (zekerheid 0.09); niet gepost, controleer de foto's op de site
+**Hyundai Tucson 1.6 T-GDi Comfort 4WD** (€ 17.900): 5 slides en caption gemaakt, alle controles geslaagd. Bekijk de slides in de map `proef/957441/`. Instagram-koppeling getest: carrousel-container `18132563224821410` aangemaakt en goedgekeurd door Instagram (status FINISHED). **Niet gepubliceerd**; de container vervalt automatisch na 24 uur.
 
 ## Wachtrij
 
@@ -45,7 +45,9 @@ Instagram publicatielimiet: 1 van 100 gebruikt (24 uur)
 Website: 15 auto's gevonden, 13 beschikbaar
 Verkoopklaar-controle: 15 auto's bekeken | al op Instagram 3 | in wachtrij 0 (waarvan 0 nieuw) | nog niet verkoopklaar 3 | oude voorraad 9
 --- Hyundai Tucson 1.6 T-GDi Comfort 4WD (ID 957441) ---
-  fotokeuze via herkenning: hero=08 (voor_schuin), specs=03 (achter_schuin), options=02 (dashboard), d1=27 (koplamp), d2=11 (bagage), d3=29 (achterlicht), contact=30 (voor_schuin)
-  cover 08: voorkant-zekerheid 0.09
-  voorkant-zekerheid hele-autofoto's: 03:achter_schuin/0.02 05:achter_recht/0.01 08:voor_schuin/0.09 30:voor_schuin/0.08
+  fotokeuze via herkenning: hero=07 (gebouw), specs=03 (achter_schuin), options=02 (dashboard), d1=27 (koplamp), d2=11 (bagage), d3=29 (achterlicht), contact=01 (dashboard)
+  cover 07: voorkant-zekerheid 0.93
+  voorkant-zekerheid hele-autofoto's: 01:v0.95/h0.97 03:v0.02/h0.97 04:v0.86/h0.99 05:v0.01/h0.97 07:v0.93/h0.98 08:v0.09/h0.99 09:v0.68/h0.44 10:v0.12/h0.43 11:v0.01/h0.63 27:v0.97/h0.32 28:v0.07/h0.34 29:v0.09/h0.61 30:v0.08/h0.37
+  alle controles geslaagd (5 slides, caption 561 tekens)
+  proef: Instagram-container 18132563224821410 OK, niet gepubliceerd
 ```
