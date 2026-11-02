@@ -1,21 +1,15 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Sunday 01-11-2026 08:46 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
+**Laatste controle:** Monday 02-11-2026 09:18 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
 
 | | |
 |---|---|
 | Auto's op de website | 17 (16 beschikbaar) |
-| Verkoopklaar-controle | 17 auto's bekeken: 3 al op Instagram, 1 in wachtrij, 2 nog niet verkoopklaar, 9 oude voorraad |
-| Nieuw verkoopklaar | 2: Mercedes-Benz B-Klasse 180 Ambition, Volkswagen up! 1.0 |
+| Verkoopklaar-controle | 17 auto's bekeken: 3 al op Instagram, 3 in wachtrij, 2 nog niet verkoopklaar, 9 oude voorraad |
+| Nieuw verkoopklaar | 0 |
 | Vandaag gepubliceerd | niets |
 | In de wachtrij | 3 |
 | Verkocht / uit wachtrij | geen |
-
-## Prijs- en kilometerwijzigingen
-
-- Volkswagen Golf Variant 1.0 TSI Trendline 116PK: prijs € 13.900 -> € 13.700
-- Volkswagen Polo 1.0 TSI Comfortline Business: prijs € 10.800 -> € 10.700
-- Volkswagen Polo 1.0 TSI Life Business DSG: prijs € 18.900 -> € 19.400
 
 ## Wachtrij
 
@@ -48,10 +42,7 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
 Instagram publicatielimiet: 0 van 100 gebruikt (24 uur)
 Website: 17 auto's gevonden, 16 beschikbaar
-op de site verschenen: Mercedes-Benz B-Klasse 180 Ambition
-VERKOOPKLAAR: Mercedes-Benz B-Klasse 180 Ambition (vraagprijs en echte foto's aanwezig; op de site sinds 2026-11-01) -> wachtrij
-VERKOOPKLAAR: Volkswagen up! 1.0 (vraagprijs en echte foto's aanwezig; op de site sinds 2026-10-29) -> wachtrij
-Verkoopklaar-controle: 17 auto's bekeken | al op Instagram 3 | in wachtrij 1 (waarvan 2 nieuw) | nog niet verkoopklaar 2 | oude voorraad 9
+Verkoopklaar-controle: 17 auto's bekeken | al op Instagram 3 | in wachtrij 3 (waarvan 0 nieuw) | nog niet verkoopklaar 2 | oude voorraad 9
 Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
 Geen nieuwe auto's om te publiceren.
 ```
