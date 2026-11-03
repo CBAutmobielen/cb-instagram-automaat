@@ -85,6 +85,8 @@ Ga naar Settings › Secrets and variables › Actions › tabblad **Variables**
 
 Zolang deze variabele niet `aan` is, draait de automaat elke ochtend wel, maar publiceert hij niets.
 
+**Vaste regel coverfoto:** de eerste slide is ALTIJD een foto van de hele auto van voren (schuin of recht). Geen achterkant, geen zijaanzicht, geen interieur. Kan de automaat dat niet met zekerheid vaststellen, dan wordt de auto niet gepost en staat hij met een melding in het rapport. Na iedere aanpassing van de fotokeuze eerst `covertest` draaien (Run workflow › modus `covertest`): dat laat de fotokeuze voor alle auto's op de site zien in `proef/covertest.jpg`.
+
 **Wanneer is een auto nieuw?** Bij iedere controle bekijkt de automaat **alle** auto's op de site die nog nooit op Instagram zijn gezet. Een auto is verkoopklaar als hij een geldige vraagprijs heeft (geen 'Op aanvraag') en minimaal 8 echte foto's. Een Marktplaats-link op de voertuigpagina wordt vastgelegd als extra bevestiging, maar is niet verplicht. Hoe lang een auto al op de site staat maakt niet uit: een auto die weken zonder prijs of foto's online stond, gaat de wachtrij in op de dag dat hij verkoopklaar is. Zolang hij dat niet is, staat hij in het rapport onder "Op de site, nog niet verkoopklaar", met wat er nog ontbreekt.
 
 **Nooit dubbel:** een auto wordt herkend aan het vaste nummer achter in zijn URL. Is hij eenmaal op Instagram gezet, dan wordt hij nooit opnieuw gepost, ook niet als de prijs of de foto's veranderen. Pas na een geslaagde publicatie wordt een auto als geplaatst geregistreerd; mislukt het, dan blijft hij in de wachtrij.
