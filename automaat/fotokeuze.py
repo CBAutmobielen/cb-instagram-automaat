@@ -49,8 +49,9 @@ VOOR_ACHTER = ['a photo of the front of a car, showing the headlights, the front
                'a photo of the back of a car, showing the tail lights, the tailgate and the rear bumper']
 HEEL = ['a photo of an entire car parked outside, the whole car is visible',
         'a close-up photo of a detail or part of a car, or of the car interior']
-MIN_VOORKANT = 0.70
-MIN_HEEL = 0.60     # zekerheid dat de coverfoto de voorkant van de auto laat zien
+MIN_VOORKANT = 0.80   # zeker van de voorkant (niet de achterkant)
+MIN_HEEL = 0.85       # zeker dat de hele auto van buiten in beeld is (geen interieur of detail)
+BUITEN = HELE_AUTO | {'gebouw'}   # hele auto buiten; 'gebouw' = auto met het pand groot in beeld     # zekerheid dat de coverfoto de voorkant van de auto laat zien
 
 _model = None
 _va = None
@@ -115,14 +116,18 @@ def voor_en_heel(fotodir, nummers):
     return uit
 
 
-def kies_voorfoto(vh, uitsluiten=(), voorkeur=None):
-    """Hele auto van VOREN (schuin of recht), ook als het pand groot in beeld staat. Geeft (nr, voorkant-zekerheid)."""
-    kand = [(vk >= MIN_VOORKANT and heel >= MIN_HEEL, vk * heel + (0.05 if nr == voorkeur else 0), nr)
-            for nr, (vk, heel) in vh.items() if nr not in uitsluiten]
+def kies_voorfoto(vh, labels, uitsluiten=(), voorkeur=None):
+    """Hele auto van VOREN, van buiten. Geeft (nr, voorkant-zekerheid, heel-zekerheid) of (None, 0, 0)."""
+    kand = []
+    for nr, (vk, heel) in vh.items():
+        if nr in uitsluiten or labels.get(nr, ('',))[0] in ('persoon', 'document'):
+            continue
+        if vk >= MIN_VOORKANT and heel >= MIN_HEEL:
+            kand.append((vk * heel + (0.05 if nr == voorkeur else 0), nr))
     if not kand:
-        return None, 0.0
-    goed, _, nr = max(kand)
-    return nr, (vh[nr][0] if goed else min(vh[nr][0], vh[nr][1]))
+        return None, 0.0, 0.0
+    nr = max(kand)[1]
+    return nr, vh[nr][0], vh[nr][1]
 
 
 def kies(car, v, fotodir):
@@ -139,8 +144,11 @@ def kies(car, v, fotodir):
         vh = voor_en_heel(fotodir, list(labels))
     except Exception as e:
         return [f'voor/achter-controle niet beschikbaar ({e}); vaste fotokeuze'], {}
-    hero, zeker = kies_voorfoto(vh, uitsluiten=('01',), voorkeur='04')   # 01 heeft het logo-watermerk
-    car['cover_voorkant'] = round(zeker, 2)
+    # liefst niet foto 01 (daar staat het logo op); is er geen andere voorfoto, dan toch 01
+    hero, zeker, heel = kies_voorfoto(vh, labels, uitsluiten=('01',), voorkeur='04')
+    if not hero:
+        hero, zeker, heel = kies_voorfoto(vh, labels, voorkeur='01')
+    car['cover_voorkant'] = round(zeker, 2); car['cover_heel'] = round(heel, 2)
     if hero:
         gekozen['hero'] = hero; gebruikt.add(hero)
 
@@ -164,8 +172,8 @@ def kies(car, v, fotodir):
             continue
         if rol == 'contact':
             # contact: ook een hele auto van voren; liefst 01 (watermerk valt weg door de bovenuitsnede)
-            c, cz = kies_voorfoto(vh, uitsluiten=gebruikt, voorkeur='01')
-            if c and cz >= MIN_VOORKANT:
+            c, cz, _ = kies_voorfoto(vh, labels, uitsluiten=gebruikt, voorkeur='01')
+            if c:
                 gekozen[rol] = c; gebruikt.add(c); continue
         nr = beste(rol, pref)
         if nr is None:
@@ -180,7 +188,7 @@ def kies(car, v, fotodir):
     beschrijving = ', '.join(f"{r}={nr} ({labels[nr][0]})" for r, nr in gekozen.items())
     car['_voorkant'] = {nr: round(x[0], 2) for nr, x in vh.items() if x[1] >= MIN_HEEL}
     vk_tekst = ' '.join(f'{nr}:v{x[0]:.2f}/h{x[1]:.2f}' for nr, x in sorted(vh.items()) if x[1] >= 0.3)
-    return [f'fotokeuze via herkenning: {beschrijving}', f"cover {gekozen['hero']}: voorkant-zekerheid {zeker:.2f}",
+    return [f'fotokeuze via herkenning: {beschrijving}', f"cover {gekozen['hero']}: voorkant-zekerheid {zeker:.2f}, hele auto {heel:.2f}",
             f'voorkant-zekerheid hele-autofoto\'s: {vk_tekst}'], labels
 
 

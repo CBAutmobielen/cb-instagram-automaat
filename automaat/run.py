@@ -283,13 +283,53 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     return True
 
 
+def covertest():
+    """Controle zonder publiceren: welke coverfoto zou de automaat kiezen voor IEDERE beschikbare auto op de site?"""
+    from PIL import Image, ImageDraw
+    listing = site.aanbod()
+    rijen = []
+    for vid, it in listing.items():
+        if not it['beschikbaar']:
+            continue
+        try:
+            vers = site.voertuig(it['slug'])
+            fotodir = os.path.join(config.WORK_DIR, 'fotos', vid)
+            shutil.rmtree(fotodir, ignore_errors=True)
+            site.download_fotos(vers, fotodir)
+            car = content.concept(vers)
+            car['v2'] = content_v2.maak_v2(vers, nieuw=False)
+            notities, labels = fotokeuze.kies(car, vers, fotodir)
+            fout = qa.cover_voorkant(car)
+            rijen.append((vers['title'][:40], os.path.join(fotodir, car['photos']['hero'] + '.jpg'),
+                          f"foto {car['photos']['hero']}  voorkant {car.get('cover_voorkant')}  hele auto {car.get('cover_heel')}",
+                          'GEBLOKKEERD' if fout else 'OK'))
+            print(vid, rijen[-1][0], rijen[-1][2], rijen[-1][3], flush=True)
+        except Exception as e:
+            print(vid, 'fout:', e, flush=True)
+    w, h = 400, 300
+    sheet = Image.new('RGB', (4 * w, ((len(rijen) + 3) // 4) * (h + 56)), (12, 14, 18))
+    d = ImageDraw.Draw(sheet)
+    for i, (t, p, info, st) in enumerate(rijen):
+        im = Image.open(p).convert('RGB'); im.thumbnail((w, h))
+        x, y = (i % 4) * w, (i // 4) * (h + 56)
+        sheet.paste(im, (x, y))
+        d.text((x + 4, y + h + 4), t, fill=(240, 240, 240))
+        d.text((x + 4, y + h + 20), info, fill=(179, 182, 187))
+        d.text((x + 4, y + h + 36), st, fill=(80, 200, 120) if st == 'OK' else (235, 91, 40))
+    os.makedirs(os.path.join(config.ROOT, 'proef'), exist_ok=True)
+    sheet.save(os.path.join(config.ROOT, 'proef', 'covertest.jpg'), quality=85)
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--modus', choices=['dagelijks', 'proef', 'live'], default='proef')
+    ap.add_argument('--modus', choices=['dagelijks', 'proef', 'live', 'covertest'], default='proef')
     ap.add_argument('--auto', default='', help='voertuig-ID (nummer achter in de URL) om te forceren')
     ap.add_argument('--negeer-tijd', action='store_true')
     a = ap.parse_args()
 
+    if a.modus == 'covertest':
+        return covertest()
     publicatie_aan = os.environ.get('PUBLICATIE', '').strip().lower() == 'aan'
     proef = a.modus == 'proef'
     publiceren = a.modus == 'live' or (a.modus == 'dagelijks' and publicatie_aan)

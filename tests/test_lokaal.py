@@ -73,11 +73,13 @@ def fake_download(v, folder):
 site.download_fotos = fake_download
 
 AI_AAN = [True]
+COVER = {}   # nagebootste voor/achter-herkenning van de coverfoto per auto
 def fake_ai(car, v, fotodir):
     """Bootst de AI-fotokeuze na met de door een mens gemaakte keuze uit de kit."""
     if not AI_AAN[0]:
         return ['herkenning niet actief: vaste fotokeuze'], {}
     k = KIT[car['id']]; car['photos'] = dict(k['photos']); car['pos'] = dict(k.get('pos', {}))
+    car['cover_voorkant'], car['cover_heel'] = COVER.get(car['id'], (0.95, 0.98))
     return ['fotokeuze: (nagebootste) herkenning'], {}
 fotokeuze.kies = fake_ai
 
@@ -270,6 +272,20 @@ check('AMG gepost op vrijdag', db['voertuigen'][AMG]['status'] == 'gepubliceerd'
 check('oude, al verkoopklare voorraad niet als nieuw gepost', all(db['voertuigen'][x]['status'] == 'bestaand' for x in (POLO, UP, '930282')))
 alle_refs = [p['caption'].split('Ref. ')[-1].split()[0] for p in FakeIG.posts if 'Ref. ' in (p['caption'] or '')]
 check('geen enkele auto twee keer op Instagram', len(alle_refs) == len(set(alle_refs)), alle_refs)
+
+print('\n=== Cover zonder voorkant (bv. interieur of achterkant) wordt NOOIT gepost ===')
+UP2 = '938710'
+COVER[UP2] = (0.73, 0.62)          # zoals de Fiat van 3-11: interieurfoto op de cover
+n0 = len(FakeIG.posts)
+code, db = dag('2026-12-15', BASIS + [IB, Q3, AMG, UP2])
+check('post met interieur op de cover geblokkeerd', len(FakeIG.posts) == n0 and db['voertuigen'][UP2]['status'] != 'gepubliceerd',
+      db['voertuigen'][UP2]['status'])
+COVER[UP2] = (0.09, 0.99)          # zoals de Tucson van 30-10: achterkant op de cover
+code, db = dag('2026-12-18', BASIS + [IB, Q3, AMG, UP2])
+check('post met achterkant op de cover geblokkeerd', len(FakeIG.posts) == n0)
+COVER[UP2] = (0.95, 0.99)
+code, db = dag('2026-12-22', BASIS + [IB, Q3, AMG, UP2])
+check('met voorkant op de cover wel gepost', db['voertuigen'][UP2]['status'] == 'gepubliceerd', db['voertuigen'][UP2]['status'])
 
 uit = glob.glob(os.path.join(config.WORK_DIR, 'uitvoer', '*'))
 print('\nUitvoer:', TMP)
