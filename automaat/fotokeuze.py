@@ -116,7 +116,10 @@ def voor_en_heel(fotodir, nummers):
             f = m.encode_image(pre(Image.open(p).convert('RGB')).unsqueeze(0)); f = f / f.norm(dim=-1, keepdim=True)
             ps = [(100.0 * f @ t.T).softmax(dim=-1)[0].tolist() for t in _va]
             RUW[nr] = ps[0]
-            uit[nr] = tuple(p[0] for p in ps)
+            v, a, z = ps[0]
+            # voorkant: duidelijk meer voor dan achter, en geen puur zijaanzicht (dan telt hij niet als voorkant)
+            voor = v / (v + a) if v >= 0.5 * z else v
+            uit[nr] = (voor, ps[1][0], ps[2][0], v)
     return uit
 
 
@@ -124,11 +127,11 @@ def kies_voorfoto(vh, labels, uitsluiten=()):
     """Hele auto van VOREN, van buiten. Foto 01 telt mee maar met een kleine aftrek (logo erop).
     Geeft (nr, voorkant-zekerheid, heel-zekerheid) of (None, 0, 0)."""
     kand = []
-    for nr, (vk, heel, _) in vh.items():
+    for nr, (vk, heel, _, vraw) in vh.items():
         if nr in uitsluiten or labels.get(nr, ('',))[0] in ('persoon', 'document'):
             continue
         if vk >= MIN_VOORKANT and heel >= MIN_HEEL:
-            kand.append((vk * heel - (0.03 if nr == '01' else 0), nr))
+            kand.append((vraw * heel - (0.03 if nr == '01' else 0), nr))
     if not kand:
         return None, 0.0, 0.0
     nr = max(kand)[1]
