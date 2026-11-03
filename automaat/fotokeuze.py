@@ -45,10 +45,13 @@ NOOIT = {'persoon', 'gebouw', 'document', 'motor'}
 HELE_AUTO = {'voor_schuin', 'voor_recht', 'zij', 'achter_schuin', 'achter_recht'}
 
 # Aparte voor/achter-controle: het algemene model haalt 'schuin voor' en 'schuin achter' soms door elkaar.
-VOOR_ACHTER = ['a photo of the front of a car, showing the headlights, the front grille and the front bumper',
-               'a photo of the back of a car, showing the tail lights, the tailgate and the rear bumper']
+VOOR_ACHTER = ['a photo of a car seen from the front or front three-quarter angle, the headlights and the front grille are clearly visible',
+               'a photo of a car seen from the back or rear three-quarter angle, the tail lights and the tailgate are visible',
+               'a photo of a car seen exactly from the side, a side profile view']
 HEEL = ['a photo of an entire car parked outside, the whole car is visible',
         'a close-up photo of a detail or part of a car, or of the car interior']
+AUTO = ['a photo of a car, or of the interior or a detail of a car',
+        'a photo of a person, a poster, a sign or an advertisement with text']
 MIN_VOORKANT = 0.80   # zeker van de voorkant (niet de achterkant)
 MIN_HEEL = 0.85       # zeker dat de hele auto van buiten in beeld is (geen interieur of detail)
 BUITEN = HELE_AUTO | {'gebouw'}   # hele auto buiten; 'gebouw' = auto met het pand groot in beeld     # zekerheid dat de coverfoto de voorkant van de auto laat zien
@@ -94,7 +97,7 @@ def classificeer(fotodir, nummers):
 
 
 def voor_en_heel(fotodir, nummers):
-    """{nr: (kans voorkant i.p.v. achterkant, kans hele auto i.p.v. detail/interieur)}"""
+    """{nr: (kans voorkant i.p.v. achter/zij, kans hele auto i.p.v. detail/interieur, kans dat het een autofoto is)}"""
     global _va
     import torch, open_clip
     from PIL import Image
@@ -102,8 +105,7 @@ def voor_en_heel(fotodir, nummers):
     if _va is None:
         with torch.no_grad():
             tok = open_clip.get_tokenizer('ViT-B-32')
-            a = m.encode_text(tok(VOOR_ACHTER)); b = m.encode_text(tok(HEEL))
-            _va = (a / a.norm(dim=-1, keepdim=True), b / b.norm(dim=-1, keepdim=True))
+            _va = tuple((lambda e: e / e.norm(dim=-1, keepdim=True))(m.encode_text(tok(x))) for x in (VOOR_ACHTER, HEEL, AUTO))
     uit = {}
     with torch.no_grad():
         for nr in nummers:
@@ -111,19 +113,19 @@ def voor_en_heel(fotodir, nummers):
             if not os.path.exists(p):
                 continue
             f = m.encode_image(pre(Image.open(p).convert('RGB')).unsqueeze(0)); f = f / f.norm(dim=-1, keepdim=True)
-            uit[nr] = ((100.0 * f @ _va[0].T).softmax(dim=-1)[0].tolist()[0],
-                       (100.0 * f @ _va[1].T).softmax(dim=-1)[0].tolist()[0])
+            uit[nr] = tuple((100.0 * f @ t.T).softmax(dim=-1)[0].tolist()[0] for t in _va)
     return uit
 
 
-def kies_voorfoto(vh, labels, uitsluiten=(), voorkeur=None):
-    """Hele auto van VOREN, van buiten. Geeft (nr, voorkant-zekerheid, heel-zekerheid) of (None, 0, 0)."""
+def kies_voorfoto(vh, labels, uitsluiten=()):
+    """Hele auto van VOREN, van buiten. Foto 01 telt mee maar met een kleine aftrek (logo erop).
+    Geeft (nr, voorkant-zekerheid, heel-zekerheid) of (None, 0, 0)."""
     kand = []
-    for nr, (vk, heel) in vh.items():
+    for nr, (vk, heel, _) in vh.items():
         if nr in uitsluiten or labels.get(nr, ('',))[0] in ('persoon', 'document'):
             continue
         if vk >= MIN_VOORKANT and heel >= MIN_HEEL:
-            kand.append((vk * heel + (0.05 if nr == voorkeur else 0), nr))
+            kand.append((vk * heel - (0.03 if nr == '01' else 0), nr))
     if not kand:
         return None, 0.0, 0.0
     nr = max(kand)[1]
@@ -144,11 +146,12 @@ def kies(car, v, fotodir):
         vh = voor_en_heel(fotodir, list(labels))
     except Exception as e:
         return [f'voor/achter-controle niet beschikbaar ({e}); vaste fotokeuze'], {}
-    # liefst niet foto 01 (daar staat het logo op); is er geen andere voorfoto, dan toch 01
-    hero, zeker, heel = kies_voorfoto(vh, labels, uitsluiten=('01',), voorkeur='04')
-    if not hero:
-        hero, zeker, heel = kies_voorfoto(vh, labels, voorkeur='01')
-    car['cover_voorkant'] = round(zeker, 2); car['cover_heel'] = round(heel, 2)
+    car.pop('cover_voorkant', None); car.pop('cover_heel', None)   # pas invullen als de hele keuze gelukt is
+    geen_auto = {nr for nr, x in vh.items() if x[2] < 0.5}      # bv. visitekaartje/poster met persoon
+    for nr in geen_auto:
+        bruikbaar.pop(nr, None)
+    vh = {nr: x for nr, x in vh.items() if nr not in geen_auto}
+    hero, zeker, heel = kies_voorfoto(vh, labels)
     if hero:
         gekozen['hero'] = hero; gebruikt.add(hero)
 
@@ -172,7 +175,10 @@ def kies(car, v, fotodir):
             continue
         if rol == 'contact':
             # contact: ook een hele auto van voren; liefst 01 (watermerk valt weg door de bovenuitsnede)
-            c, cz, _ = kies_voorfoto(vh, labels, uitsluiten=gebruikt, voorkeur='01')
+            c, cz, _ = kies_voorfoto(vh, labels, uitsluiten=gebruikt)
+            if not c:   # geen tweede voorfoto: dan de andere foto van de hele auto buiten
+                rest = [(x[1], nr) for nr, x in vh.items() if nr not in gebruikt and x[1] >= MIN_HEEL]
+                c = max(rest)[1] if rest else None
             if c:
                 gekozen[rol] = c; gebruikt.add(c); continue
         nr = beste(rol, pref)
@@ -180,6 +186,8 @@ def kies(car, v, fotodir):
             return ['te weinig bruikbare foto\'s voor herkenning; vaste fotokeuze'], labels
         gekozen[rol] = nr; gebruikt.add(nr)
     car['photos'] = gekozen
+    if hero:
+        car['cover_voorkant'] = round(zeker, 2); car['cover_heel'] = round(heel, 2)
     car['pos'] = {}
     if gekozen['contact'] == '01':
         car['pos']['contact'] = '50% 0%'
@@ -188,6 +196,8 @@ def kies(car, v, fotodir):
     beschrijving = ', '.join(f"{r}={nr} ({labels[nr][0]})" for r, nr in gekozen.items())
     car['_voorkant'] = {nr: round(x[0], 2) for nr, x in vh.items() if x[1] >= MIN_HEEL}
     vk_tekst = ' '.join(f'{nr}:v{x[0]:.2f}/h{x[1]:.2f}' for nr, x in sorted(vh.items()) if x[1] >= 0.3)
+    if geen_auto:
+        vk_tekst += f" | geen autofoto (overgeslagen): {', '.join(sorted(geen_auto))}"
     return [f'fotokeuze via herkenning: {beschrijving}', f"cover {gekozen['hero']}: voorkant-zekerheid {zeker:.2f}, hele auto {heel:.2f}",
             f'voorkant-zekerheid hele-autofoto\'s: {vk_tekst}'], labels
 
