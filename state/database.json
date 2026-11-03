@@ -462,7 +462,7 @@
    "slug": "fiat-500-1-2-lounge-957438",
    "url": "https://www.cbautomobielen.nl/aanbod/fiat-500-1-2-lounge-957438",
    "titel": "Fiat 500 1.2 Lounge",
-   "status": "bezig",
+   "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-31",
    "laatst_gezien": "2026-11-03",
@@ -471,10 +471,10 @@
    "bouwjaar": "2019",
    "afbeeldingen_status": "OK",
    "caption_status": "OK",
-   "gepland": "2026-11-03",
+   "gepland": null,
    "gepubliceerd_op": "2026-11-03 09:01",
-   "instagram_post_id": null,
-   "instagram_permalink": null,
+   "instagram_post_id": "18442835512182019",
+   "instagram_permalink": "https://www.instagram.com/p/DfRZ8oNkSTz/",
    "pogingen": 0,
    "fouten": [],
    "wijzigingen": [
@@ -492,7 +492,8 @@
     "marktplaats": false
    },
    "eerst_op_site": "2026-10-27",
-   "verkoopklaar_sinds": "2026-10-31"
+   "verkoopklaar_sinds": "2026-10-31",
+   "opener": "Klein van formaat, compleet uitgerust met {opt1}."
   },
   "957441": {
    "id": "957441",
@@ -850,6 +851,14 @@
    "modus": "dagelijks",
    "nieuw": 0,
    "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-11-03",
+   "tijd": "09:01",
+   "modus": "dagelijks",
+   "nieuw": 0,
+   "gepubliceerd": "[Fiat 500 1.2 Lounge](https://www.instagram.com/p/DfRZ8oNkSTz/)",
    "fouten": []
   }
  ]
