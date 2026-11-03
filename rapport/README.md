@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Tuesday 03-11-2026 09:19 (Europe/Amsterdam) · modus: **proef** · ✅ geen fouten
+**Laatste controle:** Tuesday 03-11-2026 09:43 (Europe/Amsterdam) · modus: **proef** · ✅ geen fouten
 
 | | |
 |---|---|
@@ -13,7 +13,7 @@
 
 ## Proefrun (niets gepubliceerd)
 
-**Fiat 500 1.2 Lounge** (€ 9.900): 5 slides en caption gemaakt, alle controles geslaagd. Bekijk de slides in de map `proef/957438/`. Instagram-koppeling getest: carrousel-container `18133194976821410` aangemaakt en goedgekeurd door Instagram (status FINISHED). **Niet gepubliceerd**; de container vervalt automatisch na 24 uur.
+**Fiat 500 1.2 Lounge** (€ 9.900): 5 slides en caption gemaakt, alle controles geslaagd. Bekijk de slides in de map `proef/957438/`. Instagram-koppeling getest: carrousel-container `18133197673821410` aangemaakt en goedgekeurd door Instagram (status FINISHED). **Niet gepubliceerd**; de container vervalt automatisch na 24 uur.
 
 ## Wachtrij
 
@@ -48,7 +48,9 @@ Instagram publicatielimiet: 1 van 100 gebruikt (24 uur)
 Website: 17 auto's gevonden, 16 beschikbaar
 Verkoopklaar-controle: 17 auto's bekeken | al op Instagram 4 | in wachtrij 2 (waarvan 0 nieuw) | nog niet verkoopklaar 2 | oude voorraad 9
 --- Fiat 500 1.2 Lounge (ID 957438) ---
-  te weinig bruikbare foto's voor herkenning; vaste fotokeuze
+  fotokeuze via herkenning: hero=01 (voor_recht), specs=03 (achter_schuin), options=02 (dashboard), d1=04 (achter_schuin), d2=09 (bagage), d3=08 (tellers), contact=05 (achterbank)
+  cover 01: voorkant-zekerheid 0.95, hele auto 0.99
+  voorkant-zekerheid hele-autofoto's: 01:v0.95/h0.99 02:v0.27/h0.62 03:v0.17/h0.99 04:v0.10/h0.99 05:v0.03/h0.99 08:v0.91/h0.30 09:v0.10/h0.33 | geen autofoto (overgeslagen): 10
   alle controles geslaagd (5 slides, caption 554 tekens)
-  proef: Instagram-container 18133194976821410 OK, niet gepubliceerd
+  proef: Instagram-container 18133197673821410 OK, niet gepubliceerd
 ```
