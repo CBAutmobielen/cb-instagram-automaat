@@ -58,6 +58,7 @@ BUITEN = HELE_AUTO | {'gebouw'}   # hele auto buiten; 'gebouw' = auto met het pa
 
 _model = None
 _va = None
+RUW = {}
 
 
 def _laad():
@@ -113,7 +114,9 @@ def voor_en_heel(fotodir, nummers):
             if not os.path.exists(p):
                 continue
             f = m.encode_image(pre(Image.open(p).convert('RGB')).unsqueeze(0)); f = f / f.norm(dim=-1, keepdim=True)
-            uit[nr] = tuple((100.0 * f @ t.T).softmax(dim=-1)[0].tolist()[0] for t in _va)
+            ps = [(100.0 * f @ t.T).softmax(dim=-1)[0].tolist() for t in _va]
+            RUW[nr] = ps[0]
+            uit[nr] = tuple(p[0] for p in ps)
     return uit
 
 

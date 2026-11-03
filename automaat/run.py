@@ -289,7 +289,7 @@ def covertest():
     from PIL import Image, ImageDraw
     listing = site.aanbod()
     ROLV = ['hero', 'specs', 'options', 'd1', 'd2', 'd3', 'contact']
-    rijen = []
+    rijen, ruw = [], []
     for vid, it in listing.items():
         if not it['beschikbaar']:
             continue
@@ -305,6 +305,9 @@ def covertest():
             info = f"{vers['title'][:48]} | cover {car['photos'].get('hero')} voorkant {car.get('cover_voorkant')} hele auto {car.get('cover_heel')}"
             rijen.append((info, [os.path.join(fotodir, car['photos'][r] + '.jpg') for r in ROLV], 'GEBLOKKEERD' if fout else 'OK'))
             print(vid, info, rijen[-1][2], '|', notities[-1], flush=True)
+            ruw.append(f"{vid} {vers['title'][:30]} cover={car['photos'].get('hero')} | " + ' '.join(
+                f"{nr}:v{x[0]:.2f}/a{x[1]:.2f}/z{x[2]:.2f}" for nr, x in sorted(fotokeuze.RUW.items()) if nr in ('01','02','03','04','05','07','08')))
+            fotokeuze.RUW.clear()
         except Exception as e:
             print(vid, 'fout:', e, flush=True)
     w, h = 220, 165
@@ -318,6 +321,7 @@ def covertest():
             sheet.paste(im, (k * w, y + 22))
     os.makedirs(os.path.join(config.ROOT, 'proef'), exist_ok=True)
     sheet.save(os.path.join(config.ROOT, 'proef', 'covertest.jpg'), quality=85)
+    open(os.path.join(config.ROOT, 'proef', 'covertest.txt'), 'w').write('\n'.join(ruw) + '\n')
     return 0
 
 
