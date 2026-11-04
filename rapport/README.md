@@ -1,15 +1,19 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Tuesday 03-11-2026 10:03 (Europe/Amsterdam) · modus: **live** · ✅ geen fouten
+**Laatste controle:** Wednesday 04-11-2026 09:08 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ⚠️ 1 fout(en)
 
 | | |
 |---|---|
-| Auto's op de website | 17 (16 beschikbaar) |
-| Verkoopklaar-controle | 17 auto's bekeken: 3 al op Instagram, 3 in wachtrij, 2 nog niet verkoopklaar, 9 oude voorraad |
+| Auto's op de website | onbekend (? beschikbaar) |
+| Verkoopklaar-controle | niet uitgevoerd |
 | Nieuw verkoopklaar | 0 |
-| Vandaag gepubliceerd | [Fiat 500 1.2 Lounge](https://www.instagram.com/p/DfRhFz4llAh/) |
+| Vandaag gepubliceerd | niets |
 | In de wachtrij | 2 |
 | Verkocht / uit wachtrij | geen |
+
+## Fouten
+
+- Website: aanbodpagina gaf 0 auto's; mogelijk storing of gewijzigde website. Er is niets aangepast.
 
 ## Wachtrij
 
@@ -27,27 +31,9 @@
 | 2026-10-27 10:54 | Volkswagen Polo 1.0 TSI 81kW UNITED | [bekijk](https://www.instagram.com/p/De_lOXOloTr/) |
 | 2026-10-22 17:16 | Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus | [bekijk](https://www.instagram.com/p/DezSIhdkYf_/) |
 
-## Op de site, nog niet verkoopklaar
-
-Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's staan, gaan ze automatisch in de wachtrij, ook als ze al weken op de site staan.
-
-| Auto | Op de site sinds | Wat ontbreekt | Marktplaats |
-|---|---|---|---|
-| [Volkswagen Golf 2.0 GTI TCR](https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-937307) | 2026-10-22 | nog geen vraagprijs (Op aanvraag) | niet gevonden |
-| [Volkswagen Polo 1.0 TSI Life](https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-958657) | 2026-10-31 | nog geen echte foto's (4 foto's, minimaal 8) | niet gevonden |
-
 ## Verloop van deze run
 
 ```
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
 Instagram publicatielimiet: 1 van 100 gebruikt (24 uur)
-Website: 17 auto's gevonden, 16 beschikbaar
-Verkoopklaar-controle: 17 auto's bekeken | al op Instagram 3 | in wachtrij 3 (waarvan 0 nieuw) | nog niet verkoopklaar 2 | oude voorraad 9
---- Fiat 500 1.2 Lounge (ID 957438) ---
-  fotokeuze via herkenning: hero=01 (voor_recht), specs=03 (achter_schuin), options=02 (dashboard), d1=04 (achter_schuin), d2=09 (bagage), d3=08 (tellers), contact=05 (achterbank)
-  cover 01: voorkant-zekerheid 0.95, hele auto 0.99
-  voorkant-zekerheid hele-autofoto's: 01:v0.95/h0.99 02:v0.27/h0.62 03:v0.17/h0.99 04:v0.10/h0.99 05:v0.03/h0.99 08:v0.91/h0.30 09:v0.10/h0.33 | geen autofoto (overgeslagen): 10
-  alle controles geslaagd (5 slides, caption 540 tekens)
-  nacontrole: post staat online met alle slides en de juiste caption
-  GEPUBLICEERD op Instagram: https://www.instagram.com/p/DfRhFz4llAh/
 ```
