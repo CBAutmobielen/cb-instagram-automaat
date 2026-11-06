@@ -573,7 +573,7 @@
    "slug": "volkswagen-up-1-0-958039",
    "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-958039",
    "titel": "Volkswagen up! 1.0",
-   "status": "bezig",
+   "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
    "laatst_gezien": "2026-11-06",
@@ -582,10 +582,10 @@
    "bouwjaar": "2021",
    "afbeeldingen_status": "OK",
    "caption_status": "OK",
-   "gepland": "2026-11-06",
-   "gepubliceerd_op": "2026-11-06 09:06",
-   "instagram_post_id": null,
-   "instagram_permalink": null,
+   "gepland": null,
+   "gepubliceerd_op": "2026-11-06 09:07",
+   "instagram_post_id": "18642164458044847",
+   "instagram_permalink": "https://www.instagram.com/p/DfZI61pGwAa/",
    "pogingen": 0,
    "fouten": [],
    "wijzigingen": [],
@@ -596,7 +596,8 @@
     "marktplaats": false
    },
    "eerst_op_site": "2026-10-29",
-   "verkoopklaar_sinds": "2026-11-01"
+   "verkoopklaar_sinds": "2026-11-01",
+   "opener": "Ideaal in de stad: compact, met {opt1} en {opt2}."
   },
   "958657": {
    "id": "958657",
@@ -612,7 +613,7 @@
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
    "caption_status": "nog niet gemaakt",
-   "gepland": null,
+   "gepland": "2026-11-13",
    "gepubliceerd_op": null,
    "instagram_post_id": null,
    "instagram_permalink": null,
@@ -994,6 +995,14 @@
    "modus": "dagelijks",
    "nieuw": 0,
    "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-11-06",
+   "tijd": "09:07",
+   "modus": "dagelijks",
+   "nieuw": 1,
+   "gepubliceerd": "[Volkswagen up! 1.0](https://www.instagram.com/p/DfZI61pGwAa/)",
    "fouten": []
   }
  ]
