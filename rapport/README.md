@@ -1,15 +1,21 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Saturday 07-11-2026 08:48 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
+**Laatste controle:** Sunday 08-11-2026 08:49 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
 
 | | |
 |---|---|
-| Auto's op de website | 17 (13 beschikbaar) |
-| Verkoopklaar-controle | 17 auto's bekeken: 5 al op Instagram, 2 in wachtrij, 1 nog niet verkoopklaar, 7 oude voorraad |
-| Nieuw verkoopklaar | 2: SEAT Ibiza 1.0 EcoTSI FR, Volkswagen up! 1.0 BMT move up! |
+| Auto's op de website | 18 (13 beschikbaar) |
+| Verkoopklaar-controle | 18 auto's bekeken: 5 al op Instagram, 4 in wachtrij, 2 nog niet verkoopklaar, 7 oude voorraad |
+| Nieuw verkoopklaar | 0 |
 | Vandaag gepubliceerd | niets |
 | In de wachtrij | 4 |
 | Verkocht / uit wachtrij | geen |
+
+## Prijs- en kilometerwijzigingen
+
+- Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus: prijs € 12.900 -> € 12.700
+- Hyundai Tucson 1.6 T-GDi Comfort 4WD: prijs € 17.900 -> € 17.700
+- Volkswagen Polo 1.0 TSI 81kW UNITED: prijs € 17.900 -> € 17.700
 
 ## Wachtrij
 
@@ -37,16 +43,17 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 | Auto | Op de site sinds | Wat ontbreekt | Marktplaats |
 |---|---|---|---|
 | [Volkswagen Golf 2.0 GTI TCR](https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-937307) | 2026-10-22 | nog geen vraagprijs (Op aanvraag) | niet gevonden |
+| [Volkswagen Polo 1.0 TSI Comfortline](https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-961081) | 2026-11-08 | nog geen vraagprijs (Op aanvraag) | niet gevonden |
 
 ## Verloop van deze run
 
 ```
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
-Instagram publicatielimiet: 1 van 100 gebruikt (24 uur)
-Website: 17 auto's gevonden, 13 beschikbaar
-VERKOOPKLAAR: SEAT Ibiza 1.0 EcoTSI FR (vraagprijs en echte foto's aanwezig; op de site sinds 2026-11-04) -> wachtrij
-VERKOOPKLAAR: Volkswagen up! 1.0 BMT move up! (vraagprijs en echte foto's aanwezig; op de site sinds 2026-11-05) -> wachtrij
-Verkoopklaar-controle: 17 auto's bekeken | al op Instagram 5 | in wachtrij 2 (waarvan 2 nieuw) | nog niet verkoopklaar 1 | oude voorraad 7
+Instagram publicatielimiet: 0 van 100 gebruikt (24 uur)
+Website: 18 auto's gevonden, 13 beschikbaar
+op de site verschenen: Volkswagen Polo 1.0 TSI Comfortline
+nog niet verkoopklaar: Volkswagen Polo 1.0 TSI Comfortline (nog geen vraagprijs (Op aanvraag))
+Verkoopklaar-controle: 18 auto's bekeken | al op Instagram 5 | in wachtrij 4 (waarvan 0 nieuw) | nog niet verkoopklaar 2 | oude voorraad 7
 Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
 Geen nieuwe auto's om te publiceren.
 ```

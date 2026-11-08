@@ -10,8 +10,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-07",
-   "prijs": "€ 12.900",
+   "laatst_gezien": "2026-11-08",
+   "prijs": "€ 12.700",
    "kilometerstand": "174.735 km",
    "bouwjaar": "2015",
    "afbeeldingen_status": "OK",
@@ -28,6 +28,12 @@
      "veld": "prijs",
      "oud": "€ 13.445",
      "nieuw": "€ 12.900"
+    },
+    {
+     "datum": "2026-11-08",
+     "veld": "prijs",
+     "oud": "€ 12.900",
+     "nieuw": "€ 12.700"
     }
    ]
   },
@@ -61,7 +67,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 34.900",
    "kilometerstand": "81.568 km",
    "bouwjaar": null,
@@ -117,7 +123,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 6.900",
    "kilometerstand": "139.793 km",
    "bouwjaar": null,
@@ -152,7 +158,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 25.900",
    "kilometerstand": "99.975 km",
    "bouwjaar": "2016",
@@ -208,7 +214,7 @@
    "status": "niet_klaar",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": null,
    "kilometerstand": "117.717 km",
    "bouwjaar": null,
@@ -223,7 +229,7 @@
    "wijzigingen": [],
    "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
    "klaar": {
-    "datum": "2026-11-07",
+    "datum": "2026-11-08",
     "prijs": null,
     "fotos": null,
     "marktplaats": null
@@ -237,7 +243,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 13.700",
    "kilometerstand": "95.583 km",
    "bouwjaar": null,
@@ -272,7 +278,7 @@
    "status": "bestaand",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 10.700",
    "kilometerstand": "156.099 km",
    "bouwjaar": null,
@@ -313,7 +319,7 @@
    "status": "bestaand",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 18.900",
    "kilometerstand": "8.563 km",
    "bouwjaar": null,
@@ -366,7 +372,7 @@
    "status": "bestaand",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 18.900",
    "kilometerstand": "49.495 km",
    "bouwjaar": null,
@@ -394,8 +400,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-27",
-   "laatst_gezien": "2026-11-07",
-   "prijs": "€ 17.900",
+   "laatst_gezien": "2026-11-08",
+   "prijs": "€ 17.700",
    "kilometerstand": "32.422 km",
    "bouwjaar": "2021",
    "afbeeldingen_status": "OK",
@@ -424,6 +430,12 @@
      "veld": "prijs",
      "oud": "€ 18.400",
      "nieuw": "€ 17.900"
+    },
+    {
+     "datum": "2026-11-08",
+     "veld": "prijs",
+     "oud": "€ 17.900",
+     "nieuw": "€ 17.700"
     }
    ],
    "opener": "Compact, wendbaar en uitgerust met {opt1}."
@@ -483,7 +495,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-31",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 9.900",
    "kilometerstand": "107.177 km",
    "bouwjaar": "2019",
@@ -529,8 +541,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-29",
-   "laatst_gezien": "2026-11-07",
-   "prijs": "€ 17.900",
+   "laatst_gezien": "2026-11-08",
+   "prijs": "€ 17.700",
    "kilometerstand": "86.216 km",
    "bouwjaar": "2017",
    "afbeeldingen_status": "OK",
@@ -556,6 +568,12 @@
      "veld": "prijs",
      "oud": "€ 18.900",
      "nieuw": "€ 17.900"
+    },
+    {
+     "datum": "2026-11-08",
+     "veld": "prijs",
+     "oud": "€ 17.900",
+     "nieuw": "€ 17.700"
     }
    ],
    "klaar": {
@@ -576,7 +594,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 9.900",
    "kilometerstand": "83.112 km",
    "bouwjaar": "2021",
@@ -607,7 +625,7 @@
    "status": "wachtrij",
    "beschikbaar": true,
    "ontdekt": "2026-11-06",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 18.900",
    "kilometerstand": "24.477 km",
    "bouwjaar": null,
@@ -637,7 +655,7 @@
    "status": "wachtrij",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 9.900",
    "kilometerstand": "188.975 km",
    "bouwjaar": null,
@@ -667,7 +685,7 @@
    "status": "wachtrij",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 16.900",
    "kilometerstand": "55.361 km",
    "bouwjaar": null,
@@ -697,7 +715,7 @@
    "status": "wachtrij",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-07",
+   "laatst_gezien": "2026-11-08",
    "prijs": "€ 9.900",
    "kilometerstand": "115.000 km",
    "bouwjaar": null,
@@ -718,6 +736,35 @@
    },
    "eerst_op_site": "2026-11-05",
    "verkoopklaar_sinds": "2026-11-07"
+  },
+  "961081": {
+   "id": "961081",
+   "slug": "volkswagen-polo-1-0-tsi-comfortline-961081",
+   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-961081",
+   "titel": "Volkswagen Polo 1.0 TSI Comfortline",
+   "status": "niet_klaar",
+   "beschikbaar": false,
+   "ontdekt": "2026-11-08",
+   "laatst_gezien": "2026-11-08",
+   "prijs": null,
+   "kilometerstand": "147.900 km",
+   "bouwjaar": null,
+   "afbeeldingen_status": "nog niet gemaakt",
+   "caption_status": "nog niet gemaakt",
+   "gepland": null,
+   "gepubliceerd_op": null,
+   "instagram_post_id": null,
+   "instagram_permalink": null,
+   "pogingen": 0,
+   "fouten": [],
+   "wijzigingen": [],
+   "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
+   "klaar": {
+    "datum": "2026-11-08",
+    "prijs": null,
+    "fotos": null,
+    "marktplaats": null
+   }
   }
  },
  "runs": [
@@ -1012,6 +1059,14 @@
    "tijd": "08:49",
    "modus": "dagelijks",
    "nieuw": 2,
+   "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-11-08",
+   "tijd": "08:49",
+   "modus": "dagelijks",
+   "nieuw": 0,
    "gepubliceerd": null,
    "fouten": []
   }
