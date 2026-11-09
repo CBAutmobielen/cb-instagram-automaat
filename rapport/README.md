@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Sunday 08-11-2026 08:49 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
+**Laatste controle:** Monday 09-11-2026 08:01 (Europe/Amsterdam) · modus: **dagelijks (publiceren AAN)** · ✅ geen fouten
 
 | | |
 |---|---|
@@ -10,12 +10,6 @@
 | Vandaag gepubliceerd | niets |
 | In de wachtrij | 4 |
 | Verkocht / uit wachtrij | geen |
-
-## Prijs- en kilometerwijzigingen
-
-- Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus: prijs € 12.900 -> € 12.700
-- Hyundai Tucson 1.6 T-GDi Comfort 4WD: prijs € 17.900 -> € 17.700
-- Volkswagen Polo 1.0 TSI 81kW UNITED: prijs € 17.900 -> € 17.700
 
 ## Wachtrij
 
@@ -51,8 +45,6 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
 Instagram publicatielimiet: 0 van 100 gebruikt (24 uur)
 Website: 18 auto's gevonden, 13 beschikbaar
-op de site verschenen: Volkswagen Polo 1.0 TSI Comfortline
-nog niet verkoopklaar: Volkswagen Polo 1.0 TSI Comfortline (nog geen vraagprijs (Op aanvraag))
 Verkoopklaar-controle: 18 auto's bekeken | al op Instagram 5 | in wachtrij 4 (waarvan 0 nieuw) | nog niet verkoopklaar 2 | oude voorraad 7
 Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
 Geen nieuwe auto's om te publiceren.
