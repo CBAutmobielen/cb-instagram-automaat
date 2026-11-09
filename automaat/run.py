@@ -283,6 +283,42 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     return True
 
 
+def maak_story(auto=None):
+    """Story 'Nieuw binnen' (1080x1920) maken, NIET publiceren. auto = voertuig-ID of zoektekst (bv. 'fiat 500').
+    Resultaat: proef/story/<id>.png"""
+    import asyncio
+    import render as R1
+    from . import story_v2
+    listing = site.aanbod()
+    if auto and auto in listing:
+        ids = [auto]
+    else:
+        zoek = (auto or '').lower().split()
+        ids = [vid for vid, it in listing.items() if it['beschikbaar'] and all(w in (it.get('titel') or it['slug']).lower() for w in zoek)]
+    print('story voor:', ids, flush=True)
+    os.makedirs(os.path.join(config.ROOT, 'proef', 'story'), exist_ok=True)
+    R1.IMG = os.path.join(config.WORK_DIR, 'fotos')
+    for vid in ids:
+        it = listing[vid]
+        vers = site.voertuig(it['slug'])
+        fotodir = os.path.join(config.WORK_DIR, 'fotos', vid)
+        shutil.rmtree(fotodir, ignore_errors=True)
+        site.download_fotos(vers, fotodir)
+        car = content.concept(vers)
+        car['v2'] = content_v2.maak_v2(vers, nieuw=True)
+        notities, labels = fotokeuze.kies(car, vers, fotodir)
+        fout = qa.cover_voorkant(car)
+        c = dict(slug=vid, price=car['price'], photos=car['photos'], pos=car.get('pos', {}), v2=car['v2'])
+        out = os.path.join(config.ROOT, 'proef', 'story', vid + '.png')
+        issues = asyncio.run(story_v2.render(c, out))
+        info = {'id': vid, 'titel': vers['title'], 'url': it['url'], 'prijs': car['price'], 'kern': car['v2']['kern'],
+                'hoogtepunten': story_v2.hoogtepunten(car['v2']['opties']), 'alle_opties_site': vers.get('opties', []),
+                'cover': car['photos'].get('hero'), 'cover_fout': fout, 'opmaak': issues, 'notities': notities}
+        json.dump(info, open(os.path.join(config.ROOT, 'proef', 'story', vid + '.json'), 'w'), ensure_ascii=False, indent=1)
+        print(json.dumps(info, ensure_ascii=False)[:600], flush=True)
+    return 0
+
+
 def covertest():
     """Controle zonder publiceren: welke foto's zou de automaat kiezen voor IEDERE beschikbare auto op de site?
     Maakt proef/covertest.jpg: per auto een rij met cover, specs, uitrusting, details (3) en contact."""
@@ -327,13 +363,15 @@ def covertest():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--modus', choices=['dagelijks', 'proef', 'live', 'covertest'], default='proef')
+    ap.add_argument('--modus', choices=['dagelijks', 'proef', 'live', 'covertest', 'story'], default='proef')
     ap.add_argument('--auto', default='', help='voertuig-ID (nummer achter in de URL) om te forceren')
     ap.add_argument('--negeer-tijd', action='store_true')
     a = ap.parse_args()
 
     if a.modus == 'covertest':
         return covertest()
+    if a.modus == 'story':
+        return maak_story(a.auto)
     publicatie_aan = os.environ.get('PUBLICATIE', '').strip().lower() == 'aan'
     proef = a.modus == 'proef'
     publiceren = a.modus == 'live' or (a.modus == 'dagelijks' and publicatie_aan)

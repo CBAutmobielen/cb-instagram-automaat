@@ -11,7 +11,7 @@ on:
       modus:
         description: 'proef = alles testen zonder te publiceren, live = nu publiceren'
         type: choice
-        options: [proef, live, covertest]
+        options: [proef, live, covertest, story]
         default: proef
       auto:
         description: 'Optioneel: voertuig-ID (het nummer achter in de URL, bv. 941609)'
