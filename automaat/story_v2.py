@@ -20,9 +20,9 @@ html,body,.s{width:1080px!important;height:1920px!important}
 .stat .k{font-family:'DM Sans';font-weight:700;font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
 .stat .v{font-family:'Poppins';font-weight:600;font-size:44px;margin-top:12px;white-space:nowrap}
 .hl{display:flex;align-items:center;gap:18px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:8px;
-    height:84px;padding:0 24px;font-family:'Poppins';font-weight:500;font-size:31px;white-space:nowrap;overflow:hidden}
+    height:78px;padding:0 24px;font-family:'Poppins';font-weight:500;font-size:31px;white-space:nowrap;overflow:hidden}
 .hl svg{flex:none}
-.cta{position:absolute;left:72px;right:72px;top:1560px;display:flex;align-items:center;justify-content:space-between}
+.cta{position:absolute;left:72px;right:72px;top:1590px;display:flex;align-items:center;justify-content:space-between}
 .web{font-family:'DM Sans';font-weight:600;font-size:26px;letter-spacing:.06em;color:var(--mut)}
 """
 
@@ -45,22 +45,23 @@ def html(c):
     jaar = v2['kern'][0]
     hl = ''.join(f'<div class="hl">{VINK}<span data-fit="360">{E(o)}</span></div>' for o in hoogtepunten(v2['opties']))
     body = f"""
-{R.ph(c, 'hero', 0, 0, 1080, 1180)}
-<div class="fade" style="top:0;height:420px;transform:rotate(180deg);opacity:.55"></div>
-<div class="fade" style="top:860px;height:320px"></div>
-<div class="pad" style="top:262px"><div class="tag"><i></i>Nieuw binnen</div></div>
-<img class="toplogo" src="{R.LOGO}">
-<div class="pad" style="top:1050px">
+{R.ph(c, 'hero', 0, 340, 1080, 760)}
+<div class="fade" style="top:340px;height:120px;transform:rotate(180deg)"></div>
+<div class="fade" style="top:900px;height:200px"></div>
+<div class="pad" style="top:258px;display:flex;justify-content:space-between;align-items:center">
+  <div class="tag"><i></i>Nieuw binnen</div><img src="{R.LOGO}" style="height:40px;display:block">
+</div>
+<div class="pad" style="top:1040px">
   <div class="hd" data-fit="{V.CW}" style="font-size:112px">{E(v2['kop'])}</div>
   <div class="sub" data-fit="{V.CW}" style="font-size:36px;margin-top:10px">{E(v2['ondertitel'])}</div>
 </div>
-<div class="pad" style="top:1226px;display:flex;gap:40px">
+<div class="pad" style="top:1238px;display:flex;gap:40px">
   <div class="stat"><div class="k">Bouwjaar</div><div class="v">{E(jaar)}</div></div>
   <div class="stat"><div class="k">Kilometerstand</div><div class="v">{E(km)}</div></div>
-  <div class="stat" style="flex:1.15"><div class="k">Vraagprijs</div><div class="v" style="color:var(--o);font-size:52px;margin-top:6px">{E(c['price'])}</div></div>
+  <div class="stat" style="flex:1.15"><div class="k">Vraagprijs</div><div class="v" style="color:var(--o)">{E(c['price'])}</div></div>
 </div>
-<div class="pad" style="top:1370px;display:grid;grid-template-columns:1fr 1fr;gap:16px">{hl}</div>
-<div class="cta"><div class="btn" style="font-size:30px;padding:24px 36px">Stuur ons een DM</div><div class="web">CBAUTOMOBIELEN.NL</div></div>
+<div class="pad" style="top:1388px;display:grid;grid-template-columns:1fr 1fr;gap:14px">{hl}</div>
+<div class="cta"><div class="btn" style="font-size:30px;padding:22px 34px">Stuur ons een DM</div><div class="web">CBAUTOMOBIELEN.NL</div></div>
 """
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{V.css()}{EXTRA}</style></head>
 <body><div class="s">{body}</div>
@@ -70,7 +71,7 @@ def html(c):
 
 CHECK = """() => {
  const out=[];const r=e=>e.getBoundingClientRect();
- document.querySelectorAll('.hd,.sub,.stat,.hl,.btn,.web,.tag').forEach(e=>{const b=r(e);
+ document.querySelectorAll('.hd,.sub,.stat .k,.stat .v,.hl,.btn,.web,.tag').forEach(e=>{const b=r(e);
   if(b.left<71.5||b.right>1008.5) out.push('marge:'+e.className+':'+e.innerText.slice(0,30));
   if(b.top<250||b.bottom>1670) out.push('buiten veilige zone:'+e.className+':'+Math.round(b.top)+'-'+Math.round(b.bottom));
   if(e.scrollWidth>e.clientWidth+1) out.push('afgesneden:'+e.innerText.slice(0,30));
