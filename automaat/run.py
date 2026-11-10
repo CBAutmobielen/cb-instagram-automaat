@@ -372,7 +372,9 @@ def main():
         return covertest()
     if a.modus == 'story':
         return maak_story(a.auto)
-    publicatie_aan = os.environ.get('PUBLICATIE', '').strip().lower() == 'aan'
+    # 10-11-2026: op verzoek van Christian GESTOPT met automatisch posten op Instagram.
+    # Dinsdag/vrijdag worden nu stories gemaakt en gemaild (zie stories_mailen). Alleen handmatig 'live' post nog.
+    publicatie_aan = False
     proef = a.modus == 'proef'
     publiceren = a.modus == 'live' or (a.modus == 'dagelijks' and publicatie_aan)
     R = Rapport(a.modus + ('' if a.modus != 'dagelijks' else (' (publiceren AAN)' if publicatie_aan else ' (publiceren UIT)')))
