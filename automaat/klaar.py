@@ -49,7 +49,7 @@ def controleer_alle(db, listing, site, R):
         if not v:
             continue
         # 4. al op Instagram? Dan nooit opnieuw, ook niet als prijs of foto's veranderen
-        if v.get('instagram_post_id') or v['status'] in ('gepubliceerd', 'bezig'):
+        if v.get('instagram_post_id') or v.get('story_datum') or v['status'] in ('gepubliceerd', 'bezig', 'story_gemaakt'):
             tel['gepost'] += 1; continue
         if v['status'] == 'wachtrij':
             tel['wachtrij'] += 1; continue

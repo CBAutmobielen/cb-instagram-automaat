@@ -73,6 +73,7 @@ def fake_download(v, folder):
 site.download_fotos = fake_download
 
 AI_AAN = [True]
+config.STORIES = False   # de posting-scenario's hieronder testen de (uitgeschakelde) post-route
 COVER = {}   # nagebootste voor/achter-herkenning van de coverfoto per auto
 def fake_ai(car, v, fotodir):
     """Bootst de AI-fotokeuze na met de door een mens gemaakte keuze uit de kit."""
@@ -286,6 +287,24 @@ check('post met achterkant op de cover geblokkeerd', len(FakeIG.posts) == n0)
 COVER[UP2] = (0.95, 0.99)
 code, db = dag('2026-12-22', BASIS + [IB, Q3, AMG, UP2])
 check('met voorkant op de cover wel gepost', db['voertuigen'][UP2]['status'] == 'gepubliceerd', db['voertuigen'][UP2]['status'])
+
+print('\n=== Nieuwe werkwijze: dinsdag/vrijdag stories, NOOIT meer posten ===')
+config.STORIES = True
+GEMAAKT = []
+def fake_story(vid, it, doelmap):
+    GEMAAKT.append(vid)
+    return {'id': vid, 'titel': KIT[vid]['site_title'], 'url': it['url'], 'prijs': '€ 1', 'kern': ['2019'], 'hoogtepunten': [],
+            'cover': '01', 'problemen': [], 'notities': [], 'png': f'stories/x/{vid}.png'}
+runner.story_voor = fake_story
+runner.stories_overzicht = lambda d, i: None
+NW = '943067'
+n0 = len(FakeIG.posts)
+code, db = dag('2026-12-24', BASIS + [IB, Q3, AMG, UP2, NW])     # donderdag: verkoopklaar -> wachtrij
+code, db = dag('2026-12-25', BASIS + [IB, Q3, AMG, UP2, NW])     # vrijdag
+check('vrijdag: story gemaakt, niets op Instagram gepost', NW in GEMAAKT and len(FakeIG.posts) == n0 and db['voertuigen'][NW]['status'] == 'story_gemaakt',
+      db['voertuigen'][NW]['status'])
+code, db = dag('2026-12-29', BASIS + [IB, Q3, AMG, UP2, NW])     # dinsdag
+check('geen tweede story voor dezelfde auto', GEMAAKT.count(NW) == 1 and len(FakeIG.posts) == n0)
 
 uit = glob.glob(os.path.join(config.WORK_DIR, 'uitvoer', '*'))
 print('\nUitvoer:', TMP)

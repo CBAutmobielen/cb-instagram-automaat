@@ -283,39 +283,71 @@ def verwerk(v, listing, db, ig, R, publiceren, proef):
     return True
 
 
-def maak_story(auto=None):
-    """Story 'Nieuw binnen' (1080x1920) maken, NIET publiceren. auto = voertuig-ID of zoektekst (bv. 'fiat 500').
-    Resultaat: proef/story/<id>.png"""
+def story_voor(vid, it, doelmap):
+    """Maakt de 'Nieuw binnen'-story (1080x1920) voor één auto in doelmap. Publiceert niets."""
     import asyncio
     import render as R1
     from . import story_v2
+    R1.IMG = os.path.join(config.WORK_DIR, 'fotos')
+    os.makedirs(doelmap, exist_ok=True)
+    vers = site.voertuig(it['slug'])
+    fotodir = os.path.join(config.WORK_DIR, 'fotos', vid)
+    shutil.rmtree(fotodir, ignore_errors=True)
+    site.download_fotos(vers, fotodir)
+    car = content.concept(vers)
+    car['v2'] = content_v2.maak_v2(vers, nieuw=True)
+    notities, labels = fotokeuze.kies(car, vers, fotodir)
+    fout = qa.cover_voorkant(car)
+    c = dict(slug=vid, price=car['price'], photos=car['photos'], pos=car.get('pos', {}), v2=car['v2'])
+    out = os.path.join(doelmap, vid + '.png')
+    issues = asyncio.run(story_v2.render(c, out))
+    info = {'id': vid, 'titel': vers['title'], 'url': it['url'], 'prijs': car['price'], 'kern': car['v2']['kern'],
+            'hoogtepunten': story_v2.hoogtepunten(car['v2']['opties']), 'cover': car['photos'].get('hero'),
+            'problemen': fout + issues, 'notities': notities, 'png': os.path.relpath(out, config.ROOT)}
+    json.dump(info, open(os.path.join(doelmap, vid + '.json'), 'w'), ensure_ascii=False, indent=1)
+    if info['problemen']:
+        os.remove(out)          # nooit een story met fouten (bv. geen voorkant) aanbieden
+    return info
+
+
+def stories_overzicht(doelmap, infos):
+    """README in de map van de dag: wat de mail-taak gebruikt en wat Christian op GitHub ziet."""
+    datum = os.path.basename(doelmap)
+    L = [f'# Stories {datum}', '']
+    for i in infos:
+        if i['problemen']:
+            L += [f"## {i['titel']} (NIET gemaakt)", '', '- ' + '; '.join(i['problemen']), '']
+            continue
+        raw = f"https://raw.githubusercontent.com/{config.GITHUB_REPOSITORY}/main/{i['png']}"
+        L += [f"## {i['titel']}", '', f"- Prijs: {i['prijs']} · {' · '.join(i['kern'])}",
+              f"- Link voor de linksticker: {i['url']}", f'- Afbeelding: {raw}', '', f'![story]({os.path.basename(i["png"])})', '']
+    open(os.path.join(doelmap, 'README.md'), 'w', encoding='utf-8').write('\n'.join(L))
+
+
+def maak_story(auto=None):
+    """Handmatig: stories maken voor één of meer auto's (voertuig-ID's met komma's, of zoektekst zoals 'fiat 500').
+    Resultaat: stories/<datum>/<id>.png"""
     listing = site.aanbod()
-    if auto and auto in listing:
-        ids = [auto]
+    delen = [x.strip() for x in (auto or '').split(',') if x.strip()]
+    if delen and all(x in listing for x in delen):
+        ids = delen
     else:
         zoek = (auto or '').lower().split()
         ids = [vid for vid, it in listing.items() if it['beschikbaar'] and all(w in (it.get('titel') or it['slug']).lower() for w in zoek)]
     print('story voor:', ids, flush=True)
-    os.makedirs(os.path.join(config.ROOT, 'proef', 'story'), exist_ok=True)
-    R1.IMG = os.path.join(config.WORK_DIR, 'fotos')
+    doelmap = os.path.join(config.ROOT, 'stories', config.vandaag())
+    db = dbm.laad()
+    infos = []
     for vid in ids:
-        it = listing[vid]
-        vers = site.voertuig(it['slug'])
-        fotodir = os.path.join(config.WORK_DIR, 'fotos', vid)
-        shutil.rmtree(fotodir, ignore_errors=True)
-        site.download_fotos(vers, fotodir)
-        car = content.concept(vers)
-        car['v2'] = content_v2.maak_v2(vers, nieuw=True)
-        notities, labels = fotokeuze.kies(car, vers, fotodir)
-        fout = qa.cover_voorkant(car)
-        c = dict(slug=vid, price=car['price'], photos=car['photos'], pos=car.get('pos', {}), v2=car['v2'])
-        out = os.path.join(config.ROOT, 'proef', 'story', vid + '.png')
-        issues = asyncio.run(story_v2.render(c, out))
-        info = {'id': vid, 'titel': vers['title'], 'url': it['url'], 'prijs': car['price'], 'kern': car['v2']['kern'],
-                'hoogtepunten': story_v2.hoogtepunten(car['v2']['opties']), 'alle_opties_site': vers.get('opties', []),
-                'cover': car['photos'].get('hero'), 'cover_fout': fout, 'opmaak': issues, 'notities': notities}
-        json.dump(info, open(os.path.join(config.ROOT, 'proef', 'story', vid + '.json'), 'w'), ensure_ascii=False, indent=1)
-        print(json.dumps(info, ensure_ascii=False)[:600], flush=True)
+        info = story_voor(vid, listing[vid], doelmap); infos.append(info)
+        v = db['voertuigen'].get(vid)
+        if v and not info['problemen']:
+            v['story_datum'] = config.vandaag()
+            if v['status'] == 'wachtrij':
+                v['status'] = 'story_gemaakt'
+        print(json.dumps(info, ensure_ascii=False)[:400], flush=True)
+    stories_overzicht(doelmap, infos)
+    dbm.bewaar(db)
     return 0
 
 
@@ -374,7 +406,7 @@ def main():
         return maak_story(a.auto)
     # 10-11-2026: op verzoek van Christian GESTOPT met automatisch posten op Instagram.
     # Dinsdag/vrijdag worden nu stories gemaakt en gemaild (zie stories_mailen). Alleen handmatig 'live' post nog.
-    publicatie_aan = False
+    publicatie_aan = not config.STORIES and os.environ.get('PUBLICATIE', '').strip().lower() == 'aan'
     proef = a.modus == 'proef'
     publiceren = a.modus == 'live' or (a.modus == 'dagelijks' and publicatie_aan)
     R = Rapport(a.modus + ('' if a.modus != 'dagelijks' else (' (publiceren AAN)' if publicatie_aan else ' (publiceren UIT)')))
@@ -439,6 +471,27 @@ def main():
             kandidaten = []
         elif not proef and al >= config.POSTS_PER_DAG:
             R.log(f'Vandaag is al {al} auto gepubliceerd; maximum {config.POSTS_PER_DAG} per dag. Overige blijven in de wachtrij.')
+            kandidaten = []
+        if a.modus == 'dagelijks' and config.STORIES:
+            # Sinds 10-11-2026: GEEN Instagram-posts meer. Op publicatiedagen een story per nieuwe, verkoopklare auto;
+            # die worden daarna naar info@cbautomobielen.nl gemaild en door Christian zelf in zijn verhaal gezet.
+            if kandidaten:
+                doelmap = os.path.join(config.ROOT, 'stories', config.vandaag())
+                infos = []
+                for v in kandidaten[:6]:
+                    try:
+                        info = story_voor(v['id'], listing[v['id']], doelmap); infos.append(info)
+                        if info['problemen']:
+                            R.waarschuwing(f"story {v['titel']} niet gemaakt: {'; '.join(info['problemen'])}")
+                        else:
+                            v['status'] = 'story_gemaakt'; v['story_datum'] = config.vandaag()
+                            R.log(f"STORY gemaakt: {v['titel']} -> {info['png']}")
+                    except Exception as e:
+                        R.fout(f"story {v['titel']}: {e}"); traceback.print_exc()
+                stories_overzicht(doelmap, infos)
+                R.gepubliceerd = ', '.join(i['titel'] for i in infos if not i['problemen']) + ' (story gemaakt, niet gepost)'
+            else:
+                R.log('Geen nieuwe auto\'s: vandaag geen stories.')
             kandidaten = []
         if not kandidaten:
             R.log('Geen nieuwe auto\'s om te publiceren.')

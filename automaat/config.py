@@ -53,3 +53,6 @@ def nu():
 
 def vandaag():
     return nu().strftime('%Y-%m-%d')
+
+# Sinds 10-11-2026: dinsdag/vrijdag stories maken en mailen i.p.v. posten op Instagram (op verzoek van Christian)
+STORIES = True
