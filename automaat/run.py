@@ -303,7 +303,8 @@ def story_voor(vid, it, doelmap):
     issues = asyncio.run(story_v2.render(c, out))
     info = {'id': vid, 'titel': vers['title'], 'url': it['url'], 'prijs': car['price'], 'kern': car['v2']['kern'],
             'hoogtepunten': story_v2.hoogtepunten(car['v2']['opties']), 'cover': car['photos'].get('hero'),
-            'problemen': fout + issues, 'notities': notities, 'png': os.path.relpath(out, config.ROOT)}
+            'problemen': fout + issues, 'notities': notities, 'png': os.path.relpath(out, config.ROOT),
+            'tekst': story_v2.tekst_ideeen(vers['title'], car['v2'], car['price'])}
     json.dump(info, open(os.path.join(doelmap, vid + '.json'), 'w'), ensure_ascii=False, indent=1)
     if info['problemen']:
         os.remove(out)          # nooit een story met fouten (bv. geen voorkant) aanbieden
@@ -320,7 +321,10 @@ def stories_overzicht(doelmap, infos):
             continue
         raw = f"https://raw.githubusercontent.com/{config.GITHUB_REPOSITORY}/main/{i['png']}"
         L += [f"## {i['titel']}", '', f"- Prijs: {i['prijs']} · {' · '.join(i['kern'])}",
-              f"- Link voor de linksticker: {i['url']}", f'- Afbeelding: {raw}', '', f'![story]({os.path.basename(i["png"])})', '']
+              f"- Link voor de linksticker: {i['url']}", f'- Afbeelding: {raw}', '', '**Tekstideeën voor in je verhaal:**', '']
+        for t in i.get('tekst', []):
+            L += ['```', t, '```', '']
+        L += [f'![story]({os.path.basename(i["png"])})', '']
     open(os.path.join(doelmap, 'README.md'), 'w', encoding='utf-8').write('\n'.join(L))
 
 
