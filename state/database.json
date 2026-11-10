@@ -549,7 +549,8 @@
      "datum": "2026-11-03 09:01",
      "reden": "verkeerde coverfoto (interieur); vervangen op verzoek"
     }
-   ]
+   ],
+   "story_datum": "2026-11-10"
   },
   "957441": {
    "id": "957441",
@@ -639,7 +640,8 @@
    },
    "eerst_op_site": "2026-10-29",
    "verkoopklaar_sinds": "2026-11-01",
-   "opener": "Ideaal in de stad: compact, met {opt1} en {opt2}."
+   "opener": "Ideaal in de stad: compact, met {opt1} en {opt2}.",
+   "story_datum": "2026-11-10"
   },
   "958657": {
    "id": "958657",
@@ -700,7 +702,8 @@
     "fotos": 37,
     "marktplaats": false
    },
-   "opener": "Premium rijcomfort met {opt1} en {opt2}."
+   "opener": "Premium rijcomfort met {opt1} en {opt2}.",
+   "story_datum": "2026-11-10"
   },
   "959772": {
    "id": "959772",
