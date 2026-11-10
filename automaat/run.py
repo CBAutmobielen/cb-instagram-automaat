@@ -314,6 +314,10 @@ def story_voor(vid, it, doelmap):
 def stories_overzicht(doelmap, infos):
     """README in de map van de dag: wat de mail-taak gebruikt en wat Christian op GitHub ziet."""
     datum = os.path.basename(doelmap)
+    nieuw = {i['id'] for i in infos}
+    import glob as _g
+    eerder = [json.load(open(f)) for f in sorted(_g.glob(os.path.join(doelmap, '*.json')))]
+    infos = list(infos) + [i for i in eerder if i.get('id') not in nieuw]   # eerdere runs van dezelfde dag behouden
     L = [f'# Stories {datum}', '']
     for i in infos:
         if i['problemen']:

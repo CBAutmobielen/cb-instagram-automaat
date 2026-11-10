@@ -136,5 +136,5 @@ def tekst_ideeen(titel, v2, prijs):
     hp = [hp[0]] + [klein(o) for o in hp[1:]] if hp else []
     lijst = ', '.join(hp[:-1]) + (' en ' + hp[-1] if len(hp) > 1 else (hp[0] if hp else ''))
     a = f"Net binnen! 🔥 {naam} {v2['ondertitel']}\n{lijst}.\n{kern} · {prijs}\nTik op de link voor alle foto's 👆"
-    b = f"Wie wordt de nieuwe eigenaar? 🔑\n{naam}: {klein(lijst) if lijst else ''}.\nNu bij CB Automobielen in Sneek · {prijs}"
+    b = f"Wie wordt de nieuwe eigenaar? 🔑\n{naam} met {klein(lijst) if lijst else ''}.\nNu bij CB Automobielen in Sneek · {prijs}"
     return [a, b]
