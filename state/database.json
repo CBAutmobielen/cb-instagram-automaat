@@ -676,7 +676,7 @@
    "slug": "mercedes-benz-b-klasse-180-ambition-958827",
    "url": "https://www.cbautomobielen.nl/aanbod/mercedes-benz-b-klasse-180-ambition-958827",
    "titel": "Mercedes-Benz B-Klasse 180 Ambition",
-   "status": "bezig",
+   "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
    "laatst_gezien": "2026-11-10",
@@ -685,10 +685,10 @@
    "bouwjaar": "2013",
    "afbeeldingen_status": "OK",
    "caption_status": "OK",
-   "gepland": "2026-11-10",
+   "gepland": null,
    "gepubliceerd_op": "2026-11-10 09:03",
-   "instagram_post_id": null,
-   "instagram_permalink": null,
+   "instagram_post_id": "17921279082460881",
+   "instagram_permalink": "https://www.instagram.com/p/Dfjbt8glT_u/",
    "pogingen": 0,
    "fouten": [],
    "wijzigingen": [],
@@ -699,7 +699,8 @@
     "prijs": "€ 9.900",
     "fotos": 37,
     "marktplaats": false
-   }
+   },
+   "opener": "Premium rijcomfort met {opt1} en {opt2}."
   },
   "959772": {
    "id": "959772",
@@ -1100,6 +1101,14 @@
    "modus": "dagelijks",
    "nieuw": 0,
    "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-11-10",
+   "tijd": "09:03",
+   "modus": "dagelijks",
+   "nieuw": 0,
+   "gepubliceerd": "[Mercedes-Benz B-Klasse 180 Ambition](https://www.instagram.com/p/Dfjbt8glT_u/)",
    "fouten": []
   }
  ]
