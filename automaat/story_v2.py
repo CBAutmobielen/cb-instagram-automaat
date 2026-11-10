@@ -43,6 +43,7 @@ VINK = ('<svg width="34" height="34" viewBox="0 0 34 34"><rect width="34" height
 
 def hoogtepunten(opts, n=4):
     """Cruise control altijd vooraan als de auto het heeft; daarna de sterkste opties uit de post."""
+    opts = [re.sub(r'^Airconditioning,? automatisch$', 'Automatische airco', o, flags=re.I) for o in opts]
     eerst = [o for o in opts if re.search(r'cruise', o, re.I)]
     rest = [o for o in opts if o not in eerst]
     return (eerst + rest)[:n]
