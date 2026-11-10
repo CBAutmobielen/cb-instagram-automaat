@@ -32,6 +32,12 @@ html,body,.s{width:1080px!important;height:1920px!important}
 .prijsrij{display:flex;justify-content:space-between;align-items:flex-end;margin-top:30px;border-top:1px solid rgba(255,255,255,.08);padding-top:28px}
 .prijs{font-family:'Poppins';font-weight:600;font-size:66px;letter-spacing:-.015em;line-height:1;color:#F5F5F4;white-space:nowrap}
 .rk{font-family:'DM Sans';font-weight:500;font-size:24px;color:#94979C;text-align:right;margin-top:12px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:1.3fr .8fr 1.1fr;margin-top:26px;border-top:1px solid rgba(255,255,255,.08);padding-top:26px}
+.stats>div+div{border-left:1px solid rgba(255,255,255,.08);padding-left:28px}
+.sk{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:#94979C;line-height:1}
+.sv{display:inline-block;font-family:'Poppins';font-weight:600;font-size:54px;letter-spacing:-.015em;line-height:1;color:#F5F5F4;margin-top:14px;white-space:nowrap}
+.dm{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:12px;text-align:right}
+.dm .t{display:flex;align-items:center;gap:14px;font-family:'Poppins';font-weight:600;font-size:32px;color:#F5F5F4;white-space:nowrap}
 .hint{position:absolute;left:0;right:0;text-align:center;font-family:'Poppins';font-weight:600;font-size:26px;letter-spacing:.14em;
       text-transform:uppercase;color:#94979C}
 .hint em{font-style:normal;color:var(--o)}
@@ -64,30 +70,35 @@ def html(c):
     km = next((k for k in kern if 'km' in k), '')
     jaar = next((k for k in kern if re.fullmatch(r'(19|20)\d\d', k)), '')
     pk = next((k for k in kern if 'pk' in k), '')
-    meta = '<b></b>'.join(f'<span>{E(x)}</span>' for x in (km, jaar, pk) if x)
     naam = v2['kop'].title() if v2['kop'].isupper() else v2['kop']
     naam = re.sub(r'\bUp!', 'up!', naam)
     naam = re.sub(r'\bBmw\b', 'BMW', re.sub(r'\bVw\b', 'VW', re.sub(r'(?<=-)Benz', 'Benz', naam)))
-    punten = ''.join(f'<div class="punt">{VINK}<span data-fit="470">{E(o)}</span></div>' for o in hoogtepunten(v2['opties'], 3))
-    rk = '<div class="rk">Rijklaar afgeleverd</div>' if v2.get('rijklaar') else ''   # alleen als het op de site staat
+    punten = ''.join(f'<div class="punt">{VINK}<span data-fit="440">{E(o)}</span></div>' for o in hoogtepunten(v2['opties'], 3))
+    rk = '<div class="rk" style="margin-top:6px">Rijklaar afgeleverd</div>' if v2.get('rijklaar') else ''   # alleen als het op de site staat
+    dm_icoon = ('<svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#EB5B28"/>'
+                '<path d="M11 19.5L29 12l-5.5 17-4.2-6.3-6.8-3.2z M19.3 22.7L29 12" stroke="#fff" stroke-width="2.4" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>')
     body = f"""
 <div class="pad" style="top:262px;display:flex;justify-content:space-between;align-items:center">
   <img src="{R.LOGO}" style="height:42px;display:block"><div class="pill"><i></i>Nieuw binnen</div>
 </div>
-{R.ph(c, 'hero', 0, 340, 1080, 810)}
-<div class="fade" style="top:340px;height:90px;transform:rotate(180deg)"></div>
-<div class="fade" style="top:1030px;height:120px"></div>
-<div class="kaart" style="top:1096px">
+{R.ph(c, 'hero', 0, 336, 1080, 770)}
+<div class="fade" style="top:336px;height:90px;transform:rotate(180deg)"></div>
+<div class="fade" style="top:990px;height:116px"></div>
+<div class="kaart" style="top:1052px">
   <div class="titel" data-fit="880">{E(naam)}</div>
-  <div class="uitv" data-fit="880">{E(v2['ondertitel'])}</div>
-  <div class="meta">{meta}</div>
+  <div class="uitv" data-fit="880">{E(v2['ondertitel'])}{(' · ' + E(pk)) if pk else ''}</div>
+  <div class="stats">
+    <div><div class="sk">Kilometerstand</div><div class="sv" data-fit="270">{E(km)}</div></div>
+    <div><div class="sk">Bouwjaar</div><div class="sv">{E(jaar)}</div></div>
+    <div><div class="sk">Vraagprijs</div><div class="sv" data-fit="300" style="color:var(--o)">{E(c['price'])}</div></div>
+  </div>
   <div class="onder">
     <div class="lijst">{punten}</div>
-    <div style="text-align:right"><div class="eyebrow" style="font-size:22px">Vraagprijs</div>
-      <div class="prijs" style="margin-top:14px">{E(c['price'])}</div>{rk}</div>
+    <div class="dm"><div class="eyebrow" style="font-size:22px">Interesse?</div>
+      <div class="t">{dm_icoon}Stuur ons een DM</div>{rk}</div>
   </div>
 </div>
-<div class="hint" style="top:1616px">Alle foto's via de link <em>&#8595;</em></div>
+<div class="hint" style="top:1628px">Alle foto's via de link <em>&#8595;</em></div>
 """
     import render_v2 as V
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{V.css()}{EXTRA}</style></head>
@@ -98,7 +109,7 @@ def html(c):
 
 CHECK = """() => {
  const out=[];const r=e=>e.getBoundingClientRect();
- document.querySelectorAll('.titel,.uitv,.meta,.punt,.prijs,.rk,.eyebrow,.pill,.hint,.kaart').forEach(e=>{const b=r(e);
+ document.querySelectorAll('.titel,.uitv,.sk,.sv,.punt,.dm .t,.rk,.eyebrow,.pill,.hint,.kaart').forEach(e=>{const b=r(e);
   if(!e.classList.contains('hint')&&(b.left<55.5||b.right>1024.5)) out.push('marge:'+e.className+':'+e.innerText.slice(0,30));
   if(b.top<250||b.bottom>1670) out.push('buiten veilige zone:'+e.className+':'+Math.round(b.top)+'-'+Math.round(b.bottom));
   if(e.scrollWidth>e.clientWidth+1) out.push('afgesneden:'+e.innerText.slice(0,30));
