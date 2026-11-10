@@ -55,7 +55,7 @@ Nu bij CB Automobielen in Sneek · € 9.900
 **Tekstideeën voor in je verhaal:**
 
 ```
-Net binnen! 🔥 Volkswagen Up! 1.0
+Net binnen! 🔥 Volkswagen up! 1.0
 Cruise control, achteruitrijcamera en airconditioning, automatisch.
 2021 · 83.112 km · 65 pk · € 9.900
 Tik op de link voor alle foto's 👆
@@ -63,7 +63,7 @@ Tik op de link voor alle foto's 👆
 
 ```
 Wie wordt de nieuwe eigenaar? 🔑
-Volkswagen Up!: cruise control, achteruitrijcamera en airconditioning, automatisch.
+Volkswagen up!: cruise control, achteruitrijcamera en airconditioning, automatisch.
 Nu bij CB Automobielen in Sneek · € 9.900
 ```
 
