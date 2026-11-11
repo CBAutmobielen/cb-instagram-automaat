@@ -10,7 +10,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-10",
+   "laatst_gezien": "2026-11-11",
    "prijs": "€ 12.400",
    "kilometerstand": "174.735 km",
    "bouwjaar": "2015",
@@ -73,7 +73,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-10",
+   "laatst_gezien": "2026-11-11",
    "prijs": "€ 34.900",
    "kilometerstand": "81.568 km",
    "bouwjaar": null,
@@ -129,8 +129,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-10",
-   "prijs": "€ 6.900",
+   "laatst_gezien": "2026-11-11",
+   "prijs": "€ 6.800",
    "kilometerstand": "139.793 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -147,6 +147,12 @@
      "veld": "prijs",
      "oud": "€ 7.400",
      "nieuw": "€ 6.900"
+    },
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 6.900",
+     "nieuw": "€ 6.800"
     }
    ],
    "klaar": {
@@ -162,7 +168,7 @@
    "url": "https://www.cbautomobielen.nl/aanbod/mercedes-benz-a-klasse-amg-45-4matic-939529",
    "titel": "Mercedes-Benz A-Klasse AMG 45 4MATIC",
    "status": "bestaand",
-   "beschikbaar": true,
+   "beschikbaar": false,
    "ontdekt": "2026-10-22",
    "laatst_gezien": "2026-11-10",
    "prijs": "€ 25.900",
@@ -220,7 +226,7 @@
    "status": "niet_klaar",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-10",
+   "laatst_gezien": "2026-11-11",
    "prijs": null,
    "kilometerstand": "117.717 km",
    "bouwjaar": null,
@@ -235,7 +241,7 @@
    "wijzigingen": [],
    "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
    "klaar": {
-    "datum": "2026-11-10",
+    "datum": "2026-11-11",
     "prijs": null,
     "fotos": null,
     "marktplaats": null
@@ -249,8 +255,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-10",
-   "prijs": "€ 13.900",
+   "laatst_gezien": "2026-11-11",
+   "prijs": "€ 13.800",
    "kilometerstand": "95.583 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -273,6 +279,12 @@
      "veld": "prijs",
      "oud": "€ 13.700",
      "nieuw": "€ 13.900"
+    },
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 13.900",
+     "nieuw": "€ 13.800"
     }
    ],
    "klaar": {
@@ -290,7 +302,7 @@
    "status": "bestaand",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-10",
+   "laatst_gezien": "2026-11-11",
    "prijs": "€ 10.700",
    "kilometerstand": "156.099 km",
    "bouwjaar": null,
@@ -412,7 +424,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-27",
-   "laatst_gezien": "2026-11-10",
+   "laatst_gezien": "2026-11-11",
    "prijs": "€ 17.400",
    "kilometerstand": "32.422 km",
    "bouwjaar": "2021",
@@ -513,7 +525,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-31",
-   "laatst_gezien": "2026-11-10",
+   "laatst_gezien": "2026-11-11",
    "prijs": "€ 9.900",
    "kilometerstand": "107.177 km",
    "bouwjaar": "2019",
@@ -560,8 +572,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-29",
-   "laatst_gezien": "2026-11-10",
-   "prijs": "€ 17.400",
+   "laatst_gezien": "2026-11-11",
+   "prijs": "€ 17.800",
    "kilometerstand": "86.216 km",
    "bouwjaar": "2017",
    "afbeeldingen_status": "OK",
@@ -599,6 +611,12 @@
      "veld": "prijs",
      "oud": "€ 17.700",
      "nieuw": "€ 17.400"
+    },
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 17.400",
+     "nieuw": "€ 17.800"
     }
    ],
    "klaar": {
@@ -619,8 +637,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-10",
-   "prijs": "€ 9.900",
+   "laatst_gezien": "2026-11-11",
+   "prijs": "€ 9.800",
    "kilometerstand": "83.112 km",
    "bouwjaar": "2021",
    "afbeeldingen_status": "OK",
@@ -631,7 +649,14 @@
    "instagram_permalink": "https://www.instagram.com/p/DfZI61pGwAa/",
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
+   "wijzigingen": [
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 9.900",
+     "nieuw": "€ 9.800"
+    }
+   ],
    "klaar": {
     "datum": "2026-11-01",
     "prijs": "€ 9.900",
@@ -651,8 +676,8 @@
    "status": "wachtrij",
    "beschikbaar": true,
    "ontdekt": "2026-11-06",
-   "laatst_gezien": "2026-11-10",
-   "prijs": "€ 18.900",
+   "laatst_gezien": "2026-11-11",
+   "prijs": "€ 18.800",
    "kilometerstand": "24.477 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -663,7 +688,14 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
+   "wijzigingen": [
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 18.900",
+     "nieuw": "€ 18.800"
+    }
+   ],
    "klaar": {
     "datum": "2026-11-06",
     "prijs": "€ 18.900",
@@ -681,8 +713,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-10",
-   "prijs": "€ 9.900",
+   "laatst_gezien": "2026-11-11",
+   "prijs": "€ 9.800",
    "kilometerstand": "188.975 km",
    "bouwjaar": "2013",
    "afbeeldingen_status": "OK",
@@ -693,7 +725,14 @@
    "instagram_permalink": "https://www.instagram.com/p/Dfjbt8glT_u/",
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
+   "wijzigingen": [
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 9.900",
+     "nieuw": "€ 9.800"
+    }
+   ],
    "eerst_op_site": "2026-11-01",
    "verkoopklaar_sinds": "2026-11-01",
    "klaar": {
@@ -713,8 +752,8 @@
    "status": "wachtrij",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-10",
-   "prijs": "€ 16.900",
+   "laatst_gezien": "2026-11-11",
+   "prijs": "€ 16.800",
    "kilometerstand": "55.361 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -725,7 +764,14 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
+   "wijzigingen": [
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 16.900",
+     "nieuw": "€ 16.800"
+    }
+   ],
    "klaar": {
     "datum": "2026-11-07",
     "prijs": "€ 16.900",
@@ -743,7 +789,7 @@
    "status": "wachtrij",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-10",
+   "laatst_gezien": "2026-11-11",
    "prijs": "€ 9.900",
    "kilometerstand": "115.000 km",
    "bouwjaar": null,
@@ -771,10 +817,10 @@
    "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-961081",
    "titel": "Volkswagen Polo 1.0 TSI Comfortline",
    "status": "niet_klaar",
-   "beschikbaar": false,
+   "beschikbaar": true,
    "ontdekt": "2026-11-08",
-   "laatst_gezien": "2026-11-10",
-   "prijs": null,
+   "laatst_gezien": "2026-11-11",
+   "prijs": "€ 11.900",
    "kilometerstand": "147.900 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -786,12 +832,12 @@
    "pogingen": 0,
    "fouten": [],
    "wijzigingen": [],
-   "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
+   "niet_klaar_reden": "nog geen echte foto's (4 foto's, minimaal 8)",
    "klaar": {
-    "datum": "2026-11-10",
-    "prijs": null,
-    "fotos": null,
-    "marktplaats": null
+    "datum": "2026-11-11",
+    "prijs": "€ 11.900",
+    "fotos": 4,
+    "marktplaats": false
    }
   }
  },
@@ -1112,6 +1158,14 @@
    "modus": "dagelijks",
    "nieuw": 0,
    "gepubliceerd": "[Mercedes-Benz B-Klasse 180 Ambition](https://www.instagram.com/p/Dfjbt8glT_u/)",
+   "fouten": []
+  },
+  {
+   "datum": "2026-11-11",
+   "tijd": "09:08",
+   "modus": "dagelijks",
+   "nieuw": 0,
+   "gepubliceerd": null,
    "fouten": []
   }
  ]
