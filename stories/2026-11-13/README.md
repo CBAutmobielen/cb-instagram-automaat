@@ -1,5 +1,28 @@
 # Stories 2026-11-13
 
+## Volkswagen Polo 1.0 TSI Life Business DSG
+
+- Prijs: € 18.800 · 2022 · 24.484 km · 95 pk
+- Link voor de linksticker: https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-business-dsg-57819988
+- Afbeelding: https://raw.githubusercontent.com/CBAutmobielen/cb-instagram-automaat/main/stories/2026-11-13/57819988.png
+
+**Tekstideeën voor in je verhaal:**
+
+```
+Net binnen! 🔥 Volkswagen Polo 1.0 TSI Life Business DSG
+Cruise control, navigatie en LED koplampen.
+2022 · 24.484 km · 95 pk · € 18.800
+Tik op de link voor alle foto's 👆
+```
+
+```
+Wie wordt de nieuwe eigenaar? 🔑
+Volkswagen Polo met cruise control, navigatie en LED koplampen.
+Nu bij CB Automobielen in Sneek · € 18.800
+```
+
+![story](57819988.png)
+
 ## Volkswagen Polo 1.0 TSI Life
 
 - Prijs: € 17.400 · 2021 · 32.422 km · 110 pk
