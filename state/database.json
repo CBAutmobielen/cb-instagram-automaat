@@ -2,47 +2,6 @@
  "versie": 1,
  "baseline_gedaan": true,
  "voertuigen": {
-  "952652": {
-   "id": "952652",
-   "slug": "audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-952652",
-   "url": "https://www.cbautomobielen.nl/aanbod/audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-952652",
-   "titel": "Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus",
-   "status": "gepubliceerd",
-   "beschikbaar": false,
-   "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
-   "prijs": "€ 12.400",
-   "kilometerstand": "174.735 km",
-   "bouwjaar": "2015",
-   "afbeeldingen_status": "OK",
-   "caption_status": "OK",
-   "gepland": null,
-   "gepubliceerd_op": "2026-10-22 17:16",
-   "instagram_post_id": "18132260668750274",
-   "instagram_permalink": "https://www.instagram.com/p/DezSIhdkYf_/",
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [
-    {
-     "datum": "2026-10-30",
-     "veld": "prijs",
-     "oud": "€ 13.445",
-     "nieuw": "€ 12.900"
-    },
-    {
-     "datum": "2026-11-08",
-     "veld": "prijs",
-     "oud": "€ 12.900",
-     "nieuw": "€ 12.700"
-    },
-    {
-     "datum": "2026-11-10",
-     "veld": "prijs",
-     "oud": "€ 12.700",
-     "nieuw": "€ 12.400"
-    }
-   ]
-  },
   "947355": {
    "id": "947355",
    "slug": "audi-a4-limousine-4-2-v8-quattro-s4-pro-line-947355",
@@ -64,34 +23,6 @@
    "pogingen": 0,
    "fouten": [],
    "wijzigingen": []
-  },
-  "917880": {
-   "id": "917880",
-   "slug": "audi-q3-sportback-45-tfsi-quattro-pro-line-s-917880",
-   "url": "https://www.cbautomobielen.nl/aanbod/audi-q3-sportback-45-tfsi-quattro-pro-line-s-917880",
-   "titel": "Audi Q3 Sportback 45 TFSI quattro Pro Line S",
-   "status": "bestaand",
-   "beschikbaar": false,
-   "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
-   "prijs": "€ 34.900",
-   "kilometerstand": "81.568 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "klaar": {
-    "datum": "2026-10-27",
-    "prijs": "€ 34.900",
-    "fotos": 37,
-    "marktplaats": false
-   }
   },
   "941609": {
    "id": "941609",
@@ -118,47 +49,6 @@
     "datum": "2026-10-27",
     "prijs": "€ 8.900",
     "fotos": 33,
-    "marktplaats": false
-   }
-  },
-  "949714": {
-   "id": "949714",
-   "slug": "kia-picanto-1-0-cvvt-economyplusline-949714",
-   "url": "https://www.cbautomobielen.nl/aanbod/kia-picanto-1-0-cvvt-economyplusline-949714",
-   "titel": "Kia Picanto 1.0 CVVT EconomyPlusLine",
-   "status": "bestaand",
-   "beschikbaar": false,
-   "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
-   "prijs": "€ 6.800",
-   "kilometerstand": "139.793 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [
-    {
-     "datum": "2026-10-30",
-     "veld": "prijs",
-     "oud": "€ 7.400",
-     "nieuw": "€ 6.900"
-    },
-    {
-     "datum": "2026-11-11",
-     "veld": "prijs",
-     "oud": "€ 6.900",
-     "nieuw": "€ 6.800"
-    }
-   ],
-   "klaar": {
-    "datum": "2026-10-27",
-    "prijs": "€ 7.400",
-    "fotos": 31,
     "marktplaats": false
    }
   },
@@ -215,176 +105,6 @@
     "datum": "2026-10-27",
     "prijs": "€ 7.900",
     "fotos": 31,
-    "marktplaats": false
-   }
-  },
-  "937307": {
-   "id": "937307",
-   "slug": "volkswagen-golf-2-0-gti-tcr-937307",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-937307",
-   "titel": "Volkswagen Golf 2.0 GTI TCR",
-   "status": "niet_klaar",
-   "beschikbaar": false,
-   "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
-   "prijs": null,
-   "kilometerstand": "117.717 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
-   "klaar": {
-    "datum": "2026-11-12",
-    "prijs": null,
-    "fotos": null,
-    "marktplaats": null
-   }
-  },
-  "943067": {
-   "id": "943067",
-   "slug": "volkswagen-golf-variant-1-0-tsi-trendline-116pk-943067",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-variant-1-0-tsi-trendline-116pk-943067",
-   "titel": "Volkswagen Golf Variant 1.0 TSI Trendline 116PK",
-   "status": "bestaand",
-   "beschikbaar": false,
-   "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
-   "prijs": "€ 13.800",
-   "kilometerstand": "95.583 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [
-    {
-     "datum": "2026-11-01",
-     "veld": "prijs",
-     "oud": "€ 13.900",
-     "nieuw": "€ 13.700"
-    },
-    {
-     "datum": "2026-11-10",
-     "veld": "prijs",
-     "oud": "€ 13.700",
-     "nieuw": "€ 13.900"
-    },
-    {
-     "datum": "2026-11-11",
-     "veld": "prijs",
-     "oud": "€ 13.900",
-     "nieuw": "€ 13.800"
-    }
-   ],
-   "klaar": {
-    "datum": "2026-10-27",
-    "prijs": "€ 13.900",
-    "fotos": 35,
-    "marktplaats": false
-   }
-  },
-  "930282": {
-   "id": "930282",
-   "slug": "volkswagen-polo-1-0-tsi-comfortline-business-930282",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-business-930282",
-   "titel": "Volkswagen Polo 1.0 TSI Comfortline Business",
-   "status": "bestaand",
-   "beschikbaar": false,
-   "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
-   "prijs": "€ 10.700",
-   "kilometerstand": "156.099 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [
-    {
-     "datum": "2026-10-29",
-     "veld": "prijs",
-     "oud": "€ 10.900",
-     "nieuw": "€ 10.800"
-    },
-    {
-     "datum": "2026-11-01",
-     "veld": "prijs",
-     "oud": "€ 10.800",
-     "nieuw": "€ 10.700"
-    }
-   ],
-   "klaar": {
-    "datum": "2026-10-27",
-    "prijs": "€ 10.900",
-    "fotos": 38,
-    "marktplaats": false
-   }
-  },
-  "942143": {
-   "id": "942143",
-   "slug": "volkswagen-polo-1-0-tsi-life-business-dsg-942143",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-business-dsg-942143",
-   "titel": "Volkswagen Polo 1.0 TSI Life Business DSG",
-   "status": "bestaand",
-   "beschikbaar": false,
-   "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-09",
-   "prijs": "€ 18.900",
-   "kilometerstand": "8.563 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [
-    {
-     "datum": "2026-10-24",
-     "veld": "prijs",
-     "oud": "€ 19.945",
-     "nieuw": "€ 19.900"
-    },
-    {
-     "datum": "2026-10-30",
-     "veld": "prijs",
-     "oud": "€ 19.900",
-     "nieuw": "€ 18.900"
-    },
-    {
-     "datum": "2026-11-01",
-     "veld": "prijs",
-     "oud": "€ 18.900",
-     "nieuw": "€ 19.400"
-    },
-    {
-     "datum": "2026-11-05",
-     "veld": "prijs",
-     "oud": "€ 19.400",
-     "nieuw": "€ 18.900"
-    }
-   ],
-   "klaar": {
-    "datum": "2026-10-27",
-    "prijs": "€ 19.900",
-    "fotos": 45,
     "marktplaats": false
    }
   },
@@ -517,13 +237,101 @@
     "marktplaats": false
    }
   },
-  "957438": {
-   "id": "957438",
-   "slug": "fiat-500-1-2-lounge-957438",
-   "url": "https://www.cbautomobielen.nl/aanbod/fiat-500-1-2-lounge-957438",
+  "57375679": {
+   "id": "57375679",
+   "slug": "audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-57375679",
+   "url": "https://www.cbautomobielen.nl/aanbod/audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-57375679",
+   "titel": "Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus",
+   "status": "gepubliceerd",
+   "beschikbaar": true,
+   "ontdekt": "2026-10-22",
+   "laatst_gezien": "2026-11-12",
+   "prijs": "€ 12.400",
+   "kilometerstand": "174.735 km",
+   "bouwjaar": "2015",
+   "afbeeldingen_status": "OK",
+   "caption_status": "OK",
+   "gepland": null,
+   "gepubliceerd_op": "2026-10-22 17:16",
+   "instagram_post_id": "18132260668750274",
+   "instagram_permalink": "https://www.instagram.com/p/DezSIhdkYf_/",
+   "pogingen": 0,
+   "fouten": [],
+   "wijzigingen": [
+    {
+     "datum": "2026-10-30",
+     "veld": "prijs",
+     "oud": "€ 13.445",
+     "nieuw": "€ 12.900"
+    },
+    {
+     "datum": "2026-11-08",
+     "veld": "prijs",
+     "oud": "€ 12.900",
+     "nieuw": "€ 12.700"
+    },
+    {
+     "datum": "2026-11-10",
+     "veld": "prijs",
+     "oud": "€ 12.700",
+     "nieuw": "€ 12.400"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-952652",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-57375679"
+    }
+   ],
+   "vorige_ids": [
+    "952652"
+   ]
+  },
+  "54894007": {
+   "id": "54894007",
+   "slug": "audi-q3-sportback-45-tfsi-quattro-pro-line-s-54894007",
+   "url": "https://www.cbautomobielen.nl/aanbod/audi-q3-sportback-45-tfsi-quattro-pro-line-s-54894007",
+   "titel": "Audi Q3 Sportback 45 TFSI quattro Pro Line S",
+   "status": "bestaand",
+   "beschikbaar": true,
+   "ontdekt": "2026-10-22",
+   "laatst_gezien": "2026-11-12",
+   "prijs": "€ 34.900",
+   "kilometerstand": "81.568 km",
+   "bouwjaar": null,
+   "afbeeldingen_status": "nog niet gemaakt",
+   "caption_status": "nog niet gemaakt",
+   "gepland": null,
+   "gepubliceerd_op": null,
+   "instagram_post_id": null,
+   "instagram_permalink": null,
+   "pogingen": 0,
+   "fouten": [],
+   "wijzigingen": [
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/audi-q3-sportback-45-tfsi-quattro-pro-line-s-917880",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/audi-q3-sportback-45-tfsi-quattro-pro-line-s-54894007"
+    }
+   ],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 34.900",
+    "fotos": 37,
+    "marktplaats": false
+   },
+   "vorige_ids": [
+    "917880"
+   ]
+  },
+  "57700474": {
+   "id": "57700474",
+   "slug": "fiat-500-1-2-lounge-57700474",
+   "url": "https://www.cbautomobielen.nl/aanbod/fiat-500-1-2-lounge-57700474",
    "titel": "Fiat 500 1.2 Lounge",
    "status": "gepubliceerd",
-   "beschikbaar": false,
+   "beschikbaar": true,
    "ontdekt": "2026-10-31",
    "laatst_gezien": "2026-11-12",
    "prijs": "€ 9.900",
@@ -543,6 +351,12 @@
      "veld": "kilometerstand",
      "oud": "108.000 km",
      "nieuw": "107.177 km"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/fiat-500-1-2-lounge-957438",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/fiat-500-1-2-lounge-57700474"
     }
    ],
    "klaar": {
@@ -562,15 +376,18 @@
      "reden": "verkeerde coverfoto (interieur); vervangen op verzoek"
     }
    ],
-   "story_datum": "2026-11-10"
+   "story_datum": "2026-11-10",
+   "vorige_ids": [
+    "957438"
+   ]
   },
-  "957441": {
-   "id": "957441",
-   "slug": "hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
-   "url": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
+  "57700601": {
+   "id": "57700601",
+   "slug": "hyundai-tucson-1-6-t-gdi-comfort-4wd-57700601",
+   "url": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-57700601",
    "titel": "Hyundai Tucson 1.6 T-GDi Comfort 4WD",
    "status": "gepubliceerd",
-   "beschikbaar": false,
+   "beschikbaar": true,
    "ontdekt": "2026-10-29",
    "laatst_gezien": "2026-11-12",
    "prijs": "€ 17.800",
@@ -617,6 +434,12 @@
      "veld": "prijs",
      "oud": "€ 17.400",
      "nieuw": "€ 17.800"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-57700601"
     }
    ],
    "klaar": {
@@ -627,62 +450,26 @@
    },
    "eerst_op_site": "2026-10-27",
    "verkoopklaar_sinds": "2026-10-29",
-   "opener": "Praktisch, ruim en uitgerust met {opt1} en {opt2}."
+   "opener": "Praktisch, ruim en uitgerust met {opt1} en {opt2}.",
+   "vorige_ids": [
+    "957441"
+   ]
   },
-  "958039": {
-   "id": "958039",
-   "slug": "volkswagen-up-1-0-958039",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-958039",
-   "titel": "Volkswagen up! 1.0",
-   "status": "gepubliceerd",
-   "beschikbaar": false,
-   "ontdekt": "2026-11-01",
+  "57046013": {
+   "id": "57046013",
+   "slug": "kia-picanto-1-0-cvvt-economyplusline-57046013",
+   "url": "https://www.cbautomobielen.nl/aanbod/kia-picanto-1-0-cvvt-economyplusline-57046013",
+   "titel": "Kia Picanto 1.0 CVVT EconomyPlusLine",
+   "status": "bestaand",
+   "beschikbaar": true,
+   "ontdekt": "2026-10-22",
    "laatst_gezien": "2026-11-12",
-   "prijs": "€ 9.800",
-   "kilometerstand": "83.112 km",
-   "bouwjaar": "2021",
-   "afbeeldingen_status": "OK",
-   "caption_status": "OK",
-   "gepland": null,
-   "gepubliceerd_op": "2026-11-06 09:07",
-   "instagram_post_id": "18642164458044847",
-   "instagram_permalink": "https://www.instagram.com/p/DfZI61pGwAa/",
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [
-    {
-     "datum": "2026-11-11",
-     "veld": "prijs",
-     "oud": "€ 9.900",
-     "nieuw": "€ 9.800"
-    }
-   ],
-   "klaar": {
-    "datum": "2026-11-01",
-    "prijs": "€ 9.900",
-    "fotos": 13,
-    "marktplaats": false
-   },
-   "eerst_op_site": "2026-10-29",
-   "verkoopklaar_sinds": "2026-11-01",
-   "opener": "Ideaal in de stad: compact, met {opt1} en {opt2}.",
-   "story_datum": "2026-11-10"
-  },
-  "958657": {
-   "id": "958657",
-   "slug": "volkswagen-polo-1-0-tsi-life-958657",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-958657",
-   "titel": "Volkswagen Polo 1.0 TSI Life",
-   "status": "verkocht",
-   "beschikbaar": false,
-   "ontdekt": "2026-11-06",
-   "laatst_gezien": "2026-11-12",
-   "prijs": "€ 18.800",
-   "kilometerstand": "24.477 km",
+   "prijs": "€ 6.800",
+   "kilometerstand": "139.793 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
    "caption_status": "nog niet gemaakt",
-   "gepland": "2026-11-13",
+   "gepland": null,
    "gepubliceerd_op": null,
    "instagram_post_id": null,
    "instagram_permalink": null,
@@ -690,28 +477,41 @@
    "fouten": [],
    "wijzigingen": [
     {
+     "datum": "2026-10-30",
+     "veld": "prijs",
+     "oud": "€ 7.400",
+     "nieuw": "€ 6.900"
+    },
+    {
      "datum": "2026-11-11",
      "veld": "prijs",
-     "oud": "€ 18.900",
-     "nieuw": "€ 18.800"
+     "oud": "€ 6.900",
+     "nieuw": "€ 6.800"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/kia-picanto-1-0-cvvt-economyplusline-949714",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/kia-picanto-1-0-cvvt-economyplusline-57046013"
     }
    ],
    "klaar": {
-    "datum": "2026-11-06",
-    "prijs": "€ 18.900",
-    "fotos": 13,
+    "datum": "2026-10-27",
+    "prijs": "€ 7.400",
+    "fotos": 31,
     "marktplaats": false
    },
-   "eerst_op_site": "2026-10-31",
-   "verkoopklaar_sinds": "2026-11-06"
+   "vorige_ids": [
+    "949714"
+   ]
   },
-  "958827": {
-   "id": "958827",
-   "slug": "mercedes-benz-b-klasse-180-ambition-958827",
-   "url": "https://www.cbautomobielen.nl/aanbod/mercedes-benz-b-klasse-180-ambition-958827",
+  "57850509": {
+   "id": "57850509",
+   "slug": "mercedes-benz-b-klasse-180-ambition-57850509",
+   "url": "https://www.cbautomobielen.nl/aanbod/mercedes-benz-b-klasse-180-ambition-57850509",
    "titel": "Mercedes-Benz B-Klasse 180 Ambition",
    "status": "gepubliceerd",
-   "beschikbaar": false,
+   "beschikbaar": true,
    "ontdekt": "2026-11-01",
    "laatst_gezien": "2026-11-12",
    "prijs": "€ 9.800",
@@ -731,6 +531,12 @@
      "veld": "prijs",
      "oud": "€ 9.900",
      "nieuw": "€ 9.800"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/mercedes-benz-b-klasse-180-ambition-958827",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/mercedes-benz-b-klasse-180-ambition-57850509"
     }
    ],
    "eerst_op_site": "2026-11-01",
@@ -742,15 +548,18 @@
     "marktplaats": false
    },
    "opener": "Premium rijcomfort met {opt1} en {opt2}.",
-   "story_datum": "2026-11-10"
+   "story_datum": "2026-11-10",
+   "vorige_ids": [
+    "958827"
+   ]
   },
-  "959772": {
-   "id": "959772",
-   "slug": "seat-ibiza-1-0-ecotsi-fr-959772",
-   "url": "https://www.cbautomobielen.nl/aanbod/seat-ibiza-1-0-ecotsi-fr-959772",
+  "57897510": {
+   "id": "57897510",
+   "slug": "seat-ibiza-1-0-ecotsi-fr-57897510",
+   "url": "https://www.cbautomobielen.nl/aanbod/seat-ibiza-1-0-ecotsi-fr-57897510",
    "titel": "SEAT Ibiza 1.0 EcoTSI FR",
    "status": "verkocht",
-   "beschikbaar": false,
+   "beschikbaar": true,
    "ontdekt": "2026-11-07",
    "laatst_gezien": "2026-11-12",
    "prijs": "€ 16.800",
@@ -770,6 +579,12 @@
      "veld": "prijs",
      "oud": "€ 16.900",
      "nieuw": "€ 16.800"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/seat-ibiza-1-0-ecotsi-fr-959772",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/seat-ibiza-1-0-ecotsi-fr-57897510"
     }
    ],
    "klaar": {
@@ -779,45 +594,114 @@
     "marktplaats": false
    },
    "eerst_op_site": "2026-11-04",
-   "verkoopklaar_sinds": "2026-11-07"
+   "verkoopklaar_sinds": "2026-11-07",
+   "vorige_ids": [
+    "959772"
+   ],
+   "story_datum": "2026-11-13"
   },
-  "960055": {
-   "id": "960055",
-   "slug": "volkswagen-up-1-0-bmt-move-up-960055",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-bmt-move-up-960055",
-   "titel": "Volkswagen up! 1.0 BMT move up!",
-   "status": "verkocht",
+  "55645760": {
+   "id": "55645760",
+   "slug": "volkswagen-golf-2-0-gti-tcr-55645760",
+   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-55645760",
+   "titel": "Volkswagen Golf 2.0 GTI TCR",
+   "status": "niet_klaar",
    "beschikbaar": false,
-   "ontdekt": "2026-11-07",
+   "ontdekt": "2026-10-22",
    "laatst_gezien": "2026-11-12",
-   "prijs": "€ 9.900",
-   "kilometerstand": "115.000 km",
+   "prijs": null,
+   "kilometerstand": "117.717 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
    "caption_status": "nog niet gemaakt",
-   "gepland": "2026-11-20",
+   "gepland": null,
    "gepubliceerd_op": null,
    "instagram_post_id": null,
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
+   "wijzigingen": [
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-937307",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-55645760"
+    }
+   ],
+   "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
    "klaar": {
-    "datum": "2026-11-07",
-    "prijs": "€ 9.900",
-    "fotos": 12,
+    "datum": "2026-11-12",
+    "prijs": null,
+    "fotos": null,
+    "marktplaats": null
+   },
+   "vorige_ids": [
+    "937307"
+   ]
+  },
+  "56351296": {
+   "id": "56351296",
+   "slug": "volkswagen-golf-variant-1-0-tsi-trendline-116pk-56351296",
+   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-variant-1-0-tsi-trendline-116pk-56351296",
+   "titel": "Volkswagen Golf Variant 1.0 TSI Trendline 116PK",
+   "status": "bestaand",
+   "beschikbaar": true,
+   "ontdekt": "2026-10-22",
+   "laatst_gezien": "2026-11-12",
+   "prijs": "€ 13.800",
+   "kilometerstand": "95.583 km",
+   "bouwjaar": null,
+   "afbeeldingen_status": "nog niet gemaakt",
+   "caption_status": "nog niet gemaakt",
+   "gepland": null,
+   "gepubliceerd_op": null,
+   "instagram_post_id": null,
+   "instagram_permalink": null,
+   "pogingen": 0,
+   "fouten": [],
+   "wijzigingen": [
+    {
+     "datum": "2026-11-01",
+     "veld": "prijs",
+     "oud": "€ 13.900",
+     "nieuw": "€ 13.700"
+    },
+    {
+     "datum": "2026-11-10",
+     "veld": "prijs",
+     "oud": "€ 13.700",
+     "nieuw": "€ 13.900"
+    },
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 13.900",
+     "nieuw": "€ 13.800"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-variant-1-0-tsi-trendline-116pk-943067",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-variant-1-0-tsi-trendline-116pk-56351296"
+    }
+   ],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 13.900",
+    "fotos": 35,
     "marktplaats": false
    },
-   "eerst_op_site": "2026-11-05",
-   "verkoopklaar_sinds": "2026-11-07"
+   "vorige_ids": [
+    "943067"
+   ]
   },
-  "961081": {
-   "id": "961081",
-   "slug": "volkswagen-polo-1-0-tsi-comfortline-961081",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-961081",
+  "58014204": {
+   "id": "58014204",
+   "slug": "volkswagen-polo-1-0-tsi-comfortline-58014204",
+   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-58014204",
    "titel": "Volkswagen Polo 1.0 TSI Comfortline",
    "status": "verkocht",
-   "beschikbaar": false,
+   "beschikbaar": true,
    "ontdekt": "2026-11-12",
    "laatst_gezien": "2026-11-12",
    "prijs": "€ 11.800",
@@ -843,6 +727,12 @@
      "veld": "kilometerstand",
      "oud": "147.900 km",
      "nieuw": "148.369 km"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-961081",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-58014204"
     }
    ],
    "klaar": {
@@ -852,254 +742,22 @@
     "marktplaats": false
    },
    "eerst_op_site": "2026-11-08",
-   "verkoopklaar_sinds": "2026-11-12"
-  },
-  "57375679": {
-   "id": "57375679",
-   "slug": "audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-57375679",
-   "url": "https://www.cbautomobielen.nl/aanbod/audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-57375679",
-   "titel": "Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus",
-   "status": "niet_klaar",
-   "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 12.400",
-   "kilometerstand": "174.735 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
-  },
-  "54894007": {
-   "id": "54894007",
-   "slug": "audi-q3-sportback-45-tfsi-quattro-pro-line-s-54894007",
-   "url": "https://www.cbautomobielen.nl/aanbod/audi-q3-sportback-45-tfsi-quattro-pro-line-s-54894007",
-   "titel": "Audi Q3 Sportback 45 TFSI quattro Pro Line S",
-   "status": "niet_klaar",
-   "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 34.900",
-   "kilometerstand": "81.568 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
-  },
-  "57700474": {
-   "id": "57700474",
-   "slug": "fiat-500-1-2-lounge-57700474",
-   "url": "https://www.cbautomobielen.nl/aanbod/fiat-500-1-2-lounge-57700474",
-   "titel": "Fiat 500 1.2 Lounge",
-   "status": "niet_klaar",
-   "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 9.900",
-   "kilometerstand": "107.177 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
-  },
-  "57700601": {
-   "id": "57700601",
-   "slug": "hyundai-tucson-1-6-t-gdi-comfort-4wd-57700601",
-   "url": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-57700601",
-   "titel": "Hyundai Tucson 1.6 T-GDi Comfort 4WD",
-   "status": "niet_klaar",
-   "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 16.900",
-   "kilometerstand": "86.216 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
-  },
-  "57046013": {
-   "id": "57046013",
-   "slug": "kia-picanto-1-0-cvvt-economyplusline-57046013",
-   "url": "https://www.cbautomobielen.nl/aanbod/kia-picanto-1-0-cvvt-economyplusline-57046013",
-   "titel": "Kia Picanto 1.0 CVVT EconomyPlusLine",
-   "status": "niet_klaar",
-   "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 6.800",
-   "kilometerstand": "139.793 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
-  },
-  "57850509": {
-   "id": "57850509",
-   "slug": "mercedes-benz-b-klasse-180-ambition-57850509",
-   "url": "https://www.cbautomobielen.nl/aanbod/mercedes-benz-b-klasse-180-ambition-57850509",
-   "titel": "Mercedes-Benz B-Klasse 180 Ambition",
-   "status": "niet_klaar",
-   "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 9.400",
-   "kilometerstand": "188.975 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
-  },
-  "57897510": {
-   "id": "57897510",
-   "slug": "seat-ibiza-1-0-ecotsi-fr-57897510",
-   "url": "https://www.cbautomobielen.nl/aanbod/seat-ibiza-1-0-ecotsi-fr-57897510",
-   "titel": "SEAT Ibiza 1.0 EcoTSI FR",
-   "status": "niet_klaar",
-   "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 16.800",
-   "kilometerstand": "55.361 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
-  },
-  "55645760": {
-   "id": "55645760",
-   "slug": "volkswagen-golf-2-0-gti-tcr-55645760",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-55645760",
-   "titel": "Volkswagen Golf 2.0 GTI TCR",
-   "status": "niet_klaar",
-   "beschikbaar": false,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": null,
-   "kilometerstand": "117.717 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
-   "klaar": {
-    "datum": "2026-11-13",
-    "prijs": null,
-    "fotos": null,
-    "marktplaats": null
-   }
-  },
-  "56351296": {
-   "id": "56351296",
-   "slug": "volkswagen-golf-variant-1-0-tsi-trendline-116pk-56351296",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-golf-variant-1-0-tsi-trendline-116pk-56351296",
-   "titel": "Volkswagen Golf Variant 1.0 TSI Trendline 116PK",
-   "status": "niet_klaar",
-   "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 13.800",
-   "kilometerstand": "95.583 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
-  },
-  "58014204": {
-   "id": "58014204",
-   "slug": "volkswagen-polo-1-0-tsi-comfortline-58014204",
-   "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-58014204",
-   "titel": "Volkswagen Polo 1.0 TSI Comfortline",
-   "status": "niet_klaar",
-   "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 11.800",
-   "kilometerstand": "148.369 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
-   "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
-   "pogingen": 0,
-   "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
+   "verkoopklaar_sinds": "2026-11-12",
+   "vorige_ids": [
+    "961081"
+   ],
+   "story_datum": "2026-11-13"
   },
   "55400612": {
    "id": "55400612",
    "slug": "volkswagen-polo-1-0-tsi-comfortline-business-55400612",
    "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-business-55400612",
    "titel": "Volkswagen Polo 1.0 TSI Comfortline Business",
-   "status": "niet_klaar",
+   "status": "bestaand",
    "beschikbaar": false,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": null,
+   "ontdekt": "2026-10-22",
+   "laatst_gezien": "2026-11-12",
+   "prijs": "€ 10.700",
    "kilometerstand": "156.099 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -1110,49 +768,94 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
+   "wijzigingen": [
+    {
+     "datum": "2026-10-29",
+     "veld": "prijs",
+     "oud": "€ 10.900",
+     "nieuw": "€ 10.800"
+    },
+    {
+     "datum": "2026-11-01",
+     "veld": "prijs",
+     "oud": "€ 10.800",
+     "nieuw": "€ 10.700"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-business-930282",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-comfortline-business-55400612"
+    }
+   ],
    "klaar": {
-    "datum": "2026-11-13",
-    "prijs": null,
-    "fotos": null,
-    "marktplaats": null
-   }
+    "datum": "2026-10-27",
+    "prijs": "€ 10.900",
+    "fotos": 38,
+    "marktplaats": false
+   },
+   "vorige_ids": [
+    "930282"
+   ]
   },
   "57217862": {
    "id": "57217862",
    "slug": "volkswagen-polo-1-0-tsi-life-57217862",
    "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-57217862",
    "titel": "Volkswagen Polo 1.0 TSI Life",
-   "status": "niet_klaar",
+   "status": "verkocht",
    "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 17.400",
-   "kilometerstand": "32.422 km",
+   "ontdekt": "2026-11-06",
+   "laatst_gezien": "2026-11-12",
+   "prijs": "€ 18.800",
+   "kilometerstand": "24.477 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
    "caption_status": "nog niet gemaakt",
-   "gepland": null,
+   "gepland": "2026-11-13",
    "gepubliceerd_op": null,
    "instagram_post_id": null,
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
+   "wijzigingen": [
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 18.900",
+     "nieuw": "€ 18.800"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-958657",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-57217862"
+    }
+   ],
+   "klaar": {
+    "datum": "2026-11-06",
+    "prijs": "€ 18.900",
+    "fotos": 13,
+    "marktplaats": false
+   },
+   "eerst_op_site": "2026-10-31",
+   "verkoopklaar_sinds": "2026-11-06",
+   "vorige_ids": [
+    "958657"
+   ],
+   "story_datum": "2026-11-13"
   },
   "57819988": {
    "id": "57819988",
    "slug": "volkswagen-polo-1-0-tsi-life-business-dsg-57819988",
    "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-business-dsg-57819988",
    "titel": "Volkswagen Polo 1.0 TSI Life Business DSG",
-   "status": "niet_klaar",
+   "status": "bestaand",
    "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
-   "prijs": "€ 18.800",
-   "kilometerstand": "24.484 km",
+   "ontdekt": "2026-10-22",
+   "laatst_gezien": "2026-11-09",
+   "prijs": "€ 18.900",
+   "kilometerstand": "8.563 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
    "caption_status": "nog niet gemaakt",
@@ -1162,54 +865,136 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
+   "wijzigingen": [
+    {
+     "datum": "2026-10-24",
+     "veld": "prijs",
+     "oud": "€ 19.945",
+     "nieuw": "€ 19.900"
+    },
+    {
+     "datum": "2026-10-30",
+     "veld": "prijs",
+     "oud": "€ 19.900",
+     "nieuw": "€ 18.900"
+    },
+    {
+     "datum": "2026-11-01",
+     "veld": "prijs",
+     "oud": "€ 18.900",
+     "nieuw": "€ 19.400"
+    },
+    {
+     "datum": "2026-11-05",
+     "veld": "prijs",
+     "oud": "€ 19.400",
+     "nieuw": "€ 18.900"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-business-dsg-942143",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-business-dsg-57819988"
+    }
+   ],
+   "klaar": {
+    "datum": "2026-10-27",
+    "prijs": "€ 19.900",
+    "fotos": 45,
+    "marktplaats": false
+   },
+   "vorige_ids": [
+    "942143"
+   ]
   },
   "57756213": {
    "id": "57756213",
    "slug": "volkswagen-up-1-0-57756213",
    "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-57756213",
    "titel": "Volkswagen up! 1.0",
-   "status": "niet_klaar",
+   "status": "gepubliceerd",
    "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
+   "ontdekt": "2026-11-01",
+   "laatst_gezien": "2026-11-12",
    "prijs": "€ 9.800",
    "kilometerstand": "83.112 km",
-   "bouwjaar": null,
-   "afbeeldingen_status": "nog niet gemaakt",
-   "caption_status": "nog niet gemaakt",
+   "bouwjaar": "2021",
+   "afbeeldingen_status": "OK",
+   "caption_status": "OK",
    "gepland": null,
-   "gepubliceerd_op": null,
-   "instagram_post_id": null,
-   "instagram_permalink": null,
+   "gepubliceerd_op": "2026-11-06 09:07",
+   "instagram_post_id": "18642164458044847",
+   "instagram_permalink": "https://www.instagram.com/p/DfZI61pGwAa/",
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
+   "wijzigingen": [
+    {
+     "datum": "2026-11-11",
+     "veld": "prijs",
+     "oud": "€ 9.900",
+     "nieuw": "€ 9.800"
+    },
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-958039",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-57756213"
+    }
+   ],
+   "klaar": {
+    "datum": "2026-11-01",
+    "prijs": "€ 9.900",
+    "fotos": 13,
+    "marktplaats": false
+   },
+   "eerst_op_site": "2026-10-29",
+   "verkoopklaar_sinds": "2026-11-01",
+   "opener": "Ideaal in de stad: compact, met {opt1} en {opt2}.",
+   "story_datum": "2026-11-10",
+   "vorige_ids": [
+    "958039"
+   ]
   },
   "57921282": {
    "id": "57921282",
    "slug": "volkswagen-up-1-0-bmt-move-up-57921282",
    "url": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-bmt-move-up-57921282",
    "titel": "Volkswagen up! 1.0 BMT move up!",
-   "status": "niet_klaar",
+   "status": "verkocht",
    "beschikbaar": true,
-   "ontdekt": "2026-11-13",
-   "laatst_gezien": "2026-11-13",
+   "ontdekt": "2026-11-07",
+   "laatst_gezien": "2026-11-12",
    "prijs": "€ 9.900",
    "kilometerstand": "115.000 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
    "caption_status": "nog niet gemaakt",
-   "gepland": null,
+   "gepland": "2026-11-20",
    "gepubliceerd_op": null,
    "instagram_post_id": null,
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
-   "niet_klaar_reden": "nog niet beoordeeld"
+   "wijzigingen": [
+    {
+     "datum": "2026-11-13",
+     "veld": "url",
+     "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-bmt-move-up-960055",
+     "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-bmt-move-up-57921282"
+    }
+   ],
+   "klaar": {
+    "datum": "2026-11-07",
+    "prijs": "€ 9.900",
+    "fotos": 12,
+    "marktplaats": false
+   },
+   "eerst_op_site": "2026-11-05",
+   "verkoopklaar_sinds": "2026-11-07",
+   "vorige_ids": [
+    "960055"
+   ],
+   "story_datum": "2026-11-13"
   }
  },
  "runs": [
