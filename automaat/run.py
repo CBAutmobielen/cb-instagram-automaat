@@ -5,7 +5,7 @@
   python -m automaat.run --modus live        # handmatig: nu publiceren (max. 1 per dag blijft gelden)
   python -m automaat.run --modus proef --auto 941609   # specifieke auto (ID = nummer achter in de URL)
 """
-import argparse, json, os, shutil, sys, traceback
+import argparse, json, os, re, shutil, sys, traceback
 from datetime import timedelta
 from . import config, db as dbm, klaar, site, content, content_v2, ai, caption, qa, hosting, fotokeuze, story
 from .rapport import Rapport
@@ -49,7 +49,44 @@ def render_met_herstel(car, R):
     return paden, issues
 
 
+def _basis(slug):
+    return re.sub(r'-\d{5,}$', '', slug or '')
+
+
+def koppel_nieuwe_ids(db, listing, R):
+    """Sinds 13-11-2026 heeft de website andere nummers in de links (bv. ...-952652 werd ...-57375679).
+    Zelfde auto, nieuw ID: neem het oude record (status, Instagram-gegevens, geschiedenis) over onder het
+    nieuwe ID, zodat al geposte auto's niet als nieuw gezien worden en de wachtrij behouden blijft."""
+    vt = db['voertuigen']
+    weg = [vid for vid in vt if vid not in listing and _basis(vt[vid].get('slug'))]
+    for nid, it in listing.items():
+        b = _basis(it['slug'])
+        oud = [vid for vid in weg if _basis(vt[vid]['slug']) == b]
+        if len(oud) > 1:
+            # meerdere oude auto's met dezelfde naam: alleen de laatst geziene telt, mits eenduidig
+            laatst = max(vt[x].get('laatst_gezien') or '' for x in oud)
+            oud = [x for x in oud if (vt[x].get('laatst_gezien') or '') == laatst]
+        zelfde = [x for x, y in listing.items() if _basis(y['slug']) == b]
+        if len(oud) != 1 or len(zelfde) != 1:
+            continue                                   # niet eenduidig: niets aanpassen
+        oid = oud[0]; v = vt[oid]
+        huidig = vt.get(nid)
+        if huidig and (huidig.get('instagram_post_id') or huidig.get('story_datum')
+                       or huidig['status'] not in ('niet_klaar', 'bestaand')):
+            continue                                   # nieuw record is al echt in gebruik
+        # 'verkocht' (alleen door de wissel uit de wachtrij gehaald) mag blijven: de verkoopklaar-controle
+        # bekijkt zulke auto's opnieuw en zet ze terug in de wachtrij als prijs en foto's er staan.
+        v['beschikbaar'] = it['beschikbaar']
+        v.setdefault('vorige_ids', []).append(oid)
+        v['id'] = nid
+        dbm.wijziging(v, 'url', v['url'], it['url'])
+        v['slug'], v['url'] = it['slug'], it['url']
+        vt[nid] = v; del vt[oid]; weg.remove(oid)
+        R.log(f"nieuw websitenummer: {v['titel']} ({oid} -> {nid}), status {v['status']}")
+
+
 def sync(db, listing, R):
+    koppel_nieuwe_ids(db, listing, R)
     eerste = not db['baseline_gedaan']
     R.op_site = len(listing)
     R.beschikbaar = sum(1 for x in listing.values() if x['beschikbaar'])
@@ -345,6 +382,10 @@ def maak_story(auto=None):
     print('story voor:', ids, flush=True)
     doelmap = os.path.join(config.ROOT, 'stories', config.vandaag())
     db = dbm.laad()
+
+    class _Log:
+        def log(self, m): print(m, flush=True)
+    koppel_nieuwe_ids(db, listing, _Log())
     infos = []
     for vid in ids:
         info = story_voor(vid, listing[vid], doelmap); infos.append(info)

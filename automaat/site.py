@@ -6,6 +6,8 @@ from . import config
 
 UA = {'User-Agent': 'Mozilla/5.0 (CB Automobielen Instagram-automaat; +https://www.cbautomobielen.nl)'}
 FOTO_RE = re.compile(r'https://cdn1\.grbx\.app/images/[0-9a-f-]+/full\.jpg')
+# sinds 13-11-2026: nieuwe voertuigpagina's (cbv-*) met foto's van de DV-export
+FOTO_RE_DV = re.compile(r'https://media-eigenwebsiteincrementeel\.export\.dv\.nl/\d+/[\w-]+\.jpe?g')
 
 
 class SiteFout(Exception):
@@ -83,7 +85,22 @@ def voertuig(slug):
     s = BeautifulSoup(html, 'html.parser')
     tx = lambda el: el.get_text(' ', strip=True) if el else ''
     d = {'slug': slug, 'id': voertuig_id(slug), 'url': f'{config.SITE_BASE}/aanbod/{slug}'}
-    d['title'] = tx(s.find('h1'))
+    h1 = s.find('h1')
+    d['title'] = re.sub(r'\s+', ' ', tx(h1))
+    if s.select('.cbv-spec'):
+        _nieuwe_pagina(s, d, h1)
+    else:
+        _oude_pagina(s, d, tx)
+    # extra signaal: link naar een Marktplaats-advertentie van deze auto (niet verplicht)
+    mp = [a['href'] for a in s.select('a[href*="marktplaats.nl"]') if re.search(r'marktplaats\.nl/(?:v|a)/', a['href'])]
+    d['marktplaats'] = mp[0] if mp else None
+    if not d['title'] or not d['table']:
+        raise SiteFout(f'voertuigpagina {slug} kon niet worden gelezen (structuur gewijzigd?)')
+    return d
+
+
+def _oude_pagina(s, d, tx):
+    """Website tot 12-11-2026 (cadar-*, foto's op cdn1.grbx.app)."""
     d['table'] = {tx(e.select_one('.cadar-table__key')): tx(e.select_one('.cadar-table__value'))
                   for e in s.select('.cadar-table__entry')}
     d['bijzondere_opties'] = [tx(x) for x in s.select('.cadar-special-feature')]
@@ -98,12 +115,34 @@ def voertuig(slug):
         if m and m.group(0) not in imgs:
             imgs.append(m.group(0))
     d['fotos'] = imgs
-    # extra signaal: link naar een Marktplaats-advertentie van deze auto (niet verplicht)
-    mp = [a['href'] for a in s.select('a[href*="marktplaats.nl"]') if re.search(r'marktplaats\.nl/(?:v|a)/', a['href'])]
-    d['marktplaats'] = mp[0] if mp else None
-    if not d['title'] or not d['table']:
-        raise SiteFout(f'voertuigpagina {slug} kon niet worden gelezen (structuur gewijzigd?)')
-    return d
+
+
+def _nieuwe_pagina(s, d, h1):
+    """Website vanaf 13-11-2026 (cbv-*, foto's op media-eigenwebsiteincrementeel.export.dv.nl)."""
+    tx = lambda el: re.sub(r'\s+', ' ', el.get_text(' ', strip=True)) if el else ''
+    tabel = {}
+    for e in s.select('.cbv-spec'):
+        k, w = tx(e.find('span')), tx(e.find('strong'))
+        if k and w and k not in tabel:
+            tabel[k] = w
+    # zelfde namen als op de oude site, zodat captions en stories niets merken
+    for nieuw, oud in (('Gemiddeld verbruik', 'Verbruik (gemiddeld)'), ('Kleur', 'Kleur exterieur')):
+        if nieuw in tabel and oud not in tabel:
+            tabel[oud] = tabel[nieuw]
+    d['table'] = tabel
+    d['bijzondere_opties'] = [tx(x) for x in s.select('.cbv-chips li')]
+    d['opties'] = list(dict.fromkeys(tx(x) for x in s.select('.cbv-groep li') if tx(x)))
+    prijs_el = s.select_one('.cbv-prijs') or s.select_one('.cbv-totaal__prijs')
+    prices = re.findall(r'€\s?\d{1,3}(?:\.\d{3})+|€\s?\d{3,}', tx(prijs_el))
+    pagetext = s.get_text(' ', strip=True)
+    d['prijs'] = prices[0].replace('€', '€ ').replace('  ', ' ') if prices else ''
+    d['op_aanvraag'] = not prices and 'op aanvraag' in (tx(prijs_el) or pagetext).lower()
+    imgs = []
+    for e in s.select('.cbv-hoofd__img') or s.select('.cb-strip__foto img'):
+        for u in (e.get('src'), e.get('data-src')):
+            if u and FOTO_RE_DV.match(u) and u not in imgs:
+                imgs.append(u)
+    d['fotos'] = imgs
 
 
 def download_fotos(v, folder):
@@ -119,7 +158,7 @@ def download_fotos(v, folder):
                 Image.open(f).load(); return
             except Exception:
                 try:
-                    open(f, 'wb').write(get(u + '?quality=100', tries=2))
+                    open(f, 'wb').write(get(u + ('?quality=100' if 'grbx.app' in u else ''), tries=2))
                 except Exception:
                     time.sleep(2)
     jobs = list(enumerate(v['fotos'], 1))
