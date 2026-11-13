@@ -102,6 +102,11 @@ def voertuig(slug):
     mp = [a['href'] for a in s.select('a[href*="marktplaats.nl"]') if re.search(r'marktplaats\.nl/(?:v|a)/', a['href'])]
     d['marktplaats'] = mp[0] if mp else None
     if not d['title'] or not d['table']:
+        try:
+            dbg = os.path.join(config.ROOT, 'proef', 'debug'); os.makedirs(dbg, exist_ok=True)
+            open(os.path.join(dbg, slug + '.html'), 'wb').write(html)
+        except Exception:
+            pass
         raise SiteFout(f'voertuigpagina {slug} kon niet worden gelezen (structuur gewijzigd?)')
     return d
 
