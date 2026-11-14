@@ -245,7 +245,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 12.400",
    "kilometerstand": "174.735 km",
    "bouwjaar": "2015",
@@ -295,7 +295,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 34.900",
    "kilometerstand": "81.568 km",
    "bouwjaar": null,
@@ -333,7 +333,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-31",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 9.900",
    "kilometerstand": "107.177 km",
    "bouwjaar": "2019",
@@ -389,8 +389,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-29",
-   "laatst_gezien": "2026-11-12",
-   "prijs": "€ 17.800",
+   "laatst_gezien": "2026-11-14",
+   "prijs": "€ 16.900",
    "kilometerstand": "86.216 km",
    "bouwjaar": "2017",
    "afbeeldingen_status": "OK",
@@ -440,6 +440,12 @@
      "veld": "url",
      "oud": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-957441",
      "nieuw": "https://www.cbautomobielen.nl/aanbod/hyundai-tucson-1-6-t-gdi-comfort-4wd-57700601"
+    },
+    {
+     "datum": "2026-11-14",
+     "veld": "prijs",
+     "oud": "€ 17.800",
+     "nieuw": "€ 16.900"
     }
    ],
    "klaar": {
@@ -463,7 +469,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 6.800",
    "kilometerstand": "139.793 km",
    "bouwjaar": null,
@@ -513,8 +519,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-12",
-   "prijs": "€ 9.800",
+   "laatst_gezien": "2026-11-14",
+   "prijs": "€ 9.400",
    "kilometerstand": "188.975 km",
    "bouwjaar": "2013",
    "afbeeldingen_status": "OK",
@@ -537,6 +543,12 @@
      "veld": "url",
      "oud": "https://www.cbautomobielen.nl/aanbod/mercedes-benz-b-klasse-180-ambition-958827",
      "nieuw": "https://www.cbautomobielen.nl/aanbod/mercedes-benz-b-klasse-180-ambition-57850509"
+    },
+    {
+     "datum": "2026-11-14",
+     "veld": "prijs",
+     "oud": "€ 9.800",
+     "nieuw": "€ 9.400"
     }
    ],
    "eerst_op_site": "2026-11-01",
@@ -561,7 +573,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 16.800",
    "kilometerstand": "55.361 km",
    "bouwjaar": null,
@@ -608,7 +620,7 @@
    "status": "niet_klaar",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": null,
    "kilometerstand": "117.717 km",
    "bouwjaar": null,
@@ -630,7 +642,7 @@
    ],
    "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
    "klaar": {
-    "datum": "2026-11-12",
+    "datum": "2026-11-14",
     "prijs": null,
     "fotos": null,
     "marktplaats": null
@@ -647,7 +659,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 13.800",
    "kilometerstand": "95.583 km",
    "bouwjaar": null,
@@ -703,7 +715,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-12",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 11.800",
    "kilometerstand": "148.369 km",
    "bouwjaar": null,
@@ -756,7 +768,7 @@
    "status": "bestaand",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 10.700",
    "kilometerstand": "156.099 km",
    "bouwjaar": null,
@@ -806,9 +818,9 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-06",
-   "laatst_gezien": "2026-11-12",
-   "prijs": "€ 18.800",
-   "kilometerstand": "24.477 km",
+   "laatst_gezien": "2026-11-14",
+   "prijs": "€ 17.400",
+   "kilometerstand": "32.422 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
    "caption_status": "nog niet gemaakt",
@@ -830,6 +842,18 @@
      "veld": "url",
      "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-958657",
      "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-57217862"
+    },
+    {
+     "datum": "2026-11-14",
+     "veld": "prijs",
+     "oud": "€ 18.800",
+     "nieuw": "€ 17.400"
+    },
+    {
+     "datum": "2026-11-14",
+     "veld": "kilometerstand",
+     "oud": "24.477 km",
+     "nieuw": "32.422 km"
     }
    ],
    "klaar": {
@@ -853,9 +877,9 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-09",
-   "prijs": "€ 18.900",
-   "kilometerstand": "8.563 km",
+   "laatst_gezien": "2026-11-14",
+   "prijs": "€ 18.800",
+   "kilometerstand": "24.484 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
    "caption_status": "nog niet gemaakt",
@@ -895,6 +919,18 @@
      "veld": "url",
      "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-business-dsg-942143",
      "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-polo-1-0-tsi-life-business-dsg-57819988"
+    },
+    {
+     "datum": "2026-11-14",
+     "veld": "prijs",
+     "oud": "€ 18.900",
+     "nieuw": "€ 18.800"
+    },
+    {
+     "datum": "2026-11-14",
+     "veld": "kilometerstand",
+     "oud": "8.563 km",
+     "nieuw": "24.484 km"
     }
    ],
    "klaar": {
@@ -916,7 +952,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 9.800",
    "kilometerstand": "83.112 km",
    "bouwjaar": "2021",
@@ -964,7 +1000,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-12",
+   "laatst_gezien": "2026-11-14",
    "prijs": "€ 9.900",
    "kilometerstand": "115.000 km",
    "bouwjaar": null,
@@ -996,6 +1032,36 @@
     "960055"
    ],
    "story_datum": "2026-11-13"
+  },
+  "58149320": {
+   "id": "58149320",
+   "slug": "toyota-aygo-1-0-vvt-i-x-play-58149320",
+   "url": "https://www.cbautomobielen.nl/aanbod/toyota-aygo-1-0-vvt-i-x-play-58149320",
+   "titel": "Toyota Aygo 1.0 VVT-i x-play",
+   "status": "wachtrij",
+   "beschikbaar": true,
+   "ontdekt": "2026-11-14",
+   "laatst_gezien": "2026-11-14",
+   "prijs": "€ 6.900",
+   "kilometerstand": "127.743 km",
+   "bouwjaar": null,
+   "afbeeldingen_status": "nog niet gemaakt",
+   "caption_status": "nog niet gemaakt",
+   "gepland": "2026-11-17",
+   "gepubliceerd_op": null,
+   "instagram_post_id": null,
+   "instagram_permalink": null,
+   "pogingen": 0,
+   "fouten": [],
+   "wijzigingen": [],
+   "eerst_op_site": "2026-11-14",
+   "verkoopklaar_sinds": "2026-11-14",
+   "klaar": {
+    "datum": "2026-11-14",
+    "prijs": "€ 6.900",
+    "fotos": 30,
+    "marktplaats": false
+   }
   }
  },
  "runs": [
@@ -1338,6 +1404,14 @@
    "tijd": "09:10",
    "modus": "dagelijks",
    "nieuw": 0,
+   "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-11-14",
+   "tijd": "08:51",
+   "modus": "dagelijks",
+   "nieuw": 1,
    "gepubliceerd": null,
    "fouten": []
   }
