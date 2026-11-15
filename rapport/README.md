@@ -1,30 +1,27 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Saturday 14-11-2026 08:51 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
+**Laatste controle:** Sunday 15-11-2026 08:55 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
 
 | | |
 |---|---|
-| Auto's op de website | 16 (14 beschikbaar) |
-| Verkoopklaar-controle | 16 auto's bekeken: 10 al op Instagram, 0 in wachtrij, 1 nog niet verkoopklaar, 4 oude voorraad |
-| Nieuw verkoopklaar | 1: Toyota Aygo 1.0 VVT-i x-play |
+| Auto's op de website | 18 (16 beschikbaar) |
+| Verkoopklaar-controle | 18 auto's bekeken: 10 al op Instagram, 1 in wachtrij, 1 nog niet verkoopklaar, 4 oude voorraad |
+| Nieuw verkoopklaar | 2: MINI Cooper S Cabrio 2.0 Chili Serious Business, Suzuki Swift 1.2 Comfort |
 | Vandaag gepubliceerd | niets |
-| In de wachtrij | 1 |
+| In de wachtrij | 3 |
 | Verkocht / uit wachtrij | geen |
 
 ## Prijs- en kilometerwijzigingen
 
-- Hyundai Tucson 1.6 T-GDi Comfort 4WD: prijs € 17.800 -> € 16.900
-- Mercedes-Benz B-Klasse 180 Ambition: prijs € 9.800 -> € 9.400
-- Volkswagen Polo 1.0 TSI Life: prijs € 18.800 -> € 17.400
-- Volkswagen Polo 1.0 TSI Life: kilometerstand 24.477 km -> 32.422 km
-- Volkswagen Polo 1.0 TSI Life Business DSG: prijs € 18.900 -> € 18.800
-- Volkswagen Polo 1.0 TSI Life Business DSG: kilometerstand 8.563 km -> 24.484 km
+- Fiat 500 1.2 Lounge: prijs € 9.900 -> € 9.800
 
 ## Wachtrij
 
 | Gepland | Auto | Prijs | Ontdekt |
 |---|---|---|---|
 | 2026-11-17 | [Toyota Aygo 1.0 VVT-i x-play](https://www.cbautomobielen.nl/aanbod/toyota-aygo-1-0-vvt-i-x-play-58149320) | € 6.900 | 2026-11-14 |
+| 2026-11-20 | [MINI Cooper S Cabrio 2.0 Chili Serious Business](https://www.cbautomobielen.nl/aanbod/mini-cooper-s-cabrio-2-0-chili-serious-business-58190508) | € 16.900 | 2026-11-15 |
+| 2026-11-24 | [Suzuki Swift 1.2 Comfort](https://www.cbautomobielen.nl/aanbod/suzuki-swift-1-2-comfort-58194725) | € 11.400 | 2026-11-15 |
 
 ## Laatst gepubliceerd
 
@@ -50,10 +47,12 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 ```
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
 Instagram publicatielimiet: 0 van 100 gebruikt (24 uur)
-Website: 16 auto's gevonden, 14 beschikbaar
-op de site verschenen: Toyota Aygo 1.0 VVT-i x-play
-VERKOOPKLAAR: Toyota Aygo 1.0 VVT-i x-play (vraagprijs en echte foto's aanwezig; op de site sinds 2026-11-14) -> wachtrij
-Verkoopklaar-controle: 16 auto's bekeken | al op Instagram 10 | in wachtrij 0 (waarvan 1 nieuw) | nog niet verkoopklaar 1 | oude voorraad 4
+Website: 18 auto's gevonden, 16 beschikbaar
+op de site verschenen: MINI Cooper S Cabrio 2.0 Chili Serious Business
+op de site verschenen: Suzuki Swift 1.2 Comfort
+VERKOOPKLAAR: MINI Cooper S Cabrio 2.0 Chili Serious Business (vraagprijs en echte foto's aanwezig; op de site sinds 2026-11-15) -> wachtrij
+VERKOOPKLAAR: Suzuki Swift 1.2 Comfort (vraagprijs en echte foto's aanwezig; op de site sinds 2026-11-15) -> wachtrij
+Verkoopklaar-controle: 18 auto's bekeken | al op Instagram 10 | in wachtrij 1 (waarvan 2 nieuw) | nog niet verkoopklaar 1 | oude voorraad 4
 Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
 Geen nieuwe auto's: vandaag geen stories.
 Geen nieuwe auto's om te publiceren.
