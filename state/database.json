@@ -1074,7 +1074,7 @@
    "slug": "mini-cooper-s-cabrio-2-0-chili-serious-business-58190508",
    "url": "https://www.cbautomobielen.nl/aanbod/mini-cooper-s-cabrio-2-0-chili-serious-business-58190508",
    "titel": "MINI Cooper S Cabrio 2.0 Chili Serious Business",
-   "status": "wachtrij",
+   "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-15",
    "laatst_gezien": "2026-11-15",
@@ -1097,7 +1097,8 @@
     "prijs": "€ 16.900",
     "fotos": 39,
     "marktplaats": false
-   }
+   },
+   "story_datum": "2026-11-16"
   },
   "58194725": {
    "id": "58194725",
