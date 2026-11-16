@@ -334,7 +334,12 @@ def story_voor(vid, it, doelmap):
     car = content.concept(vers)
     car['v2'] = content_v2.maak_v2(vers, nieuw=True)
     notities, labels = fotokeuze.kies(car, vers, fotodir)
-    fout = qa.cover_voorkant(car)
+    # Vaste regel (Christian, 16-11-2026): de story gebruikt ALTIJD de eerste foto van de advertentie.
+    if os.path.exists(os.path.join(fotodir, '01.jpg')):
+        car['photos']['hero'] = '01'
+        fout = []
+    else:
+        fout = ['eerste foto van de advertentie niet gevonden']
     c = dict(slug=vid, price=car['price'], photos=car['photos'], pos=car.get('pos', {}), v2=car['v2'])
     out = os.path.join(doelmap, vid + '.png')
     issues = asyncio.run(story_v2.render(c, out))

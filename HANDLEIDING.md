@@ -1,4 +1,4 @@
-> **Sinds 10-11-2026: er wordt NIETS meer automatisch op Instagram gepost.** Op dinsdag en vrijdag maakt de automaat om 08:00 een story (1080x1920) per nieuwe verkoopklare auto in `stories/<datum>/`. Om 09:23 mailt een vaste taak die naar info@cbautomobielen.nl. Christian zet ze zelf in zijn verhaal, met een linksticker naar de auto. Elke auto krijgt maar één keer een story. Handmatig een story maken: Run workflow › modus `story` › auto = voertuig-ID('s) met komma's of een zoektekst zoals `fiat 500`.
+> **Sinds 10-11-2026: er wordt NIETS meer automatisch op Instagram gepost.** Op dinsdag en vrijdag maakt de automaat om 08:00 een story (1080x1920) per nieuwe verkoopklare auto in `stories/<datum>/`. Om 09:23 mailt een vaste taak die naar info@cbautomobielen.nl. Christian zet ze zelf in zijn verhaal, met een linksticker naar de auto. Elke auto krijgt maar één keer een story. **Vaste regel:** de foto in de story is altijd de eerste foto van de advertentie op de website. Handmatig een story maken: Run workflow › modus `story` › auto = voertuig-ID('s) met komma's of een zoektekst zoals `fiat 500`.
 
 # Instagram-automaat CB Automobielen: handleiding
 
