@@ -23,7 +23,9 @@ PRIO = [
     (r'panorama', 12, 'dak'), (r'head.?up', 11, 'hud'), (r'virtual cockpit|digital cockpit|active info', 10, 'cockpit'),
     (r'matrix|laser', 10, 'licht'), (r'harman|bang|b&o|fender|dynaudio|burmester|bose|beats|meridian|sound system', 9, 'audio'),
     (r'adaptieve cruise|adaptive cruise|\bacc\b', 9, 'cruise'), (r'360|rondomzicht|area view', 9, 'cam'),
-    (r'(lederen|leder|leer).*(bekleding|interieur|stoelen)|alcantara', 9, 'leder'),
+    (r'elektrisch bedienbare kap|elektrische (kap|softtop|dak)|softtop elektrisch', 13, 'kap'),
+    (r'^(?!.*stof)(?=.*(lederen|leder|leer)).*(bekleding|interieur|stoelen)|alcantara', 9, 'leder'),
+    (r'(lederen|leder)/stof|half ?leder', 3, 'leder'),
     (r'stoelverwarming|verwarmde (voor)?stoelen', 9, 'stoelverw'), (r'massage', 9, 'massage'),
     (r'sportstoel|kuipstoel', 8, 'stoel'), (r'sportonderstel|sportchassis|adaptief onderstel|dcc|luchtvering', 8, 'onderstel'),
     (r'carplay|android auto', 8, 'phone'), (r'mmi navigatie plus|navigatie (plus|pro)|discover pro', 8, 'nav'),
@@ -42,6 +44,8 @@ PRIO = [
 
 HERSCHRIJF = [
     (r'^stuur leder$', 'Lederen stuur'),
+    (r'^elektrisch bedienbare kap$', 'Elektrische kap'),
+    (r'^elektrisch verwarmde voorstoelen$', 'Stoelverwarming'),
     (r'^stuur multifunctioneel$', 'Multifunctioneel stuur'),
     (r'^dimlichten automatisch$', 'Automatische verlichting'),
     (r'^buitenspiegels elektrisch verstel- en verwarmbaar$', 'Verwarmde buitenspiegels'),

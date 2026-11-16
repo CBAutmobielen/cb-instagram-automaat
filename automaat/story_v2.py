@@ -71,7 +71,7 @@ def html(c):
     jaar = next((k for k in kern if re.fullmatch(r'(19|20)\d\d', k)), '')
     pk = next((k for k in kern if 'pk' in k), '')
     naam = v2['kop'].title() if v2['kop'].isupper() else v2['kop']
-    naam = re.sub(r'\bUp!', 'up!', naam)
+    naam = re.sub(r'\bUp!', 'up!', re.sub(r'^Mini\b', 'MINI', naam))
     naam = re.sub(r'\bBmw\b', 'BMW', re.sub(r'\bVw\b', 'VW', re.sub(r'(?<=-)Benz', 'Benz', naam)))
     punten = ''.join(f'<div class="punt">{VINK}<span data-fit="440">{E(o)}</span></div>' for o in hoogtepunten(v2['opties'], 3))
     rk = '<div class="rk" style="margin-top:6px">Rijklaar afgeleverd</div>' if v2.get('rijklaar') else ''   # alleen als het op de site staat
@@ -140,7 +140,7 @@ async def render(c, out_png):
 def tekst_ideeen(titel, v2, prijs):
     """Twee korte tekstvoorstellen voor in het verhaal, alleen met gegevens van de website (geen verzinsels)."""
     naam = v2['kop'].title() if v2['kop'].isupper() else v2['kop']
-    naam = re.sub(r'\bUp!', 'up!', re.sub(r'\bBmw\b', 'BMW', naam))
+    naam = re.sub(r'\bUp!', 'up!', re.sub(r'\bBmw\b', 'BMW', re.sub(r'^Mini\b', 'MINI', naam)))
     hp = hoogtepunten(v2['opties'], 3)
     kern = ' · '.join(k for k in v2['kern'] if k)
     klein = lambda o: o[0].lower() + o[1:] if len(o) > 1 and o[1].islower() and not o.split()[0] in ('Apple', 'Android') else o
