@@ -382,7 +382,7 @@
      "reden": "verkeerde coverfoto (interieur); vervangen op verzoek"
     }
    ],
-   "story_datum": "2026-11-10",
+   "story_datum": "2026-11-16",
    "vorige_ids": [
     "957438"
    ]
@@ -1104,7 +1104,7 @@
    "slug": "suzuki-swift-1-2-comfort-58194725",
    "url": "https://www.cbautomobielen.nl/aanbod/suzuki-swift-1-2-comfort-58194725",
    "titel": "Suzuki Swift 1.2 Comfort",
-   "status": "wachtrij",
+   "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-15",
    "laatst_gezien": "2026-11-15",
@@ -1127,7 +1127,8 @@
     "prijs": "€ 11.400",
     "fotos": 28,
     "marktplaats": false
-   }
+   },
+   "story_datum": "2026-11-16"
   }
  },
  "runs": [
