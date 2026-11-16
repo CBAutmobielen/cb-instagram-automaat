@@ -33,12 +33,19 @@ PRIO = [
     (r'elektrische achterklep', 6, 'klep'), (r'climate control|climatronic|klimaatregeling|comfortairco|airco \(automatisch\)|automatische airco', 5, 'airco'),
     (r'parkeerhulp|parkeersensor|pdc|park distance', 5, 'pdc'), (r'dodehoek|side assist|blind spot', 5, 'bsm'),
     (r'stuurverwarming', 5, 'stuurverw'), (r'cruise ?control', 4, 'cruise'), (r'privacy glass|getint', 3, 'tint'),
+    (r'^airco$|^airconditioning$', 4, 'airco'), (r'leder.*multifunctio|multifunctio.*leder', 3.5, 'stuur'),
+    (r'bluetooth', 3, 'bt'), (r'spiegels.*verwarmbaar|verwarmde (buiten)?spiegels', 2, 'spiegel'),
     # tweede rij: alleen om tot 6 aan te vullen
     (r'dakrail', 2, 'dakrail'), (r'led (achterlicht|dagrijverlichting)', 2, 'led2'), (r'regensensor', 2, 'regen'),
     (r'inklapbaar', 2, 'spiegel'), (r'middenarmsteun|armsteun', 1, 'arm'), (r'multifunctioneel', 1, 'stuur'),
 ]
 
 HERSCHRIJF = [
+    (r'^stuur leder$', 'Lederen stuur'),
+    (r'^stuur multifunctioneel$', 'Multifunctioneel stuur'),
+    (r'^dimlichten automatisch$', 'Automatische verlichting'),
+    (r'^buitenspiegels elektrisch verstel- en verwarmbaar$', 'Verwarmde buitenspiegels'),
+    (r'^airco$', 'Airco'),
     (r'^dynaudio.*$', 'Dynaudio geluidssysteem'),
     (r'^elektrisch panorama.*dak$', 'Elektrisch panoramadak'),
     (r'^parkeersensoren voor en achter$', 'PDC voor en achter'),
@@ -110,6 +117,9 @@ def _velg_tekst(o):
 
 def opties(v, n=6):
     alle = list(dict.fromkeys([o for o in v.get('bijzondere_opties', []) + v.get('opties', []) if o]))
+    laag = {o.lower(): o for o in alle}
+    if 'stuur leder' in laag and 'stuur multifunctioneel' in laag:      # Autotelex: twee losse regels -> één sterk punt
+        alle = [('Lederen multifunctioneel stuur' if o == laag['stuur leder'] else o) for o in alle if o != laag['stuur multifunctioneel']]
     scored, groepen, uit = [], set(), []
     vertaald = {}
     for i, o in enumerate(alle):
