@@ -341,7 +341,8 @@ def story_voor(vid, it, doelmap):
     info = {'id': vid, 'titel': vers['title'], 'url': it['url'], 'prijs': car['price'], 'kern': car['v2']['kern'],
             'hoogtepunten': story_v2.hoogtepunten(car['v2']['opties']), 'cover': car['photos'].get('hero'),
             'problemen': fout + issues, 'notities': notities, 'png': os.path.relpath(out, config.ROOT),
-            'tekst': story_v2.tekst_ideeen(vers['title'], car['v2'], car['price'])}
+            'tekst': story_v2.tekst_ideeen(vers['title'], car['v2'], car['price']),
+            'opties_site': vers.get('opties') or vers.get('features') or [], 'opties_v2': car['v2']['opties']}
     json.dump(info, open(os.path.join(doelmap, vid + '.json'), 'w'), ensure_ascii=False, indent=1)
     if info['problemen']:
         os.remove(out)          # nooit een story met fouten (bv. geen voorkant) aanbieden
