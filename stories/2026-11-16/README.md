@@ -1,28 +1,5 @@
 # Stories 2026-11-16
 
-## Suzuki Swift 1.2 Comfort
-
-- Prijs: € 11.400 · 2018 · 82.484 km · 90 pk
-- Link voor de linksticker: https://www.cbautomobielen.nl/aanbod/suzuki-swift-1-2-comfort-58194725
-- Afbeelding: https://raw.githubusercontent.com/CBAutmobielen/cb-instagram-automaat/main/stories/2026-11-16/58194725.png
-
-**Tekstideeën voor in je verhaal:**
-
-```
-Net binnen! 🔥 Suzuki Swift 1.2 Comfort
-Airco, lederen multifunctiestuur en bluetooth.
-2018 · 82.484 km · 90 pk · € 11.400
-Tik op de link voor alle foto's 👆
-```
-
-```
-Wie wordt de nieuwe eigenaar? 🔑
-Suzuki Swift met airco, lederen multifunctiestuur en bluetooth.
-Nu bij CB Automobielen in Sneek · € 11.400
-```
-
-![story](58194725.png)
-
 ## MINI Cooper S Cabrio 2.0 Chili Serious Business
 
 - Prijs: € 16.900 · 2016 · 42.832 km · 192 pk
@@ -32,15 +9,15 @@ Nu bij CB Automobielen in Sneek · € 11.400
 **Tekstideeën voor in je verhaal:**
 
 ```
-Net binnen! 🔥 Mini Cooper S Cabrio 2.0 Chili Serious Business
-Lederen/stof bekleding, sportstoelen en sportonderstel.
+Net binnen! 🔥 MINI Cooper S Cabrio 2.0 Chili Serious Business
+Elektrische kap, stoelverwarming en sportstoelen.
 2016 · 42.832 km · 192 pk · € 16.900
 Tik op de link voor alle foto's 👆
 ```
 
 ```
 Wie wordt de nieuwe eigenaar? 🔑
-Mini Cooper met lederen/stof bekleding, sportstoelen en sportonderstel.
+MINI Cooper met elektrische kap, stoelverwarming en sportstoelen.
 Nu bij CB Automobielen in Sneek · € 16.900
 ```
 
@@ -68,3 +45,26 @@ Nu bij CB Automobielen in Sneek · € 9.800
 ```
 
 ![story](57700474.png)
+
+## Suzuki Swift 1.2 Comfort
+
+- Prijs: € 11.400 · 2018 · 82.484 km · 90 pk
+- Link voor de linksticker: https://www.cbautomobielen.nl/aanbod/suzuki-swift-1-2-comfort-58194725
+- Afbeelding: https://raw.githubusercontent.com/CBAutmobielen/cb-instagram-automaat/main/stories/2026-11-16/58194725.png
+
+**Tekstideeën voor in je verhaal:**
+
+```
+Net binnen! 🔥 Suzuki Swift 1.2 Comfort
+Airco, lederen multifunctiestuur en bluetooth.
+2018 · 82.484 km · 90 pk · € 11.400
+Tik op de link voor alle foto's 👆
+```
+
+```
+Wie wordt de nieuwe eigenaar? 🔑
+Suzuki Swift met airco, lederen multifunctiestuur en bluetooth.
+Nu bij CB Automobielen in Sneek · € 11.400
+```
+
+![story](58194725.png)
