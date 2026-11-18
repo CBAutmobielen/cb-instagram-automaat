@@ -245,8 +245,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-17",
-   "prijs": "€ 12.400",
+   "laatst_gezien": "2026-11-18",
+   "prijs": "€ 11.900",
    "kilometerstand": "174.735 km",
    "bouwjaar": "2015",
    "afbeeldingen_status": "OK",
@@ -281,6 +281,12 @@
      "veld": "url",
      "oud": "https://www.cbautomobielen.nl/aanbod/audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-952652",
      "nieuw": "https://www.cbautomobielen.nl/aanbod/audi-a3-sportback-1-4-e-tron-phev-ambition-pro-line-plus-57375679"
+    },
+    {
+     "datum": "2026-11-18",
+     "veld": "prijs",
+     "oud": "€ 12.400",
+     "nieuw": "€ 11.900"
     }
    ],
    "vorige_ids": [
@@ -295,7 +301,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": "€ 34.900",
    "kilometerstand": "81.568 km",
    "bouwjaar": null,
@@ -333,8 +339,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-31",
-   "laatst_gezien": "2026-11-17",
-   "prijs": "€ 9.800",
+   "laatst_gezien": "2026-11-18",
+   "prijs": "€ 8.900",
    "kilometerstand": "107.177 km",
    "bouwjaar": "2019",
    "afbeeldingen_status": "OK",
@@ -363,6 +369,12 @@
      "veld": "prijs",
      "oud": "€ 9.900",
      "nieuw": "€ 9.800"
+    },
+    {
+     "datum": "2026-11-18",
+     "veld": "prijs",
+     "oud": "€ 9.800",
+     "nieuw": "€ 8.900"
     }
    ],
    "klaar": {
@@ -395,7 +407,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-29",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": "€ 16.900",
    "kilometerstand": "86.216 km",
    "bouwjaar": "2017",
@@ -475,8 +487,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-17",
-   "prijs": "€ 6.800",
+   "laatst_gezien": "2026-11-18",
+   "prijs": "€ 6.700",
    "kilometerstand": "139.793 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -505,6 +517,12 @@
      "veld": "url",
      "oud": "https://www.cbautomobielen.nl/aanbod/kia-picanto-1-0-cvvt-economyplusline-949714",
      "nieuw": "https://www.cbautomobielen.nl/aanbod/kia-picanto-1-0-cvvt-economyplusline-57046013"
+    },
+    {
+     "datum": "2026-11-18",
+     "veld": "prijs",
+     "oud": "€ 6.800",
+     "nieuw": "€ 6.700"
     }
    ],
    "klaar": {
@@ -525,8 +543,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-17",
-   "prijs": "€ 9.400",
+   "laatst_gezien": "2026-11-18",
+   "prijs": "€ 8.900",
    "kilometerstand": "188.975 km",
    "bouwjaar": "2013",
    "afbeeldingen_status": "OK",
@@ -555,6 +573,12 @@
      "veld": "prijs",
      "oud": "€ 9.800",
      "nieuw": "€ 9.400"
+    },
+    {
+     "datum": "2026-11-18",
+     "veld": "prijs",
+     "oud": "€ 9.400",
+     "nieuw": "€ 8.900"
     }
    ],
    "eerst_op_site": "2026-11-01",
@@ -579,7 +603,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": "€ 16.800",
    "kilometerstand": "55.361 km",
    "bouwjaar": null,
@@ -626,7 +650,7 @@
    "status": "niet_klaar",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": null,
    "kilometerstand": "117.717 km",
    "bouwjaar": null,
@@ -648,7 +672,7 @@
    ],
    "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
    "klaar": {
-    "datum": "2026-11-17",
+    "datum": "2026-11-18",
     "prijs": null,
     "fotos": null,
     "marktplaats": null
@@ -665,8 +689,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-17",
-   "prijs": "€ 13.500",
+   "laatst_gezien": "2026-11-18",
+   "prijs": "€ 13.800",
    "kilometerstand": "95.583 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -707,6 +731,12 @@
      "veld": "prijs",
      "oud": "€ 13.800",
      "nieuw": "€ 13.500"
+    },
+    {
+     "datum": "2026-11-18",
+     "veld": "prijs",
+     "oud": "€ 13.500",
+     "nieuw": "€ 13.800"
     }
    ],
    "klaar": {
@@ -727,7 +757,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-12",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": "€ 11.800",
    "kilometerstand": "148.369 km",
    "bouwjaar": null,
@@ -780,7 +810,7 @@
    "status": "bestaand",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": "€ 10.700",
    "kilometerstand": "156.099 km",
    "bouwjaar": null,
@@ -830,7 +860,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-06",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": "€ 17.400",
    "kilometerstand": "32.422 km",
    "bouwjaar": null,
@@ -889,8 +919,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-17",
-   "prijs": "€ 18.800",
+   "laatst_gezien": "2026-11-18",
+   "prijs": "€ 18.900",
    "kilometerstand": "24.484 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -943,6 +973,12 @@
      "veld": "kilometerstand",
      "oud": "8.563 km",
      "nieuw": "24.484 km"
+    },
+    {
+     "datum": "2026-11-18",
+     "veld": "prijs",
+     "oud": "€ 18.800",
+     "nieuw": "€ 18.900"
     }
    ],
    "klaar": {
@@ -964,7 +1000,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": "€ 9.800",
    "kilometerstand": "83.112 km",
    "bouwjaar": "2021",
@@ -1012,8 +1048,8 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-17",
-   "prijs": "€ 9.900",
+   "laatst_gezien": "2026-11-18",
+   "prijs": "€ 9.800",
    "kilometerstand": "115.000 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -1030,6 +1066,12 @@
      "veld": "url",
      "oud": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-bmt-move-up-960055",
      "nieuw": "https://www.cbautomobielen.nl/aanbod/volkswagen-up-1-0-bmt-move-up-57921282"
+    },
+    {
+     "datum": "2026-11-18",
+     "veld": "prijs",
+     "oud": "€ 9.900",
+     "nieuw": "€ 9.800"
     }
    ],
    "klaar": {
@@ -1053,8 +1095,8 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-14",
-   "laatst_gezien": "2026-11-17",
-   "prijs": "€ 6.900",
+   "laatst_gezien": "2026-11-18",
+   "prijs": "€ 6.400",
    "kilometerstand": "127.743 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -1065,7 +1107,14 @@
    "instagram_permalink": null,
    "pogingen": 0,
    "fouten": [],
-   "wijzigingen": [],
+   "wijzigingen": [
+    {
+     "datum": "2026-11-18",
+     "veld": "prijs",
+     "oud": "€ 6.900",
+     "nieuw": "€ 6.400"
+    }
+   ],
    "eerst_op_site": "2026-11-14",
    "verkoopklaar_sinds": "2026-11-14",
    "klaar": {
@@ -1084,7 +1133,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-15",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": "€ 16.900",
    "kilometerstand": "42.832 km",
    "bouwjaar": null,
@@ -1115,7 +1164,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-15",
-   "laatst_gezien": "2026-11-17",
+   "laatst_gezien": "2026-11-18",
    "prijs": "€ 11.400",
    "kilometerstand": "82.484 km",
    "bouwjaar": null,
@@ -1512,6 +1561,14 @@
    "modus": "dagelijks",
    "nieuw": 0,
    "gepubliceerd": "Toyota Aygo 1.0 VVT-i x-play (story gemaakt, niet gepost)",
+   "fouten": []
+  },
+  {
+   "datum": "2026-11-18",
+   "tijd": "09:09",
+   "modus": "dagelijks",
+   "nieuw": 0,
+   "gepubliceerd": null,
    "fouten": []
   }
  ]
