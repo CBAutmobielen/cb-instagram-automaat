@@ -1,10 +1,10 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Thursday 19-11-2026 08:10 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
+**Laatste controle:** Friday 20-11-2026 09:11 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
 
 | | |
 |---|---|
-| Auto's op de website | 17 (16 beschikbaar) |
+| Auto's op de website | 17 (14 beschikbaar) |
 | Verkoopklaar-controle | 17 auto's bekeken: 13 al op Instagram, 0 in wachtrij, 1 nog niet verkoopklaar, 3 oude voorraad |
 | Nieuw verkoopklaar | 0 |
 | Vandaag gepubliceerd | niets |
@@ -13,9 +13,10 @@
 
 ## Prijs- en kilometerwijzigingen
 
-- Hyundai Tucson 1.6 T-GDi Comfort 4WD: prijs € 16.900 -> € 17.500
-- SEAT Ibiza 1.0 EcoTSI FR: prijs € 16.800 -> € 16.900
-- Volkswagen Golf Variant 1.0 TSI Trendline 116PK: prijs € 13.800 -> € 13.900
+- Hyundai Tucson 1.6 T-GDi Comfort 4WD: prijs € 17.500 -> € 16.900
+- Kia Picanto 1.0 CVVT EconomyPlusLine: prijs € 6.700 -> € 6.400
+- SEAT Ibiza 1.0 EcoTSI FR: prijs € 16.900 -> € 16.800
+- Volkswagen Polo 1.0 TSI Life Business DSG: prijs € 18.900 -> € 18.800
 
 ## Wachtrij
 
@@ -38,16 +39,15 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 
 | Auto | Op de site sinds | Wat ontbreekt | Marktplaats |
 |---|---|---|---|
-| [Volkswagen Golf 2.0 GTI TCR](https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-55645760) | 2026-10-22 | nog geen vraagprijs (Op aanvraag) | niet gevonden |
+| [Verkocht Volkswagen Golf 2.0 GTI TCR](https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-55645760) | 2026-10-22 | nog geen vraagprijs (Op aanvraag) | niet gevonden |
 
 ## Verloop van deze run
 
 ```
-Instagram verbonden: @cbautomobielen | token: recent vernieuwd
+Instagram verbonden: @cbautomobielen | token: vernieuwd, geldig tot ca. 2027-01-19
 Instagram publicatielimiet: 0 van 50 gebruikt (24 uur)
-Website: 17 auto's gevonden, 16 beschikbaar
+Website: 17 auto's gevonden, 14 beschikbaar
 Verkoopklaar-controle: 17 auto's bekeken | al op Instagram 13 | in wachtrij 0 (waarvan 0 nieuw) | nog niet verkoopklaar 1 | oude voorraad 3
-Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
 Geen nieuwe auto's: vandaag geen stories.
 Geen nieuwe auto's om te publiceren.
 ```
