@@ -1,6 +1,6 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Friday 20-11-2026 09:11 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
+**Laatste controle:** Saturday 21-11-2026 09:01 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
 
 | | |
 |---|---|
@@ -10,13 +10,6 @@
 | Vandaag gepubliceerd | niets |
 | In de wachtrij | 0 |
 | Verkocht / uit wachtrij | geen |
-
-## Prijs- en kilometerwijzigingen
-
-- Hyundai Tucson 1.6 T-GDi Comfort 4WD: prijs € 17.500 -> € 16.900
-- Kia Picanto 1.0 CVVT EconomyPlusLine: prijs € 6.700 -> € 6.400
-- SEAT Ibiza 1.0 EcoTSI FR: prijs € 16.900 -> € 16.800
-- Volkswagen Polo 1.0 TSI Life Business DSG: prijs € 18.900 -> € 18.800
 
 ## Wachtrij
 
@@ -44,10 +37,11 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 ## Verloop van deze run
 
 ```
-Instagram verbonden: @cbautomobielen | token: vernieuwd, geldig tot ca. 2027-01-19
+Instagram verbonden: @cbautomobielen | token: recent vernieuwd
 Instagram publicatielimiet: 0 van 50 gebruikt (24 uur)
 Website: 17 auto's gevonden, 14 beschikbaar
 Verkoopklaar-controle: 17 auto's bekeken | al op Instagram 13 | in wachtrij 0 (waarvan 0 nieuw) | nog niet verkoopklaar 1 | oude voorraad 3
+Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
 Geen nieuwe auto's: vandaag geen stories.
 Geen nieuwe auto's om te publiceren.
 ```
