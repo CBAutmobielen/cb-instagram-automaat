@@ -1,19 +1,21 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Saturday 21-11-2026 09:01 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
+**Laatste controle:** Sunday 22-11-2026 13:57 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
 
 | | |
 |---|---|
-| Auto's op de website | 17 (14 beschikbaar) |
-| Verkoopklaar-controle | 17 auto's bekeken: 13 al op Instagram, 0 in wachtrij, 1 nog niet verkoopklaar, 3 oude voorraad |
-| Nieuw verkoopklaar | 0 |
+| Auto's op de website | 18 (15 beschikbaar) |
+| Verkoopklaar-controle | 18 auto's bekeken: 13 al op Instagram, 0 in wachtrij, 1 nog niet verkoopklaar, 3 oude voorraad |
+| Nieuw verkoopklaar | 1: Toyota Aygo 1.0 VVT-i x-play |
 | Vandaag gepubliceerd | niets |
-| In de wachtrij | 0 |
+| In de wachtrij | 1 |
 | Verkocht / uit wachtrij | geen |
 
 ## Wachtrij
 
-Leeg. Nieuwe auto's op de website komen hier automatisch in.
+| Gepland | Auto | Prijs | Ontdekt |
+|---|---|---|---|
+| 2026-11-24 | [Toyota Aygo 1.0 VVT-i x-play](https://www.cbautomobielen.nl/aanbod/toyota-aygo-1-0-vvt-i-x-play-58346938) | € 8.900 | 2026-11-22 |
 
 ## Laatst gepubliceerd
 
@@ -39,8 +41,10 @@ Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's st
 ```
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
 Instagram publicatielimiet: 0 van 50 gebruikt (24 uur)
-Website: 17 auto's gevonden, 14 beschikbaar
-Verkoopklaar-controle: 17 auto's bekeken | al op Instagram 13 | in wachtrij 0 (waarvan 0 nieuw) | nog niet verkoopklaar 1 | oude voorraad 3
+Website: 18 auto's gevonden, 15 beschikbaar
+op de site verschenen: Toyota Aygo 1.0 VVT-i x-play
+VERKOOPKLAAR: Toyota Aygo 1.0 VVT-i x-play (vraagprijs en echte foto's aanwezig; op de site sinds 2026-11-22) -> wachtrij
+Verkoopklaar-controle: 18 auto's bekeken | al op Instagram 13 | in wachtrij 0 (waarvan 1 nieuw) | nog niet verkoopklaar 1 | oude voorraad 3
 Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
 Geen nieuwe auto's: vandaag geen stories.
 Geen nieuwe auto's om te publiceren.
