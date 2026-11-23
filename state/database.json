@@ -245,8 +245,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-22",
-   "prijs": "€ 11.900",
+   "laatst_gezien": "2026-11-23",
+   "prijs": "€ 11.400",
    "kilometerstand": "174.735 km",
    "bouwjaar": "2015",
    "afbeeldingen_status": "OK",
@@ -287,6 +287,12 @@
      "veld": "prijs",
      "oud": "€ 12.400",
      "nieuw": "€ 11.900"
+    },
+    {
+     "datum": "2026-11-23",
+     "veld": "prijs",
+     "oud": "€ 11.900",
+     "nieuw": "€ 11.400"
     }
    ],
    "vorige_ids": [
@@ -301,7 +307,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 34.900",
    "kilometerstand": "81.568 km",
    "bouwjaar": null,
@@ -339,7 +345,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-31",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 8.900",
    "kilometerstand": "107.177 km",
    "bouwjaar": "2019",
@@ -407,8 +413,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-29",
-   "laatst_gezien": "2026-11-22",
-   "prijs": "€ 16.900",
+   "laatst_gezien": "2026-11-23",
+   "prijs": "€ 16.800",
    "kilometerstand": "86.216 km",
    "bouwjaar": "2017",
    "afbeeldingen_status": "OK",
@@ -476,6 +482,12 @@
      "veld": "prijs",
      "oud": "€ 17.500",
      "nieuw": "€ 16.900"
+    },
+    {
+     "datum": "2026-11-23",
+     "veld": "prijs",
+     "oud": "€ 16.900",
+     "nieuw": "€ 16.800"
     }
    ],
    "klaar": {
@@ -499,8 +511,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-22",
-   "prijs": "€ 6.400",
+   "laatst_gezien": "2026-11-23",
+   "prijs": "€ 6.250",
    "kilometerstand": "139.793 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -541,6 +553,12 @@
      "veld": "prijs",
      "oud": "€ 6.700",
      "nieuw": "€ 6.400"
+    },
+    {
+     "datum": "2026-11-23",
+     "veld": "prijs",
+     "oud": "€ 6.400",
+     "nieuw": "€ 6.250"
     }
    ],
    "klaar": {
@@ -561,8 +579,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-22",
-   "prijs": "€ 8.900",
+   "laatst_gezien": "2026-11-23",
+   "prijs": "€ 8.800",
    "kilometerstand": "188.975 km",
    "bouwjaar": "2013",
    "afbeeldingen_status": "OK",
@@ -597,6 +615,12 @@
      "veld": "prijs",
      "oud": "€ 9.400",
      "nieuw": "€ 8.900"
+    },
+    {
+     "datum": "2026-11-23",
+     "veld": "prijs",
+     "oud": "€ 8.900",
+     "nieuw": "€ 8.800"
     }
    ],
    "eerst_op_site": "2026-11-01",
@@ -621,7 +645,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 16.800",
    "kilometerstand": "55.361 km",
    "bouwjaar": null,
@@ -680,7 +704,7 @@
    "status": "niet_klaar",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": null,
    "kilometerstand": "117.717 km",
    "bouwjaar": null,
@@ -702,7 +726,7 @@
    ],
    "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
    "klaar": {
-    "datum": "2026-11-22",
+    "datum": "2026-11-23",
     "prijs": null,
     "fotos": null,
     "marktplaats": null
@@ -719,8 +743,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-22",
-   "prijs": "€ 13.900",
+   "laatst_gezien": "2026-11-23",
+   "prijs": "€ 13.800",
    "kilometerstand": "95.583 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -773,6 +797,12 @@
      "veld": "prijs",
      "oud": "€ 13.800",
      "nieuw": "€ 13.900"
+    },
+    {
+     "datum": "2026-11-23",
+     "veld": "prijs",
+     "oud": "€ 13.900",
+     "nieuw": "€ 13.800"
     }
    ],
    "klaar": {
@@ -793,7 +823,7 @@
    "status": "verkocht",
    "beschikbaar": false,
    "ontdekt": "2026-11-12",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 11.800",
    "kilometerstand": "148.369 km",
    "bouwjaar": null,
@@ -896,7 +926,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-06",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 17.400",
    "kilometerstand": "32.422 km",
    "bouwjaar": null,
@@ -955,8 +985,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-22",
-   "prijs": "€ 18.800",
+   "laatst_gezien": "2026-11-23",
+   "prijs": "€ 18.900",
    "kilometerstand": "24.484 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -1021,6 +1051,12 @@
      "veld": "prijs",
      "oud": "€ 18.900",
      "nieuw": "€ 18.800"
+    },
+    {
+     "datum": "2026-11-23",
+     "veld": "prijs",
+     "oud": "€ 18.800",
+     "nieuw": "€ 18.900"
     }
    ],
    "klaar": {
@@ -1042,7 +1078,7 @@
    "status": "gepubliceerd",
    "beschikbaar": false,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 9.800",
    "kilometerstand": "83.112 km",
    "bouwjaar": "2021",
@@ -1090,7 +1126,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 9.800",
    "kilometerstand": "115.000 km",
    "bouwjaar": null,
@@ -1137,7 +1173,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-14",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 6.400",
    "kilometerstand": "127.743 km",
    "bouwjaar": null,
@@ -1175,7 +1211,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-15",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 16.900",
    "kilometerstand": "42.832 km",
    "bouwjaar": null,
@@ -1206,7 +1242,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-15",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 11.400",
    "kilometerstand": "82.484 km",
    "bouwjaar": null,
@@ -1237,7 +1273,7 @@
    "status": "wachtrij",
    "beschikbaar": true,
    "ontdekt": "2026-11-22",
-   "laatst_gezien": "2026-11-22",
+   "laatst_gezien": "2026-11-23",
    "prijs": "€ 8.900",
    "kilometerstand": "93.089 km",
    "bouwjaar": null,
@@ -1672,6 +1708,14 @@
    "tijd": "13:58",
    "modus": "dagelijks",
    "nieuw": 1,
+   "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-11-23",
+   "tijd": "16:34",
+   "modus": "dagelijks",
+   "nieuw": 0,
    "gepubliceerd": null,
    "fouten": []
   }
