@@ -1,21 +1,19 @@
 # Instagram-automaat CB Automobielen
 
-**Laatste controle:** Tuesday 24-11-2026 16:27 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
+**Laatste controle:** Wednesday 25-11-2026 16:13 (Europe/Amsterdam) · modus: **dagelijks (publiceren UIT)** · ✅ geen fouten
 
 | | |
 |---|---|
-| Auto's op de website | 17 (16 beschikbaar) |
-| Verkoopklaar-controle | 17 auto's bekeken: 12 al op Instagram, 1 in wachtrij, 0 nog niet verkoopklaar, 3 oude voorraad |
-| Nieuw verkoopklaar | 1: BMW X1 sDrive20i Centennial High Executive |
-| Vandaag gepubliceerd | Toyota Aygo 1.0 VVT-i x-play, BMW X1 sDrive20i Centennial High Executive (story gemaakt, niet gepost) |
+| Auto's op de website | 20 (16 beschikbaar) |
+| Verkoopklaar-controle | 20 auto's bekeken: 15 al op Instagram, 0 in wachtrij, 2 nog niet verkoopklaar, 3 oude voorraad |
+| Nieuw verkoopklaar | 0 |
+| Vandaag gepubliceerd | niets |
 | In de wachtrij | 0 |
 | Verkocht / uit wachtrij | geen |
 
 ## Prijs- en kilometerwijzigingen
 
-- Kia Picanto 1.0 CVVT EconomyPlusLine: prijs € 6.250 -> € 6.400
-- Volkswagen up! 1.0 BMT move up!: prijs € 9.800 -> € 8.900
-- Volkswagen up! 1.0 BMT move up!: kilometerstand 115.000 km -> 114.828 km
+- Volkswagen Polo 1.0 TSI Life: prijs € 17.400 -> € 16.900
 
 ## Wachtrij
 
@@ -32,16 +30,25 @@ Leeg. Nieuwe auto's op de website komen hier automatisch in.
 | 2026-10-27 10:54 | Volkswagen Polo 1.0 TSI 81kW UNITED | [bekijk](https://www.instagram.com/p/De_lOXOloTr/) |
 | 2026-10-22 17:16 | Audi A3 Sportback 1.4 e-tron PHEV Ambition Pro Line plus | [bekijk](https://www.instagram.com/p/DezSIhdkYf_/) |
 
+## Op de site, nog niet verkoopklaar
+
+Bij iedere controle opnieuw bekeken. Zodra er een vraagprijs én echte foto's staan, gaan ze automatisch in de wachtrij, ook als ze al weken op de site staan.
+
+| Auto | Op de site sinds | Wat ontbreekt | Marktplaats |
+|---|---|---|---|
+| [Verkocht Volkswagen Golf 2.0 GTI TCR](https://www.cbautomobielen.nl/aanbod/volkswagen-golf-2-0-gti-tcr-55645760) | 2026-10-22 | nog geen vraagprijs (Op aanvraag) | niet gevonden |
+| [MINI 3-Deurs 2.0 Cooper S Chili Serious Business](https://www.cbautomobielen.nl/aanbod/mini-3-deurs-2-0-cooper-s-chili-serious-business-58415390) | 2026-11-25 | nog geen echte foto's (3 foto's, minimaal 8) | niet gevonden |
+
 ## Verloop van deze run
 
 ```
 Instagram verbonden: @cbautomobielen | token: recent vernieuwd
 Instagram publicatielimiet: 0 van 50 gebruikt (24 uur)
-Website: 17 auto's gevonden, 16 beschikbaar
-op de site verschenen: BMW X1 sDrive20i Centennial High Executive
-VERKOOPKLAAR: BMW X1 sDrive20i Centennial High Executive (vraagprijs en echte foto's aanwezig; op de site sinds 2026-11-24) -> wachtrij
-Verkoopklaar-controle: 17 auto's bekeken | al op Instagram 12 | in wachtrij 1 (waarvan 1 nieuw) | nog niet verkoopklaar 0 | oude voorraad 3
-STORY gemaakt: Toyota Aygo 1.0 VVT-i x-play -> stories/2026-11-24/58346938.png
-STORY gemaakt: BMW X1 sDrive20i Centennial High Executive -> stories/2026-11-24/58398558.png
+Website: 20 auto's gevonden, 16 beschikbaar
+op de site verschenen: MINI 3-Deurs 2.0 Cooper S Chili Serious Business
+nog niet verkoopklaar: MINI 3-Deurs 2.0 Cooper S Chili Serious Business (nog geen echte foto's (3 foto's, minimaal 8))
+Verkoopklaar-controle: 20 auto's bekeken | al op Instagram 15 | in wachtrij 0 (waarvan 0 nieuw) | nog niet verkoopklaar 2 | oude voorraad 3
+Vandaag is geen publicatiedag (publicatiedagen: di, vr). Website gecontroleerd, wachtrij bijgewerkt.
+Geen nieuwe auto's: vandaag geen stories.
 Geen nieuwe auto's om te publiceren.
 ```
