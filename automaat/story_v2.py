@@ -143,7 +143,11 @@ def tekst_ideeen(titel, v2, prijs):
     naam = re.sub(r'\bUp!', 'up!', re.sub(r'\bBmw\b', 'BMW', re.sub(r'^Mini\b', 'MINI', naam)))
     hp = hoogtepunten(v2['opties'], 3)
     kern = ' · '.join(k for k in v2['kern'] if k)
-    klein = lambda o: o[0].lower() + o[1:] if len(o) > 1 and o[1].islower() and not o.split()[0] in ('Apple', 'Android') else o
+    def klein(o):   # 'Panoramadak' -> 'panoramadak', maar 'Head-Up Display', 'LED', 'Apple CarPlay' blijven zoals ze zijn
+        w = o.split()[0] if o.split() else o
+        if len(o) < 2 or not o[1].islower() or re.search(r'[A-Z]', w[1:]) or w in ('Apple', 'Android', 'BMW') or re.search(r'\b[A-Z]{2,}\b', o.split(',')[0]):
+            return o
+        return o[0].lower() + o[1:]
     hp = [hp[0]] + [klein(o) for o in hp[1:]] if hp else []
     lijst = ', '.join(hp[:-1]) + (' en ' + hp[-1] if len(hp) > 1 else (hp[0] if hp else ''))
     a = f"Net binnen! 🔥 {naam} {v2['ondertitel']}\n{lijst}.\n{kern} · {prijs}\nTik op de link voor alle foto's 👆"
