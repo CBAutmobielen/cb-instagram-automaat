@@ -378,8 +378,13 @@ def stories_overzicht(doelmap, infos):
 def maak_story(auto=None):
     """Handmatig: stories maken voor één of meer auto's (voertuig-ID's met komma's, of zoektekst zoals 'fiat 500').
     Resultaat: stories/<datum>/<id>.png"""
-    listing = site.aanbod()
     delen = [x.strip() for x in (auto or '').split(',') if x.strip()]
+    db0 = dbm.laad()
+    if delen and all(x in db0['voertuigen'] for x in delen):
+        # bekende auto's: direct via hun eigen pagina, zonder de (soms haperende) aanbodpagina
+        listing = {x: {'slug': db0['voertuigen'][x]['slug'], 'url': db0['voertuigen'][x]['url']} for x in delen}
+    else:
+        listing = site.aanbod()
     if delen and all(x in listing for x in delen):
         ids = delen
     else:
