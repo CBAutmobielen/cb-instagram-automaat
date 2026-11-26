@@ -47,6 +47,17 @@ VINK = ('<svg width="34" height="34" viewBox="0 0 34 34"><rect width="34" height
         '<path d="M10 17.5l4.6 4.6 9.4-9.8" stroke="#EB5B28" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 
+MERKEN = {'Seat': 'SEAT', 'Mini': 'MINI', 'Bmw': 'BMW', 'Vw': 'VW', 'Ds': 'DS', 'Mg': 'MG', 'Byd': 'BYD',
+          'Cupra': 'CUPRA', 'Up!': 'up!', 'Gti': 'GTI', 'Gtd': 'GTD', 'Gte': 'GTE', 'Tsi': 'TSI', 'Tfsi': 'TFSI'}
+
+
+def merknaam(kop):
+    """'SEAT IBIZA' -> 'SEAT Ibiza', 'MINI COOPER' -> 'MINI Cooper', 'VOLKSWAGEN UP!' -> 'Volkswagen up!'."""
+    naam = kop.title() if kop.isupper() else kop
+    naam = re.sub(r'(?<=-)Benz', 'Benz', naam)
+    return ' '.join(MERKEN.get(w, w) for w in naam.split())
+
+
 def hoogtepunten(opts, n=4):
     """Cruise control altijd vooraan als de auto het heeft; daarna de sterkste opties uit de post."""
     opts = [re.sub(r'^Airconditioning,? automatisch$', 'Automatische airco', o, flags=re.I) for o in opts]
@@ -70,9 +81,7 @@ def html(c):
     km = next((k for k in kern if 'km' in k), '')
     jaar = next((k for k in kern if re.fullmatch(r'(19|20)\d\d', k)), '')
     pk = next((k for k in kern if 'pk' in k), '')
-    naam = v2['kop'].title() if v2['kop'].isupper() else v2['kop']
-    naam = re.sub(r'\bUp!', 'up!', re.sub(r'^Mini\b', 'MINI', naam))
-    naam = re.sub(r'\bBmw\b', 'BMW', re.sub(r'\bVw\b', 'VW', re.sub(r'(?<=-)Benz', 'Benz', naam)))
+    naam = merknaam(v2['kop'])
     punten = ''.join(f'<div class="punt">{VINK}<span data-fit="440">{E(o)}</span></div>' for o in hoogtepunten(v2['opties'], 3))
     rk = '<div class="rk" style="margin-top:6px">Rijklaar afgeleverd</div>' if v2.get('rijklaar') else ''   # alleen als het op de site staat
     dm_icoon = ('<svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#EB5B28"/>'
@@ -139,8 +148,7 @@ async def render(c, out_png):
 
 def tekst_ideeen(titel, v2, prijs):
     """Twee korte tekstvoorstellen voor in het verhaal, alleen met gegevens van de website (geen verzinsels)."""
-    naam = v2['kop'].title() if v2['kop'].isupper() else v2['kop']
-    naam = re.sub(r'\bUp!', 'up!', re.sub(r'\bBmw\b', 'BMW', re.sub(r'^Mini\b', 'MINI', naam)))
+    naam = merknaam(v2['kop'])
     hp = hoogtepunten(v2['opties'], 3)
     kern = ' · '.join(k for k in v2['kern'] if k)
     def klein(o):   # 'Panoramadak' -> 'panoramadak', maar 'Head-Up Display', 'LED', 'Apple CarPlay' blijven zoals ze zijn
