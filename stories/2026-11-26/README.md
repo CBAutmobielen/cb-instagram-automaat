@@ -9,7 +9,7 @@
 **Tekstideeën voor in je verhaal:**
 
 ```
-Net binnen! 🔥 Seat Ibiza 1.0 EcoTSI FR
+Net binnen! 🔥 SEAT Ibiza 1.0 EcoTSI FR
 Cruise control, Apple CarPlay / Android Auto en sportstoelen.
 2023 · 55.366 km · 95 pk · € 16.800
 Tik op de link voor alle foto's 👆
@@ -17,7 +17,7 @@ Tik op de link voor alle foto's 👆
 
 ```
 Wie wordt de nieuwe eigenaar? 🔑
-Seat Ibiza met cruise control, Apple CarPlay / Android Auto en sportstoelen.
+SEAT Ibiza met cruise control, Apple CarPlay / Android Auto en sportstoelen.
 Nu bij CB Automobielen in Sneek · € 16.800
 ```
 
