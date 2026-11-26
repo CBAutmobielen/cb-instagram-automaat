@@ -51,6 +51,14 @@ def aanbod():
             pg.goto(config.SITE_BASE + '/aanbod/', wait_until='networkidle', timeout=90000)
         except Exception as e:
             b.close(); raise SiteFout(f'aanbodpagina niet bereikbaar: {e}')
+        # de kaarten kunnen later inladen dan 'networkidle': expliciet wachten, zo nodig één keer herladen
+        for poging in range(2):
+            try:
+                pg.wait_for_selector('.cadar-offer__container', timeout=45000)
+                break
+            except Exception:
+                if poging == 0:
+                    pg.reload(wait_until='networkidle', timeout=90000)
         for _ in range(30):
             btn = pg.locator('button:has-text("Meer resultaten laden"), a:has-text("Meer resultaten laden")')
             if btn.count() == 0 or not btn.first.is_visible():
