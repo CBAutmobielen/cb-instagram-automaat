@@ -58,6 +58,18 @@ def merknaam(kop):
     return ' '.join(MERKEN.get(w, w) for w in naam.split())
 
 
+def naam_en_uitvoering(v2):
+    """Pakkendste naam: 'MINI 3-Deurs' + '2.0 Cooper S Chili' -> 'MINI Cooper S' + '3-deurs 2.0 Chili'."""
+    naam, sub = merknaam(v2['kop']), v2.get('ondertitel', '')
+    m = re.match(r'^MINI ([35]-Deurs|Clubman|Countryman|Cabrio)$', naam)
+    c = re.search(r'\b(John Cooper Works|Cooper S[DE]?|Cooper|One)\b', sub)
+    if m and c:
+        rest = re.sub(r'\s+', ' ', sub.replace(c.group(1), '')).strip()
+        naam = f'MINI {c.group(1)}'
+        sub = f"{m.group(1).lower() if 'Deurs' in m.group(1) else m.group(1)} {rest}".strip()
+    return naam, sub
+
+
 def hoogtepunten(opts, n=4):
     """Cruise control altijd vooraan als de auto het heeft; daarna de sterkste opties uit de post."""
     opts = [re.sub(r'^Airconditioning,? automatisch$', 'Automatische airco', o, flags=re.I) for o in opts]
@@ -81,7 +93,7 @@ def html(c):
     km = next((k for k in kern if 'km' in k), '')
     jaar = next((k for k in kern if re.fullmatch(r'(19|20)\d\d', k)), '')
     pk = next((k for k in kern if 'pk' in k), '')
-    naam = merknaam(v2['kop'])
+    naam, sub = naam_en_uitvoering(v2)
     punten = ''.join(f'<div class="punt">{VINK}<span data-fit="440">{E(o)}</span></div>' for o in hoogtepunten(v2['opties'], 3))
     rk = '<div class="rk" style="margin-top:6px">Rijklaar afgeleverd</div>' if v2.get('rijklaar') else ''   # alleen als het op de site staat
     dm_icoon = ('<svg width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#EB5B28"/>'
@@ -95,7 +107,7 @@ def html(c):
 <div class="fade" style="top:990px;height:116px"></div>
 <div class="kaart" style="top:1052px">
   <div class="titel" data-fit="880">{E(naam)}</div>
-  <div class="uitv" data-fit="880">{E(v2['ondertitel'])}{(' · ' + E(pk)) if pk else ''}</div>
+  <div class="uitv" data-fit="880">{E(sub)}{(' · ' + E(pk)) if pk else ''}</div>
   <div class="stats">
     <div><div class="sk">Kilometerstand</div><div class="sv" data-fit="270">{E(km)}</div></div>
     <div><div class="sk">Bouwjaar</div><div class="sv">{E(jaar)}</div></div>
@@ -148,7 +160,7 @@ async def render(c, out_png):
 
 def tekst_ideeen(titel, v2, prijs):
     """Twee korte tekstvoorstellen voor in het verhaal, alleen met gegevens van de website (geen verzinsels)."""
-    naam = merknaam(v2['kop'])
+    naam, sub = naam_en_uitvoering(v2)
     hp = hoogtepunten(v2['opties'], 3)
     kern = ' · '.join(k for k in v2['kern'] if k)
     def klein(o):   # 'Panoramadak' -> 'panoramadak', maar 'Head-Up Display', 'LED', 'Apple CarPlay' blijven zoals ze zijn
@@ -158,6 +170,6 @@ def tekst_ideeen(titel, v2, prijs):
         return o[0].lower() + o[1:]
     hp = [hp[0]] + [klein(o) for o in hp[1:]] if hp else []
     lijst = ', '.join(hp[:-1]) + (' en ' + hp[-1] if len(hp) > 1 else (hp[0] if hp else ''))
-    a = f"Net binnen! 🔥 {naam} {v2['ondertitel']}\n{lijst}.\n{kern} · {prijs}\nTik op de link voor alle foto's 👆"
+    a = f"Net binnen! 🔥 {naam} {sub}\n{lijst}.\n{kern} · {prijs}\nTik op de link voor alle foto's 👆"
     b = f"Wie wordt de nieuwe eigenaar? 🔑\n{naam} met {klein(lijst) if lijst else ''}.\nNu bij CB Automobielen in Sneek · {prijs}"
     return [a, b]
