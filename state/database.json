@@ -245,7 +245,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 11.900",
    "kilometerstand": "174.735 km",
    "bouwjaar": "2015",
@@ -313,7 +313,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 34.900",
    "kilometerstand": "81.568 km",
    "bouwjaar": null,
@@ -351,7 +351,7 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-31",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 8.900",
    "kilometerstand": "107.177 km",
    "bouwjaar": "2019",
@@ -419,8 +419,8 @@
    "status": "gepubliceerd",
    "beschikbaar": true,
    "ontdekt": "2026-10-29",
-   "laatst_gezien": "2026-11-26",
-   "prijs": "€ 16.800",
+   "laatst_gezien": "2026-11-27",
+   "prijs": "€ 16.750",
    "kilometerstand": "86.216 km",
    "bouwjaar": "2017",
    "afbeeldingen_status": "OK",
@@ -494,6 +494,12 @@
      "veld": "prijs",
      "oud": "€ 16.900",
      "nieuw": "€ 16.800"
+    },
+    {
+     "datum": "2026-11-27",
+     "veld": "prijs",
+     "oud": "€ 16.800",
+     "nieuw": "€ 16.750"
     }
    ],
    "klaar": {
@@ -517,7 +523,7 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 6.400",
    "kilometerstand": "139.793 km",
    "bouwjaar": null,
@@ -591,7 +597,7 @@
    "status": "gepubliceerd",
    "beschikbaar": false,
    "ontdekt": "2026-11-01",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 8.800",
    "kilometerstand": "188.975 km",
    "bouwjaar": "2013",
@@ -657,7 +663,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 16.800",
    "kilometerstand": "55.366 km",
    "bouwjaar": null,
@@ -722,7 +728,7 @@
    "status": "niet_klaar",
    "beschikbaar": false,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": null,
    "kilometerstand": "117.717 km",
    "bouwjaar": null,
@@ -744,7 +750,7 @@
    ],
    "niet_klaar_reden": "nog geen vraagprijs (Op aanvraag)",
    "klaar": {
-    "datum": "2026-11-26",
+    "datum": "2026-11-27",
     "prijs": null,
     "fotos": null,
     "marktplaats": null
@@ -761,8 +767,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-26",
-   "prijs": "€ 13.800",
+   "laatst_gezien": "2026-11-27",
+   "prijs": "€ 13.700",
    "kilometerstand": "95.583 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -821,6 +827,12 @@
      "veld": "prijs",
      "oud": "€ 13.900",
      "nieuw": "€ 13.800"
+    },
+    {
+     "datum": "2026-11-27",
+     "veld": "prijs",
+     "oud": "€ 13.800",
+     "nieuw": "€ 13.700"
     }
    ],
    "klaar": {
@@ -944,7 +956,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-06",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 16.900",
    "kilometerstand": "32.422 km",
    "bouwjaar": null,
@@ -1009,8 +1021,8 @@
    "status": "bestaand",
    "beschikbaar": true,
    "ontdekt": "2026-10-22",
-   "laatst_gezien": "2026-11-26",
-   "prijs": "€ 18.400",
+   "laatst_gezien": "2026-11-27",
+   "prijs": "€ 18.900",
    "kilometerstand": "24.484 km",
    "bouwjaar": null,
    "afbeeldingen_status": "nog niet gemaakt",
@@ -1087,6 +1099,12 @@
      "veld": "prijs",
      "oud": "€ 18.900",
      "nieuw": "€ 18.400"
+    },
+    {
+     "datum": "2026-11-27",
+     "veld": "prijs",
+     "oud": "€ 18.400",
+     "nieuw": "€ 18.900"
     }
    ],
    "klaar": {
@@ -1156,7 +1174,7 @@
    "status": "verkocht",
    "beschikbaar": true,
    "ontdekt": "2026-11-07",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 8.900",
    "kilometerstand": "114.828 km",
    "bouwjaar": null,
@@ -1215,7 +1233,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-14",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 6.400",
    "kilometerstand": "127.743 km",
    "bouwjaar": null,
@@ -1253,7 +1271,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-15",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 16.900",
    "kilometerstand": "42.832 km",
    "bouwjaar": null,
@@ -1284,7 +1302,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-15",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 11.400",
    "kilometerstand": "82.484 km",
    "bouwjaar": null,
@@ -1315,7 +1333,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-22",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 8.900",
    "kilometerstand": "93.089 km",
    "bouwjaar": null,
@@ -1346,7 +1364,7 @@
    "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-24",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 16.900",
    "kilometerstand": "128.405 km",
    "bouwjaar": null,
@@ -1374,10 +1392,10 @@
    "slug": "mini-3-deurs-2-0-cooper-s-chili-serious-business-58415390",
    "url": "https://www.cbautomobielen.nl/aanbod/mini-3-deurs-2-0-cooper-s-chili-serious-business-58415390",
    "titel": "MINI 3-Deurs 2.0 Cooper S Chili Serious Business",
-   "status": "wachtrij",
+   "status": "story_gemaakt",
    "beschikbaar": true,
    "ontdekt": "2026-11-26",
-   "laatst_gezien": "2026-11-26",
+   "laatst_gezien": "2026-11-27",
    "prijs": "€ 13.900",
    "kilometerstand": "111.469 km",
    "bouwjaar": null,
@@ -1410,7 +1428,8 @@
     "marktplaats": false
    },
    "eerst_op_site": "2026-11-25",
-   "verkoopklaar_sinds": "2026-11-26"
+   "verkoopklaar_sinds": "2026-11-26",
+   "story_datum": "2026-11-27"
   }
  },
  "runs": [
@@ -1858,6 +1877,14 @@
    "modus": "dagelijks",
    "nieuw": 1,
    "gepubliceerd": null,
+   "fouten": []
+  },
+  {
+   "datum": "2026-11-27",
+   "tijd": "15:33",
+   "modus": "dagelijks",
+   "nieuw": 0,
+   "gepubliceerd": "MINI 3-Deurs 2.0 Cooper S Chili Serious Business (story gemaakt, niet gepost)",
    "fouten": []
   }
  ]
