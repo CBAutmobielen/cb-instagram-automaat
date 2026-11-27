@@ -87,7 +87,18 @@ def aanbod():
     return out
 
 
-def voertuig(slug):
+def voertuig(slug, pogingen=3):
+    """Voertuigpagina uitlezen; de site geeft soms even een onvolledige pagina, dan opnieuw proberen."""
+    for i in range(pogingen):
+        try:
+            return _voertuig(slug)
+        except SiteFout:
+            if i == pogingen - 1:
+                raise
+            time.sleep(10 * (i + 1))
+
+
+def _voertuig(slug):
     """Voertuigpagina uitlezen: specificaties, opties, prijs en foto-URL's."""
     html = get(f'{config.SITE_BASE}/aanbod/{slug}')
     s = BeautifulSoup(html, 'html.parser')
