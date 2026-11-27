@@ -9,7 +9,7 @@
 **Tekstideeën voor in je verhaal:**
 
 ```
-Net binnen! 🔥 MINI 3-Deurs 2.0 Cooper S Chili Serious Business
+Net binnen! 🔥 MINI Cooper S 3-deurs 2.0 Chili Serious Business
 LED koplampen, navigatie en keyless entry & start.
 2015 · 111.616 km · 192 pk · € 13.900
 Tik op de link voor alle foto's 👆
@@ -17,7 +17,7 @@ Tik op de link voor alle foto's 👆
 
 ```
 Wie wordt de nieuwe eigenaar? 🔑
-MINI 3-Deurs met LED koplampen, navigatie en keyless entry & start.
+MINI Cooper S met LED koplampen, navigatie en keyless entry & start.
 Nu bij CB Automobielen in Sneek · € 13.900
 ```
 
